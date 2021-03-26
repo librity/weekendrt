@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// gcc ppm.c && ./a.out > hello.ppm
+// gcc ppm.c && ./a.out hello.ppm
 
-#include <stdio.h>
+//#include <stdio.h>
+#include "./put_fd.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
 	const int image_width = 256;
 	const int image_height = 256;
@@ -30,7 +31,20 @@ int main(void)
 	int green_int;
 	int blue_int = (int)(255.999 * blue_float);
 
-	printf("P3\n%d %d\n255\n", image_width, image_height);
+	int fd;
+	if (argc < 2)
+	{
+		ft_putstr_fd("error: no filename\n", 1);
+		return (1);
+	}
+	ft_putstr_fd("criando arquivo ", 1);
+	ft_putstr_fd(argv[1], 1);
+	ft_putstr_fd("\n", 1);
+	fd = open(argv[1], O_CREAT | O_RDWR, 0664);
+
+
+	//printf("P3\n%d %d\n255\n", image_width, image_height);
+	put_header(image_width, image_height, fd);
 
 	while (current_row >= 0)
 	{
@@ -43,11 +57,13 @@ int main(void)
 			red_int = (int)(255.999 * red_float);
 			green_int = (int)(255.999 * green_float);
 
-			printf("%d %d %d\n", red_int, green_int, blue_int);
+			//printf("%d %d %d\n", red_int, green_int, blue_int);
+			put_pixel(red_int, green_int, blue_int, fd);
 
 			current_column++;
 		}
 
 		current_row--;
 	}
+	close(fd);
 }
