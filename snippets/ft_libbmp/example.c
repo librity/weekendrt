@@ -6,18 +6,18 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 17:35:16 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 18:22:28 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// SOURCE: https://github.com/marc-q/libbmp
+// Based on: https://github.com/marc-q/libbmp
 
 // make example
 
 #include <stdio.h>
-#include "libbmp.h"
+#include "ft_libbmp.h"
 
-int main(int argc, char *argv[])
+int main(void)
 {
 	const int image_width = 1920;
 	const int image_height = 1080;
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
 		current_row++;
 	}
 
-	bmp_img_write(&img, "hello.bmp");
+	ft_write_bmp_image(&img, "hello.bmp");
 	bmp_img_free(&img);
 	return 0;
 }

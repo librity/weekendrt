@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libbmp.h                                           :+:      :+:    :+:   */
+/*   ft_libbmp.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:35 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 16:57:43 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 18:22:34 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// SOURCE: https://github.com/marc-q/libbmp
+// Based on: https://github.com/marc-q/libbmp
 
-#ifndef LIBBMP_H
-# define LIBBMP_H
+#ifndef FT_LIBBMP_H
+# define FT_LIBBMP_H
+
+# include <stdio.h>
+# include <stdlib.h>
 
 # define BMP_MAGIC 0x4D42
 
@@ -21,14 +24,14 @@
 # define BMP_GET_PADDING(a) ((a) % 4)
 # define BMP_PIXEL(r, g, b) ((bmp_pixel){(b), (g), (r)})
 
-enum bmp_error
+typedef enum bmp_error
 {
 	BMP_FILE_NOT_OPENED = -4,
 	BMP_HEADER_NOT_INITIALIZED,
 	BMP_INVALID_FILE,
 	BMP_ERROR,
 	BMP_OK = 0
-};
+} t_bmp_error;
 
 typedef struct _bmp_header
 {
@@ -86,7 +89,7 @@ void bmp_img_init_df(bmp_img *,
 					 const int);
 void bmp_img_free(bmp_img *);
 
-enum bmp_error bmp_img_write(const bmp_img *,
+enum bmp_error ft_write_bmp_image(const bmp_img *,
 							 const char *);
 
 enum bmp_error bmp_img_read(bmp_img *,
