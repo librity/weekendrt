@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 04:19:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 17:40:48 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 18:35:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 
 int main(void)
 {
-	const int image_width = 256;
-	const int image_height = 256;
+	const int image_width = 512;
+	const int image_height = 512;
 
 	int current_row = image_height - 1;
 	int current_column;
 
 	double red_float;
 	double green_float;
-	double blue_float = 0.75;
+	double blue_float = 0.25;
 
 	int red_int;
 	int green_int;

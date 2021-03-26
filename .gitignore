@@ -54,3 +54,5 @@ dkms.conf
 # Image files
 *.ppm
 *.bmp
+!gallery/*.ppm
+!gallery/*.bmp

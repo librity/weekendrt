@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 04:19:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 17:59:33 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 18:37:55 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static int create_file(const char *file_name)
 
 static void write_pixels(int file_descriptor)
 {
-	const int image_width = 256;
-	const int image_height = 256;
+	const int image_width = 512;
+	const int image_height = 512;
 
 	int current_row = image_height - 1;
 	int current_column;
