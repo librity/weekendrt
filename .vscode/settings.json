@@ -33,7 +33,8 @@
 	"*.tcc": "cpp",
 	"cmath": "cpp",
 	"streambuf": "cpp",
-	"math.h": "c"
+	"math.h": "c",
+	"libppm.h": "c"
 },
   "editor.detectIndentation": false
 }

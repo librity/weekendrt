@@ -6,16 +6,16 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 04:19:42 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 14:14:05 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 17:40:48 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// gcc ppm.c && ./a.out hello.ppm
+// gcc ppm.c && ./a.out > hello.ppm
+// ffplay hello.ppm
 
-//#include <stdio.h>
-#include "./put_fd.h"
+#include <stdio.h>
 
-int main(int argc, char **argv)
+int main(void)
 {
 	const int image_width = 256;
 	const int image_height = 256;
@@ -31,20 +31,7 @@ int main(int argc, char **argv)
 	int green_int;
 	int blue_int = (int)(255.999 * blue_float);
 
-	int fd;
-	if (argc < 2)
-	{
-		ft_putstr_fd("error: no filename\n", 1);
-		return (1);
-	}
-	ft_putstr_fd("criando arquivo ", 1);
-	ft_putstr_fd(argv[1], 1);
-	ft_putstr_fd("\n", 1);
-	fd = open(argv[1], O_CREAT | O_RDWR, 0664);
-
-
-	//printf("P3\n%d %d\n255\n", image_width, image_height);
-	put_header(image_width, image_height, fd);
+	printf("P3\n%d %d\n255\n", image_width, image_height);
 
 	while (current_row >= 0)
 	{
@@ -57,13 +44,11 @@ int main(int argc, char **argv)
 			red_int = (int)(255.999 * red_float);
 			green_int = (int)(255.999 * green_float);
 
-			//printf("%d %d %d\n", red_int, green_int, blue_int);
-			put_pixel(red_int, green_int, blue_int, fd);
+			printf("%d %d %d\n", red_int, green_int, blue_int);
 
 			current_column++;
 		}
 
 		current_row--;
 	}
-	close(fd);
 }
