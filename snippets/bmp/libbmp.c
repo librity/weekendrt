@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 16:24:15 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 18:02:17 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,9 @@ bmp_header_write(const bmp_header *header,
 				 FILE *img_file)
 {
 	if (header == NULL)
-	{
 		return BMP_HEADER_NOT_INITIALIZED;
-	}
-	else if (img_file == NULL)
-	{
+	if (img_file == NULL)
 		return BMP_FILE_NOT_OPENED;
-	}
 
 	// Since an adress must be passed to fwrite, create a variable!
 	const unsigned short magic = BMP_MAGIC;
