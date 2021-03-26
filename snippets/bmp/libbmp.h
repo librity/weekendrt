@@ -6,18 +6,20 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:35 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 16:24:18 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 16:57:43 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // SOURCE: https://github.com/marc-q/libbmp
 
 #ifndef LIBBMP_H
-#define LIBBMP_H
+# define LIBBMP_H
 
-#define BMP_MAGIC 19778
+# define BMP_MAGIC 0x4D42
 
-#define BMP_GET_PADDING(a) ((a) % 4)
+// This is faster than a function call
+# define BMP_GET_PADDING(a) ((a) % 4)
+# define BMP_PIXEL(r, g, b) ((bmp_pixel){(b), (g), (r)})
 
 enum bmp_error
 {
@@ -53,9 +55,6 @@ typedef struct _bmp_pixel
 	unsigned char green;
 	unsigned char red;
 } bmp_pixel;
-
-// This is faster than a function call
-#define BMP_PIXEL(r, g, b) ((bmp_pixel){(b), (g), (r)})
 
 typedef struct _bmp_img
 {
@@ -93,4 +92,4 @@ enum bmp_error bmp_img_write(const bmp_img *,
 enum bmp_error bmp_img_read(bmp_img *,
 							const char *);
 
-#endif /* LIBBMP_H */
+#endif
