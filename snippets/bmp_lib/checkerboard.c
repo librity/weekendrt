@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 16:50:33 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 17:27:12 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,9 @@ int main(int argc, char *argv[])
 		{
 			if ((y % 128 < 64 && x % 128 < 64) ||
 				(y % 128 >= 64 && x % 128 >= 64))
-			{
 				bmp_pixel_init(&img.img_pixels[y][x], 250, 250, 250);
-			}
 			else
-			{
 				bmp_pixel_init(&img.img_pixels[y][x], 0, 0, 0);
-			}
 		}
 	}
 
