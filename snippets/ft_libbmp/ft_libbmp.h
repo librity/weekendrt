@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:35 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 18:22:34 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 19:06:53 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 # define BMP_MAGIC 0x4D42
 
@@ -66,15 +69,8 @@ typedef struct _bmp_img
 } bmp_img;
 
 // BMP_HEADER
-void bmp_header_init_df(bmp_header *,
-						const int,
-						const int);
-
-enum bmp_error bmp_header_write(const bmp_header *,
-								FILE *);
-
-enum bmp_error bmp_header_read(bmp_header *,
-							   FILE *);
+void bmp_header_init_df(bmp_header *, const int, const int);
+t_bmp_error bmp_header_write(const bmp_header *header, int file_descriptor);
 
 // BMP_PIXEL
 void bmp_pixel_init(bmp_pixel *,

@@ -20,3 +20,5 @@ A simple ray tracer made in a weekend.
 ## Resources
 
 - https://stackoverflow.com/questions/4264127/correct-format-specifier-for-double-in-printf
+- https://www.tutorialspoint.com/c_standard_library/c_function_fwrite.htm
+- https://overiq.com/c-programming-101/fwrite-function-in-c/

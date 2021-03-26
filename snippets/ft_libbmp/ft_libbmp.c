@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 18:24:15 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 19:58:06 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,19 @@ void bmp_header_init_df(bmp_header *header,
 	header->biClrImportant = 0;
 }
 
-t_bmp_error bmp_header_write(const bmp_header *header,
-				 FILE *img_file)
+t_bmp_error bmp_header_write(const bmp_header *header, int file_descriptor)
 {
 	if (header == NULL)
 		return BMP_HEADER_NOT_INITIALIZED;
-	if (img_file == NULL)
+	if (file_descriptor < 0)
 		return BMP_FILE_NOT_OPENED;
 
 	// Since an adress must be passed to fwrite, create a variable!
 	const unsigned short magic = BMP_MAGIC;
-	fwrite(&magic, sizeof(magic), 1, img_file);
+	write(file_descriptor, &magic, sizeof(magic));
 
 	// Use the type instead of the variable because its a pointer!
-	fwrite(header, sizeof(bmp_header), 1, img_file);
+	write(file_descriptor, header, sizeof(bmp_header));
 	return BMP_OK;
 }
 
@@ -97,22 +96,20 @@ void bmp_img_free(bmp_img *img)
 }
 
 t_bmp_error ft_write_bmp_image(const bmp_img *img,
-			  const char *filename)
+							   const char *filename)
 {
-	FILE *img_file = fopen(filename, "wb");
+	int file_descriptor = open(filename, O_CREAT | O_RDWR, 0664);
 
-	if (img_file == NULL)
-	{
+	if (file_descriptor < 0)
 		return BMP_FILE_NOT_OPENED;
-	}
 
 	// NOTE: This way the correct error code could be returned.
-	const t_bmp_error err = bmp_header_write(&img->img_header, img_file);
+	const t_bmp_error err = bmp_header_write(&img->img_header, file_descriptor);
 
 	if (err != BMP_OK)
 	{
 		// ERROR: Could'nt write the header!
-		fclose(img_file);
+		close(file_descriptor);
 		return err;
 	}
 
@@ -127,13 +124,13 @@ t_bmp_error ft_write_bmp_image(const bmp_img *img,
 	for (size_t y = 0; y < h; y++)
 	{
 		// Write a whole row of pixels to the file:
-		fwrite(img->img_pixels[abs((int)offset - (int)y)], sizeof(bmp_pixel), img->img_header.biWidth, img_file);
+		write(file_descriptor, img->img_pixels[abs((int)offset - (int)y)], sizeof(bmp_pixel) * img->img_header.biWidth);
 
 		// Write the padding for the row!
-		fwrite(padding, sizeof(unsigned char), BMP_GET_PADDING(img->img_header.biWidth), img_file);
+		write(file_descriptor, padding, sizeof(unsigned char) * BMP_GET_PADDING(img->img_header.biWidth));
 	}
 
 	// NOTE: All good!
-	fclose(img_file);
+	close(file_descriptor);
 	return BMP_OK;
 }
