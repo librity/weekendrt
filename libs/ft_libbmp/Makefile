@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/03/27 02:20:14 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/03/27 02:50:06 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,9 +37,10 @@ SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
 
 EXAMPLE_MAIN = $(EXAMPLES_PATH)/example.c
-EXECUTE_EXAMPLE = ./a.out
+IMAGE_NAME = hello.bmp
+EXECUTE_EXAMPLE = ./a.out $(IMAGE_NAME)
 OPEN_IMAGE = ffplay
-EXAMPLE_GARBAGE = a.out a.out.dSYM hello.bmp
+EXAMPLE_GARBAGE = a.out a.out.dSYM $(IMAGE_NAME)
 
 all: $(NAME)
 
@@ -53,7 +54,7 @@ $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
 example: $(NAME)
 	$(CC) $(CC_DEBUG_FLAGS) -I $(INCLUDES_PATH) $(EXAMPLE_MAIN) $(NAME)
 	$(EXECUTE_EXAMPLE)
-	$(OPEN_IMAGE) hello.bmp
+	$(OPEN_IMAGE) $(IMAGE_NAME)
 
 clean:
 	$(REMOVE) $(OBJECTS)

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 01:12:49 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 02:35:34 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 03:01:14 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,5 @@ static void	initialize_header(t_bitmap_header *header,
 void		ft_initialize_bitmap(t_bitmap_image *image, int width, int height)
 {
 	initialize_header(&image->header, width, height);
-	(void)width;
-	(void)height;
 	allocate_pixels(image);
 }

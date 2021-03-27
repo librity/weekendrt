@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 01:10:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 02:39:13 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 03:04:22 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ static void	initialize_write_pixels(t_bitmap_image *image,
 	control->row_width = sizeof(t_bitmap_pixel) * image->header.width;
 	control->padding_width = sizeof(unsigned char) *
 								ft_calculate_padding(image->header.width);
+	control->padding[0] = '\0';
+	control->padding[1] = '\0';
+	control->padding[2] = '\0';
 }
 
 static void	write_pixels(t_bitmap_image *image, int file_descriptor)

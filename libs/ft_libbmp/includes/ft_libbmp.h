@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:35 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 02:28:01 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 03:03:01 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include <errno.h>
 
 # define BITMAP_MAGIC_BITS "BM"
 

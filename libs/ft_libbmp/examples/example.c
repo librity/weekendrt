@@ -6,52 +6,87 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 02:37:47 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 03:10:01 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_libbmp.h>
+#include <stdio.h>
 
-int main(void)
+typedef struct s_example
 {
-	const int width = 1920;
-	const int height = 1080;
+	char *file_name;
 
-	int current_row = 0;
-	int current_column;
+	int width;
+	int height;
 
 	double red_float;
 	double green_float;
-	double blue_float = 0.75;
+	double blue_float;
 
 	int red_int;
 	int green_int;
-	int blue_int = (int)(255.999 * blue_float);
+	int blue_int;
 
-	t_bitmap_image image;
-	ft_initialize_bitmap(&image, width, height);
+} t_example;
 
-	while (current_row < height)
+static void initialize_control(t_example *control, char **arguments)
+{
+	control->file_name = arguments[1];
+
+	control->width = 1920;
+	control->height = 1080;
+
+	control->blue_float = 0.75;
+	control->blue_int = (int)(255.999 * control->blue_float);
+}
+
+static void set_pixels(t_bitmap_image *image, t_example *c)
+{
+	int current_row;
+	int current_column;
+
+	current_row = 0;
+	while (current_row < c->height)
 	{
 		current_column = 0;
-		while (current_column < width)
+		while (current_column < c->width)
 		{
-			red_float = (double)current_column / (width - 1);
-			green_float = (double)current_row / (height - 1);
+			c->red_float = (double)current_column / (c->width - 1);
+			c->green_float = (double)current_row / (c->height - 1);
 
-			red_int = (int)(255.999 * red_float);
-			green_int = (int)(255.999 * green_float);
+			c->red_int = (int)(255.999 * c->red_float);
+			c->green_int = (int)(255.999 * c->green_float);
 
-			ft_set_pixel(&image.pixels[current_row][current_column],
-						   red_int, green_int, blue_int);
+			ft_set_pixel(&image->pixels[current_row][current_column],
+						 c->red_int, c->green_int, c->blue_int);
 
 			current_column++;
 		}
 
 		current_row++;
 	}
+}
 
-	ft_save_bitmap(&image, "hello.bmp");
+static void handle_arguments(int argument_count)
+{
+	if (argument_count != 2)
+	{
+		printf("ERROR: expected one argument as filename.\n");
+		exit(EXIT_FAILURE);
+	}
+}
+
+int main(int argc, char **argv)
+{
+	t_example c;
+	t_bitmap_image image;
+
+	handle_arguments(argc);
+	initialize_control(&c, argv);
+	ft_initialize_bitmap(&image, c.width, c.height);
+	set_pixels(&image, &c);
+	ft_save_bitmap(&image, c.file_name);
 	ft_free_bitmap(&image);
 	return 0;
 }
