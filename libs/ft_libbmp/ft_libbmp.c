@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 22:22:10 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 22:30:27 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,13 @@ t_bitmap_error ft_save_bitmap(const t_bitmap_image *image,
 {
 	t_bitmap_error		header_write_result;
 	int					file_descriptor;
+	int					current_row_index;
 	size_t				height;
 	size_t				offset;
+	size_t				current_row;
+	size_t				row_width;
+	size_t				padding_width;
+	t_bitmap_pixel		*current_row_pixels;
 	const unsigned char	padding[3] = {'\0', '\0', '\0'};
 
 	file_descriptor = open(filename, O_CREAT | O_RDWR, 0664);
@@ -119,18 +124,19 @@ t_bitmap_error ft_save_bitmap(const t_bitmap_image *image,
 		return header_write_result;
 	}
 
-	// Select the mode (bottom-up or top-down):
 	height = absolute_value(image->header.height);
 	offset = (image->header.height > 0 ? height - 1 : 0);
 
-	// Write the content:
-	for (size_t current_row = 0; current_row < height; current_row++)
-	{
-		// Write a whole row of pixels to the file:
-		write(file_descriptor, image->pixels[absolute_value((int)offset - (int)current_row)], sizeof(t_bitmap_pixel) * image->header.width);
+	row_width = sizeof(t_bitmap_pixel) * image->header.width;
+	padding_width = sizeof(unsigned char) * get_padding(image->header.width);
 
-		// Write the padding for the row!
-		write(file_descriptor, padding, sizeof(unsigned char) * get_padding(image->header.width));
+	current_row = 0;
+	while (current_row++ < height)
+	{
+		current_row_index = absolute_value((int)offset - (int)current_row);
+		current_row_pixels = image->pixels[current_row_index];
+		write(file_descriptor, current_row_pixels, row_width);
+		write(file_descriptor, padding, padding_width);
 	}
 
 	close(file_descriptor);
