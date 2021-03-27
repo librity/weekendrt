@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:35 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 21:56:27 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 22:21:57 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 #ifndef FT_LIBBMP_H
 # define FT_LIBBMP_H
 
-# include <stdio.h>
-# include <stdlib.h>
 # include <unistd.h>
-# include <sys/stat.h>
+# include <stdlib.h>
 # include <fcntl.h>
 
 # define BITMAP_MAGIC_BITS 0x4D42
@@ -61,12 +59,17 @@ typedef struct s_bitmap_pixel
 
 typedef struct s_bitmap_image
 {
-	t_bitmap_header img_header;
-	t_bitmap_pixel **img_pixels;
+	t_bitmap_header	header;
+	t_bitmap_pixel	**pixels;
 } t_bitmap_image;
 
-void			ft_initialize_bitmap(t_bitmap_image *img, const int width, const int height);
-void			ft_set_pixel(t_bitmap_pixel *pxl, const unsigned char red, const unsigned char green, const unsigned char blue);
+void			ft_initialize_bitmap(t_bitmap_image *img,
+										const int width,
+										const int height);
+void			ft_set_pixel(t_bitmap_pixel *pxl,
+								const unsigned char red,
+								const unsigned char green,
+								const unsigned char blue);
 void			ft_free_bitmap(t_bitmap_image *img);
 t_bitmap_error	ft_save_bitmap(const t_bitmap_image *img, const char *filename);
 

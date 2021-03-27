@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 21:57:19 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 22:22:10 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ static int absolute_value(int number)
 }
 
 static void initialize_header(t_bitmap_header *header,
-							  const int width,
-							  const int height)
+								const int width,
+								const int height)
 {
-	// header->bitmap_magic_bits = 0x4D42;
 	header->buffer_size = (sizeof(t_bitmap_pixel) * width + get_padding(width)) * absolute_value(height);
 	header->buffer_reserved = 0;
 	header->buffer_offset = 54;
@@ -62,79 +61,78 @@ static t_bitmap_error write_header(const t_bitmap_header *header, int file_descr
 	return SUCCESS;
 }
 
-static void allocate_pixels(t_bitmap_image *img)
+static void allocate_pixels(t_bitmap_image *image)
 {
-	const size_t positive_height = absolute_value(img->img_header.height);
+	const size_t positive_height = absolute_value(image->header.height);
 
-	img->img_pixels = malloc(sizeof(t_bitmap_pixel *) * positive_height);
-	for (size_t y = 0; y < positive_height; y++)
-		img->img_pixels[y] = malloc(sizeof(t_bitmap_pixel) * img->img_header.width);
+	image->pixels = malloc(sizeof(t_bitmap_pixel *) * positive_height);
+	for (size_t current_row = 0; current_row < positive_height; current_row++)
+		image->pixels[current_row] = malloc(sizeof(t_bitmap_pixel) * image->header.width);
 }
 
-void ft_initialize_bitmap(t_bitmap_image *img,
-						  const int width,
-						  const int height)
+void ft_initialize_bitmap(t_bitmap_image *image,
+							const int width,
+							const int height)
 {
-	initialize_header(&img->img_header, width, height);
-	allocate_pixels(img);
+	initialize_header(&image->header, width, height);
+	allocate_pixels(image);
 }
 
 void ft_set_pixel(t_bitmap_pixel *pxl,
-				  const unsigned char red,
-				  const unsigned char green,
-				  const unsigned char blue)
+					const unsigned char red,
+					const unsigned char green,
+					const unsigned char blue)
 {
 	pxl->red = red;
 	pxl->green = green;
 	pxl->blue = blue;
 }
 
-void ft_free_bitmap(t_bitmap_image *img)
+void ft_free_bitmap(t_bitmap_image *image)
 {
-	const size_t height = absolute_value(img->img_header.height);
+	const size_t	height = absolute_value(image->header.height);
+	size_t			current_row;
 
-	for (size_t y = 0; y < height; y++)
-		free(img->img_pixels[y]);
-	free(img->img_pixels);
+	current_row = 0;
+	while (current_row++ < height)
+		free(image->pixels[current_row]);
+	free(image->pixels);
 }
 
-t_bitmap_error ft_save_bitmap(const t_bitmap_image *img,
+t_bitmap_error ft_save_bitmap(const t_bitmap_image *image,
 							  const char *filename)
 {
-	int file_descriptor;
+	t_bitmap_error		header_write_result;
+	int					file_descriptor;
+	size_t				height;
+	size_t				offset;
+	const unsigned char	padding[3] = {'\0', '\0', '\0'};
 
 	file_descriptor = open(filename, O_CREAT | O_RDWR, 0664);
 	if (file_descriptor < 0)
 		return FILE_NOT_OPENED;
 
-	// NOTE: This way the correct error code could be returned.
-	const t_bitmap_error err = write_header(&img->img_header, file_descriptor);
-
-	if (err != SUCCESS)
+	header_write_result = write_header(&image->header, file_descriptor);
+	if (header_write_result != SUCCESS)
 	{
-		// ERROR: Could'nt write the header!
 		close(file_descriptor);
-		return err;
+		return header_write_result;
 	}
 
 	// Select the mode (bottom-up or top-down):
-	const size_t h = absolute_value(img->img_header.height);
-	const size_t offset = (img->img_header.height > 0 ? h - 1 : 0);
-
-	// Create the padding:
-	const unsigned char padding[3] = {'\0', '\0', '\0'};
+	height = absolute_value(image->header.height);
+	offset = (image->header.height > 0 ? height - 1 : 0);
 
 	// Write the content:
-	for (size_t y = 0; y < h; y++)
+	for (size_t current_row = 0; current_row < height; current_row++)
 	{
 		// Write a whole row of pixels to the file:
-		write(file_descriptor, img->img_pixels[absolute_value((int)offset - (int)y)], sizeof(t_bitmap_pixel) * img->img_header.width);
+		write(file_descriptor, image->pixels[absolute_value((int)offset - (int)current_row)], sizeof(t_bitmap_pixel) * image->header.width);
 
 		// Write the padding for the row!
-		write(file_descriptor, padding, sizeof(unsigned char) * get_padding(img->img_header.width));
+		write(file_descriptor, padding, sizeof(unsigned char) * get_padding(image->header.width));
 	}
 
-	// NOTE: All good!
 	close(file_descriptor);
 	return SUCCESS;
 }
