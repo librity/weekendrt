@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 19:58:06 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 21:57:19 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,99 +14,103 @@
 
 #include "ft_libbmp.h"
 
-// BMP_HEADER
-
-void bmp_header_init_df(bmp_header *header,
-						const int width,
-						const int height)
+static int get_padding(int number)
 {
-	header->bfSize = (sizeof(bmp_pixel) * width + BMP_GET_PADDING(width)) * abs(height);
-	header->bfReserved = 0;
-	header->bfOffBits = 54;
-	header->biSize = 40;
-	header->biWidth = width;
-	header->biHeight = height;
-	header->biPlanes = 1;
-	header->biBitCount = 24;
-	header->biCompression = 0;
-	header->biSizeImage = 0;
-	header->biXPelsPerMeter = 0;
-	header->biYPelsPerMeter = 0;
-	header->biClrUsed = 0;
-	header->biClrImportant = 0;
+	return (number % 4);
 }
 
-t_bmp_error bmp_header_write(const bmp_header *header, int file_descriptor)
+static int absolute_value(int number)
 {
+	if (number < 0)
+		return (number * -1);
+	return (number);
+}
+
+static void initialize_header(t_bitmap_header *header,
+							  const int width,
+							  const int height)
+{
+	// header->bitmap_magic_bits = 0x4D42;
+	header->buffer_size = (sizeof(t_bitmap_pixel) * width + get_padding(width)) * absolute_value(height);
+	header->buffer_reserved = 0;
+	header->buffer_offset = 54;
+
+	header->total_size = 40;
+	header->width = width;
+	header->height = height;
+
+	header->planes = 1;
+	header->bit_count = 24;
+	header->compression = 0;
+	header->image_size = 0;
+	header->x_resolution_ppm = 0;
+	header->y_resolution_ppm = 0;
+	header->colors_used = 0;
+	header->important_colors = 0;
+}
+
+static t_bitmap_error write_header(const t_bitmap_header *header, int file_descriptor)
+{
+	const unsigned short magic = BITMAP_MAGIC_BITS;
+
 	if (header == NULL)
-		return BMP_HEADER_NOT_INITIALIZED;
+		return HEADER_NOT_INITIALIZED;
 	if (file_descriptor < 0)
-		return BMP_FILE_NOT_OPENED;
-
-	// Since an adress must be passed to fwrite, create a variable!
-	const unsigned short magic = BMP_MAGIC;
+		return FILE_NOT_OPENED;
 	write(file_descriptor, &magic, sizeof(magic));
-
-	// Use the type instead of the variable because its a pointer!
-	write(file_descriptor, header, sizeof(bmp_header));
-	return BMP_OK;
+	write(file_descriptor, header, sizeof(*header));
+	return SUCCESS;
 }
 
-// BMP_PIXEL
+static void allocate_pixels(t_bitmap_image *img)
+{
+	const size_t positive_height = absolute_value(img->img_header.height);
 
-void bmp_pixel_init(bmp_pixel *pxl,
-					const unsigned char red,
-					const unsigned char green,
-					const unsigned char blue)
+	img->img_pixels = malloc(sizeof(t_bitmap_pixel *) * positive_height);
+	for (size_t y = 0; y < positive_height; y++)
+		img->img_pixels[y] = malloc(sizeof(t_bitmap_pixel) * img->img_header.width);
+}
+
+void ft_initialize_bitmap(t_bitmap_image *img,
+						  const int width,
+						  const int height)
+{
+	initialize_header(&img->img_header, width, height);
+	allocate_pixels(img);
+}
+
+void ft_set_pixel(t_bitmap_pixel *pxl,
+				  const unsigned char red,
+				  const unsigned char green,
+				  const unsigned char blue)
 {
 	pxl->red = red;
 	pxl->green = green;
 	pxl->blue = blue;
 }
 
-// BMP_IMG
-
-void bmp_img_alloc(bmp_img *img)
+void ft_free_bitmap(t_bitmap_image *img)
 {
-	const size_t h = abs(img->img_header.biHeight);
+	const size_t height = absolute_value(img->img_header.height);
 
-	// Allocate the required memory for the pixels:
-	img->img_pixels = malloc(sizeof(bmp_pixel *) * h);
-
-	for (size_t y = 0; y < h; y++)
-		img->img_pixels[y] = malloc(sizeof(bmp_pixel) * img->img_header.biWidth);
-}
-
-void bmp_img_init_df(bmp_img *img,
-					 const int width,
-					 const int height)
-{
-	// INIT the header with default values:
-	bmp_header_init_df(&img->img_header, width, height);
-	bmp_img_alloc(img);
-}
-
-void bmp_img_free(bmp_img *img)
-{
-	const size_t h = abs(img->img_header.biHeight);
-
-	for (size_t y = 0; y < h; y++)
+	for (size_t y = 0; y < height; y++)
 		free(img->img_pixels[y]);
 	free(img->img_pixels);
 }
 
-t_bmp_error ft_write_bmp_image(const bmp_img *img,
-							   const char *filename)
+t_bitmap_error ft_save_bitmap(const t_bitmap_image *img,
+							  const char *filename)
 {
-	int file_descriptor = open(filename, O_CREAT | O_RDWR, 0664);
+	int file_descriptor;
 
+	file_descriptor = open(filename, O_CREAT | O_RDWR, 0664);
 	if (file_descriptor < 0)
-		return BMP_FILE_NOT_OPENED;
+		return FILE_NOT_OPENED;
 
 	// NOTE: This way the correct error code could be returned.
-	const t_bmp_error err = bmp_header_write(&img->img_header, file_descriptor);
+	const t_bitmap_error err = write_header(&img->img_header, file_descriptor);
 
-	if (err != BMP_OK)
+	if (err != SUCCESS)
 	{
 		// ERROR: Could'nt write the header!
 		close(file_descriptor);
@@ -114,8 +118,8 @@ t_bmp_error ft_write_bmp_image(const bmp_img *img,
 	}
 
 	// Select the mode (bottom-up or top-down):
-	const size_t h = abs(img->img_header.biHeight);
-	const size_t offset = (img->img_header.biHeight > 0 ? h - 1 : 0);
+	const size_t h = absolute_value(img->img_header.height);
+	const size_t offset = (img->img_header.height > 0 ? h - 1 : 0);
 
 	// Create the padding:
 	const unsigned char padding[3] = {'\0', '\0', '\0'};
@@ -124,13 +128,13 @@ t_bmp_error ft_write_bmp_image(const bmp_img *img,
 	for (size_t y = 0; y < h; y++)
 	{
 		// Write a whole row of pixels to the file:
-		write(file_descriptor, img->img_pixels[abs((int)offset - (int)y)], sizeof(bmp_pixel) * img->img_header.biWidth);
+		write(file_descriptor, img->img_pixels[absolute_value((int)offset - (int)y)], sizeof(t_bitmap_pixel) * img->img_header.width);
 
 		// Write the padding for the row!
-		write(file_descriptor, padding, sizeof(unsigned char) * BMP_GET_PADDING(img->img_header.biWidth));
+		write(file_descriptor, padding, sizeof(unsigned char) * get_padding(img->img_header.width));
 	}
 
 	// NOTE: All good!
 	close(file_descriptor);
-	return BMP_OK;
+	return SUCCESS;
 }

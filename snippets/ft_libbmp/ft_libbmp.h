@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:35 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 19:06:53 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 21:56:27 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,74 +21,53 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# define BMP_MAGIC 0x4D42
+# define BITMAP_MAGIC_BITS 0x4D42
 
-// This is faster than a function call
-# define BMP_GET_PADDING(a) ((a) % 4)
-# define BMP_PIXEL(r, g, b) ((bmp_pixel){(b), (g), (r)})
-
-typedef enum bmp_error
+typedef enum s_bitmap_error
 {
-	BMP_FILE_NOT_OPENED = -4,
-	BMP_HEADER_NOT_INITIALIZED,
-	BMP_INVALID_FILE,
-	BMP_ERROR,
-	BMP_OK = 0
-} t_bmp_error;
+	FILE_NOT_OPENED = -4,
+	HEADER_NOT_INITIALIZED,
+	INVALID_FILE,
+	GENERIC_ERROR,
+	SUCCESS = 0
+} t_bitmap_error;
 
-typedef struct _bmp_header
+typedef struct s_bitmap_header
 {
-	unsigned int bfSize;
-	unsigned int bfReserved;
-	unsigned int bfOffBits;
+	unsigned int	buffer_size;
+	unsigned int	buffer_reserved;
+	unsigned int	buffer_offset;
 
-	unsigned int biSize;
-	int biWidth;
-	int biHeight;
-	unsigned short biPlanes;
-	unsigned short biBitCount;
-	unsigned int biCompression;
-	unsigned int biSizeImage;
-	int biXPelsPerMeter;
-	int biYPelsPerMeter;
-	unsigned int biClrUsed;
-	unsigned int biClrImportant;
-} bmp_header;
+	unsigned int	total_size;
+	int				width;
+	int				height;
 
-typedef struct _bmp_pixel
+	unsigned short	planes;
+	unsigned short	bit_count;
+	unsigned int	compression;
+	unsigned int	image_size;
+	int				x_resolution_ppm;
+	int				y_resolution_ppm;
+	unsigned int	colors_used;
+	unsigned int	important_colors;
+} t_bitmap_header;
+
+typedef struct s_bitmap_pixel
 {
 	unsigned char blue;
 	unsigned char green;
 	unsigned char red;
-} bmp_pixel;
+} t_bitmap_pixel;
 
-typedef struct _bmp_img
+typedef struct s_bitmap_image
 {
-	bmp_header img_header;
-	bmp_pixel **img_pixels;
-} bmp_img;
+	t_bitmap_header img_header;
+	t_bitmap_pixel **img_pixels;
+} t_bitmap_image;
 
-// BMP_HEADER
-void bmp_header_init_df(bmp_header *, const int, const int);
-t_bmp_error bmp_header_write(const bmp_header *header, int file_descriptor);
-
-// BMP_PIXEL
-void bmp_pixel_init(bmp_pixel *,
-					const unsigned char,
-					const unsigned char,
-					const unsigned char);
-
-// BMP_IMG
-void bmp_img_alloc(bmp_img *);
-void bmp_img_init_df(bmp_img *,
-					 const int,
-					 const int);
-void bmp_img_free(bmp_img *);
-
-enum bmp_error ft_write_bmp_image(const bmp_img *,
-							 const char *);
-
-enum bmp_error bmp_img_read(bmp_img *,
-							const char *);
+void			ft_initialize_bitmap(t_bitmap_image *img, const int width, const int height);
+void			ft_set_pixel(t_bitmap_pixel *pxl, const unsigned char red, const unsigned char green, const unsigned char blue);
+void			ft_free_bitmap(t_bitmap_image *img);
+t_bitmap_error	ft_save_bitmap(const t_bitmap_image *img, const char *filename);
 
 #endif

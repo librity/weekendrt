@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 18:22:28 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 21:26:20 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int main(void)
 	int green_int;
 	int blue_int = (int)(255.999 * blue_float);
 
-	bmp_img img;
-	bmp_img_init_df(&img, image_width, image_height);
+	t_bitmap_image img;
+	ft_initialize_bitmap(&img, image_width, image_height);
 
 	while (current_row < image_height)
 	{
@@ -47,7 +47,7 @@ int main(void)
 			red_int = (int)(255.999 * red_float);
 			green_int = (int)(255.999 * green_float);
 
-			bmp_pixel_init(&img.img_pixels[current_row][current_column],
+			ft_set_pixel(&img.img_pixels[current_row][current_column],
 						   red_int, green_int, blue_int);
 
 			current_column++;
@@ -56,7 +56,7 @@ int main(void)
 		current_row++;
 	}
 
-	ft_write_bmp_image(&img, "hello.bmp");
-	bmp_img_free(&img);
+	ft_save_bitmap(&img, "hello.bmp");
+	ft_free_bitmap(&img);
 	return 0;
 }
