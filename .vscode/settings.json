@@ -35,7 +35,8 @@
 	"streambuf": "cpp",
 	"math.h": "c",
 	"libppm.h": "c",
-	"ft_libbmp.h": "c"
+	"ft_libbmp.h": "c",
+	"errno.h": "c"
 },
   "editor.detectIndentation": false
 }

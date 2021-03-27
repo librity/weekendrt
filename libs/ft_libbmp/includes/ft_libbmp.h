@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:35 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 01:46:51 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 02:28:01 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdio.h>
+# include <errno.h>
 
-# define BITMAP_MAGIC_BITS 0x4D42
+# define BITMAP_MAGIC_BITS "BM"
 
 typedef enum	e_bitmap_error
 {
-	FILE_NOT_OPENED = -4,
+	FILE_NOT_OPENED = 1,
 	HEADER_NOT_INITIALIZED,
-	INVALID_FILE,
-	GENERIC_ERROR,
-	SUCCESS = 0
+	BAD_MALLOC,
+	GENERIC_ERROR
 }				t_bitmap_error;
 
 typedef struct	s_bitmap_header
@@ -78,9 +79,10 @@ void			ft_set_pixel(t_bitmap_pixel *pxl,
 							unsigned char green,
 							unsigned char blue);
 void			ft_free_bitmap(t_bitmap_image *img);
-t_bitmap_error	ft_save_bitmap(t_bitmap_image *image, char *filename);
+void			ft_save_bitmap(t_bitmap_image *image, char *filename);
 
 int				ft_calculate_padding(int number);
 int				ft_absolute_value(int number);
+void			ft_die_bitmap(t_bitmap_error code);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 01:12:49 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 01:44:03 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 02:35:34 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,17 @@ static void	allocate_pixels(t_bitmap_image *image)
 
 	height = ft_absolute_value(image->header.height);
 	image->pixels = malloc(sizeof(t_bitmap_pixel *) * height);
+	if (image->pixels == NULL)
+		ft_die_bitmap(BAD_MALLOC);
 	row_size = sizeof(t_bitmap_pixel) * image->header.width;
 	current_row = 0;
 	while (current_row < height)
-		image->pixels[current_row++] = malloc(row_size);
+	{
+		image->pixels[current_row] = malloc(row_size);
+		if (image->pixels == NULL)
+			ft_die_bitmap(BAD_MALLOC);
+		current_row++;
+	}
 }
 
 static void	initialize_header(t_bitmap_header *header,
@@ -56,5 +63,7 @@ static void	initialize_header(t_bitmap_header *header,
 void		ft_initialize_bitmap(t_bitmap_image *image, int width, int height)
 {
 	initialize_header(&image->header, width, height);
+	(void)width;
+	(void)height;
 	allocate_pixels(image);
 }
