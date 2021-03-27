@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 15:06:25 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 18:26:31 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 19:00:41 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,13 @@ t_color_3i	color_3d_to_i3(t_color_3d color_3d)
 	return (color_3i);
 }
 
-t_color_3d	ray_color(t_ray ray)
+void		set_image_pixel(t_bitmap_image *image,
+							t_color_3i color,
+							int row,
+							int column)
 {
-	t_color_3d hue_1 = {1.0, 1.0, 1.0};
-	t_color_3d hue_2 = {0.5, 0.7, 1.0};
-	t_vector_3d unit_direction;
-	double translation;
+	t_bitmap_pixel *target_pixel;
 
-	unit_direction = unit(ray.direction);
-	translation = 0.5 * (unit_direction.y + 1.0);
-	hue_1 = scalar(1.0 - translation, hue_1);
-	hue_2 = scalar(translation, hue_2);
-	return (add(hue_1, hue_2));
+	target_pixel = &image->pixels[row][column];
+	ft_set_pixel(target_pixel, color.red, color.green, color.blue);
 }

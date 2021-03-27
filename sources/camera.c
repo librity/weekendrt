@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initializers.c                                     :+:      :+:    :+:   */
+/*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 17:51:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 18:22:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 19:09:48 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
 
-void	initialize_camera(t_ray_tracer *c, t_camera *camera)
+void	initialize_camera(t_camera *camera, double aspect_ratio)
 {
 	camera->viewport_height = 2.0;
-	camera->viewport_width = c->aspect_ratio * camera->viewport_height;
+	camera->viewport_width = aspect_ratio * camera->viewport_height;
 	camera->focal_length = 1.0;
 
 	camera->origin = (t_point_3d){0.0, 0.0, 0.0};

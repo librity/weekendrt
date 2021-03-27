@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 01:10:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 03:04:22 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 18:36:12 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	initialize_write_pixels(t_bitmap_image *image,
 									t_write_pixels *control)
 {
 	control->height = ft_absolute_value(image->header.height);
-	control->offset = (image->header.height > 0 ? control->height - 1 : 0);
+	control->offset = (image->header.height > 0 ? 0 : control->height - 1);
 	control->row_width = sizeof(t_bitmap_pixel) * image->header.width;
 	control->padding_width = sizeof(unsigned char) *
 								ft_calculate_padding(image->header.width);
