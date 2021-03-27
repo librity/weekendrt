@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/03/27 03:51:18 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/03/27 04:07:37 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,8 +58,10 @@ $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
 	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
 	$(CC) $(CC_FLAGS) -I $(INCLUDES_PATH) -o $@ -c $<
 
-example: $(NAME)
+build_example: $(NAME)
 	$(CC) $(CC_DEBUG_FLAGS) -I $(INCLUDES_PATH) $(EXAMPLE_MAIN) $(FT_LIBBMP_ARCHIVE)
+
+example: build_example
 	$(EXECUTE_EXAMPLE)
 	$(OPEN_IMAGE) $(IMAGE_NAME)
 
@@ -97,4 +99,4 @@ gitm:
 	git commit -m $m
 	git push
 
-.PHONY: all build_ft_libbmp example re clean fclean ft_libbmp_clean example_clean norme git gitm
+.PHONY: all build_example example build_ft_libbmp re clean fclean example_clean ft_libbmp_clean norme git gitm

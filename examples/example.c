@@ -6,11 +6,12 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 03:32:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 04:19:44 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_libbmp.h>
+#include <stdio.h>
 
 static print_error(char *message)
 {
@@ -51,9 +52,12 @@ static void set_pixels(t_bitmap_image *image, t_example *c)
 	int current_row;
 	int current_column;
 
+	printf("Scaning lines: ");
 	current_row = 0;
 	while (current_row < c->height)
 	{
+		printf("▒");
+
 		current_column = 0;
 		while (current_column < c->width)
 		{
@@ -71,6 +75,8 @@ static void set_pixels(t_bitmap_image *image, t_example *c)
 
 		current_row++;
 	}
+
+	printf("\nDone.\n");
 }
 
 static void handle_arguments(int argument_count)

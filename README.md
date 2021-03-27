@@ -45,7 +45,19 @@ typedef struct {             // Total: 54 bytes
 - https://github.com/carld/ray-tracer
 - https://github.com/AngusLang/rayt
 
+## References
+
+- https://en.wikipedia.org/wiki/Dot_product
+- https://stats.stackexchange.com/questions/137907/division-of-vectors
+- http://www.r-tutor.com/r-introduction/vector/vector-arithmetics
+- https://physics.stackexchange.com/questions/111652/can-we-divide-two-vectors
+- https://mathworld.wolfram.com/VectorDivision.html
+
 ## Docs
+
+- https://en.wikipedia.org/wiki/Extended_ASCII
+- https://en.cppreference.com/w/cpp/io/manip/flush
+- https://www.cplusplus.com/reference/cstdio/printf/
 
 ## Resources
 
@@ -54,3 +66,5 @@ typedef struct {             // Total: 54 bytes
 - https://overiq.com/c-programming-101/fwrite-function-in-c/
 - https://stackoverflow.com/questions/13252697/writing-bits-to-a-file-in-c
 - https://www.tutorialspoint.com/c_standard_library/c_function_perror.htm
+- https://stackoverflow.com/questions/39002052/how-i-can-print-to-stderr-in-c
+- https://www.geeksforgeeks.org/use-fflushstdin-c/

@@ -6,11 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 03:40:16 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 04:57:55 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WEEKENDRT_H
 # define WEEKENDRT_H
+
+# include "vector_3d.h"
 
 #endif
