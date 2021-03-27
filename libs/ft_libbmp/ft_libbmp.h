@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:35 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 22:21:57 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 22:53:47 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ typedef struct s_bitmap_image
 	t_bitmap_pixel	**pixels;
 } t_bitmap_image;
 
-void			ft_initialize_bitmap(t_bitmap_image *img,
-										const int width,
-										const int height);
+void			ft_initialize_bitmap(t_bitmap_image *image,
+										int width,
+										int height);
 void			ft_set_pixel(t_bitmap_pixel *pxl,
-								const unsigned char red,
-								const unsigned char green,
-								const unsigned char blue);
+							unsigned char red,
+							unsigned char green,
+							unsigned char blue);
 void			ft_free_bitmap(t_bitmap_image *img);
-t_bitmap_error	ft_save_bitmap(const t_bitmap_image *img, const char *filename);
+t_bitmap_error ft_save_bitmap( t_bitmap_image *image, char *filename);
 
 #endif

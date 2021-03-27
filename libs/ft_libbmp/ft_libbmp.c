@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 22:30:27 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/26 22:54:16 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,20 @@ static int absolute_value(int number)
 }
 
 static void initialize_header(t_bitmap_header *header,
-								const int width,
-								const int height)
+							  int width,
+							  int height)
 {
-	header->buffer_size = (sizeof(t_bitmap_pixel) * width + get_padding(width)) * absolute_value(height);
+	size_t adjusted_width;
+	size_t positive_height;
+
+	adjusted_width = get_padding(width) + sizeof(t_bitmap_pixel) * width;
+	positive_height = absolute_value(height);
+	header->buffer_size = adjusted_width * positive_height;
 	header->buffer_reserved = 0;
 	header->buffer_offset = 54;
-
 	header->total_size = 40;
 	header->width = width;
 	header->height = height;
-
 	header->planes = 1;
 	header->bit_count = 24;
 	header->compression = 0;
@@ -48,9 +51,9 @@ static void initialize_header(t_bitmap_header *header,
 	header->important_colors = 0;
 }
 
-static t_bitmap_error write_header(const t_bitmap_header *header, int file_descriptor)
+static t_bitmap_error write_header(t_bitmap_header *header, int file_descriptor)
 {
-	const unsigned short magic = BITMAP_MAGIC_BITS;
+	unsigned short magic = BITMAP_MAGIC_BITS;
 
 	if (header == NULL)
 		return HEADER_NOT_INITIALIZED;
@@ -63,25 +66,28 @@ static t_bitmap_error write_header(const t_bitmap_header *header, int file_descr
 
 static void allocate_pixels(t_bitmap_image *image)
 {
-	const size_t positive_height = absolute_value(image->header.height);
+	size_t height;
+	size_t current_row;
+	size_t row_size;
 
-	image->pixels = malloc(sizeof(t_bitmap_pixel *) * positive_height);
-	for (size_t current_row = 0; current_row < positive_height; current_row++)
-		image->pixels[current_row] = malloc(sizeof(t_bitmap_pixel) * image->header.width);
+	height = absolute_value(image->header.height);
+	image->pixels = malloc(sizeof(t_bitmap_pixel *) * height);
+	row_size = sizeof(t_bitmap_pixel) * image->header.width;
+	current_row = 0;
+	while (current_row < height)
+		image->pixels[current_row++] = malloc(row_size);
 }
 
-void ft_initialize_bitmap(t_bitmap_image *image,
-							const int width,
-							const int height)
+void ft_initialize_bitmap(t_bitmap_image *image, int width, int height)
 {
 	initialize_header(&image->header, width, height);
 	allocate_pixels(image);
 }
 
 void ft_set_pixel(t_bitmap_pixel *pxl,
-					const unsigned char red,
-					const unsigned char green,
-					const unsigned char blue)
+				  unsigned char red,
+				  unsigned char green,
+				  unsigned char blue)
 {
 	pxl->red = red;
 	pxl->green = green;
@@ -90,28 +96,27 @@ void ft_set_pixel(t_bitmap_pixel *pxl,
 
 void ft_free_bitmap(t_bitmap_image *image)
 {
-	const size_t	height = absolute_value(image->header.height);
-	size_t			current_row;
+	size_t height = absolute_value(image->header.height);
+	size_t current_row;
 
 	current_row = 0;
-	while (current_row++ < height)
-		free(image->pixels[current_row]);
+	while (current_row < height)
+		free(image->pixels[current_row++]);
 	free(image->pixels);
 }
 
-t_bitmap_error ft_save_bitmap(const t_bitmap_image *image,
-							  const char *filename)
+t_bitmap_error ft_save_bitmap(t_bitmap_image *image, char *filename)
 {
-	t_bitmap_error		header_write_result;
-	int					file_descriptor;
-	int					current_row_index;
-	size_t				height;
-	size_t				offset;
-	size_t				current_row;
-	size_t				row_width;
-	size_t				padding_width;
-	t_bitmap_pixel		*current_row_pixels;
-	const unsigned char	padding[3] = {'\0', '\0', '\0'};
+	t_bitmap_error header_write_result;
+	int file_descriptor;
+	int current_row_index;
+	size_t height;
+	size_t offset;
+	size_t current_row;
+	size_t row_width;
+	size_t padding_width;
+	t_bitmap_pixel *current_row_pixels;
+	unsigned char padding[3] = {'\0', '\0', '\0'};
 
 	file_descriptor = open(filename, O_CREAT | O_RDWR, 0664);
 	if (file_descriptor < 0)
@@ -131,12 +136,13 @@ t_bitmap_error ft_save_bitmap(const t_bitmap_image *image,
 	padding_width = sizeof(unsigned char) * get_padding(image->header.width);
 
 	current_row = 0;
-	while (current_row++ < height)
+	while (current_row < height)
 	{
 		current_row_index = absolute_value((int)offset - (int)current_row);
 		current_row_pixels = image->pixels[current_row_index];
 		write(file_descriptor, current_row_pixels, row_width);
 		write(file_descriptor, padding, padding_width);
+		current_row++;
 	}
 
 	close(file_descriptor);
