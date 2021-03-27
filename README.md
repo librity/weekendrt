@@ -53,3 +53,4 @@ typedef struct {             // Total: 54 bytes
 - https://www.tutorialspoint.com/c_standard_library/c_function_fwrite.htm
 - https://overiq.com/c-programming-101/fwrite-function-in-c/
 - https://stackoverflow.com/questions/13252697/writing-bits-to-a-file-in-c
+- https://www.tutorialspoint.com/c_standard_library/c_function_perror.htm

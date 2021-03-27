@@ -6,9 +6,11 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 19:49:07 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 19:49:10 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 03:36:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// gcc fwrite_1.c && ./a.out
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -6,11 +6,18 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 01:17:24 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 02:38:41 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 03:31:32 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_libbmp.h>
+
+static void	print_error(char *message)
+{
+	while (*message)
+		write(1, message++, 1);
+	write(1, "\n", 1);
+}
 
 static char	*fetch_error_message(t_bitmap_error code)
 {
@@ -26,6 +33,6 @@ static char	*fetch_error_message(t_bitmap_error code)
 
 void		ft_die_bitmap(t_bitmap_error code)
 {
-	perror(fetch_error_message(code));
+	print_error(fetch_error_message(code));
 	exit(EXIT_FAILURE);
 }
