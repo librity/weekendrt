@@ -2,6 +2,7 @@
 
 <div align="center">
 
+[![norminette](https://github.com/librity/weekendrt/actions/workflows/norminette.yml/badge.svg)](https://github.com/librity/weekendrt/actions/workflows/norminette.yml)
 ![License](https://img.shields.io/github/license/librity/weekendrt?color=yellow)
 ![Code size in bytes](https://img.shields.io/github/languages/code-size/librity/weekendrt?color=blue)
 ![Lines of code](https://img.shields.io/tokei/lines/github/librity/weekendrt?color=blueviolet)
@@ -21,6 +22,7 @@
 - [About](#about)
 - [Installation](#getting_started)
 - [Usage](#usage)
+- [Math](#math)
 - [Tests](#tests)
 - [Github Actions](#github_actions)
 - [Repos](#repos)
@@ -92,6 +94,18 @@ typedef struct {             // Total: 54 bytes
   <img src=".github/bitmap_hexdump.png" />
 </p>
 
+## 🧑‍🏫 Math <a name = "math"></a>
+
+### ☀️ Rays
+
+The linear interpolation of a line generates a ray
+
+$$\int_\Omega \nabla u \cdot \nabla v~dx = \int_\Omega fv~dx$$
+
+<p align="center">
+  <img src=".github/ray_lerp.jpg" />
+</p>
+
 ## ✅ Tests <a name = "tests"></a>
 
 ## 🐙 Github Actions <a name = "github_actions"></a>
@@ -132,3 +146,6 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - https://www.c-programming-simple-steps.com/typedef-in-c.html
 - https://stackoverflow.com/questions/5248919/undefined-reference-to-sqrt-or-other-mathematical-functions
 - https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
+- https://en.wikipedia.org/wiki/List_of_Unicode_characters
+- https://emojipedia.org/sun/
+- https://jaantollander.com/post/scientific-writing-with-markdown/
