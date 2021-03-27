@@ -6,13 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 01:12:49 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 01:22:24 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 01:44:03 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_libbmp.h>
 
-static void allocate_pixels(t_bitmap_image *image)
+static void	allocate_pixels(t_bitmap_image *image)
 {
 	size_t height;
 	size_t current_row;
@@ -26,14 +26,16 @@ static void allocate_pixels(t_bitmap_image *image)
 		image->pixels[current_row++] = malloc(row_size);
 }
 
-static void initialize_header(t_bitmap_header *header,
-							  int width,
-							  int height)
+static void	initialize_header(t_bitmap_header *header,
+								int width,
+								int height)
 {
 	size_t adjusted_width;
 	size_t positive_height;
+	size_t padding;
 
-	adjusted_width = ft_calculate_padding(width) + sizeof(t_bitmap_pixel) * width;
+	padding = ft_calculate_padding(width);
+	adjusted_width = padding + sizeof(t_bitmap_pixel) * width;
 	positive_height = ft_absolute_value(height);
 	header->buffer_size = adjusted_width * positive_height;
 	header->buffer_reserved = 0;
@@ -51,7 +53,7 @@ static void initialize_header(t_bitmap_header *header,
 	header->important_colors = 0;
 }
 
-void ft_initialize_bitmap(t_bitmap_image *image, int width, int height)
+void		ft_initialize_bitmap(t_bitmap_image *image, int width, int height)
 {
 	initialize_header(&image->header, width, height);
 	allocate_pixels(image);

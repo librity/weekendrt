@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:35 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 01:19:28 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 01:46:51 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define BITMAP_MAGIC_BITS 0x4D42
 
-typedef enum	s_bitmap_error
+typedef enum	e_bitmap_error
 {
 	FILE_NOT_OPENED = -4,
 	HEADER_NOT_INITIALIZED,
@@ -61,6 +61,15 @@ typedef struct	s_bitmap_image
 	t_bitmap_pixel	**pixels;
 }				t_bitmap_image;
 
+typedef struct	s_write_pixels
+{
+	size_t			height;
+	size_t			offset;
+	size_t			row_width;
+	size_t			padding_width;
+	unsigned char	padding[3];
+}				t_write_pixels;
+
 void			ft_initialize_bitmap(t_bitmap_image *image,
 										int width,
 										int height);
@@ -69,9 +78,9 @@ void			ft_set_pixel(t_bitmap_pixel *pxl,
 							unsigned char green,
 							unsigned char blue);
 void			ft_free_bitmap(t_bitmap_image *img);
-t_bitmap_error	ft_save_bitmap( t_bitmap_image *image, char *filename);
+t_bitmap_error	ft_save_bitmap(t_bitmap_image *image, char *filename);
 
-int	ft_calculate_padding(int number);
-int	ft_absolute_value(int number);
+int				ft_calculate_padding(int number);
+int				ft_absolute_value(int number);
 
 #endif
