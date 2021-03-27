@@ -22,6 +22,7 @@
 - [Installation](#getting_started)
 - [Usage](#usage)
 - [Tests](#tests)
+- [Github Actions](#github_actions)
 - [Repos](#repos)
 - [References](#references)
 - [Docs](#docs)
@@ -92,6 +93,11 @@ typedef struct {             // Total: 54 bytes
 </p>
 
 ## ✅ Tests <a name = "tests"></a>
+
+## 🐙 Github Actions <a name = "github_actions"></a>
+
+[Norminette Github Action](https://github.com/AdrianWR/libft/blob/master/.github/workflows/norminette.yaml)
+by [@AdrianWR](https://github.com/AdrianWR)
 
 ## ☁️ Repos <a name="repos"></a>
 
