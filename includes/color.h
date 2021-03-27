@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weekendrt.h                                        :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 15:06:47 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/03/27 16:16:14 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEEKENDRT_H
-# define WEEKENDRT_H
+#ifndef COLOR_H
+# define COLOR_H
 
-# include <ft_libbmp.h>
 # include <vector_3d.h>
-# include <color.h>
+
+typedef			t_vector_3d t_color_3d;
+
+typedef struct	s_color_3i
+{
+	int red;
+	int green;
+	int blue;
+}				t_color_3i;
+
+t_color_3i		color_3d_to_i3(t_color_3d color_3d);
 
 #endif

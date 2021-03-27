@@ -6,14 +6,14 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 04:19:44 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 15:18:12 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_libbmp.h>
+#include <weekendrt.h>
 #include <stdio.h>
 
-static print_error(char *message)
+static void print_error(char *message)
 {
 	while (*message)
 		write(1, message++, 1);
@@ -25,15 +25,6 @@ typedef struct s_example
 
 	int width;
 	int height;
-
-	double red_float;
-	double green_float;
-	double blue_float;
-
-	int red_int;
-	int green_int;
-	int blue_int;
-
 } t_example;
 
 static void initialize_control(t_example *control, char **arguments)
@@ -42,13 +33,13 @@ static void initialize_control(t_example *control, char **arguments)
 
 	control->width = 1920;
 	control->height = 1080;
-
-	control->blue_float = 0.75;
-	control->blue_int = (int)(255.999 * control->blue_float);
 }
 
 static void set_pixels(t_bitmap_image *image, t_example *c)
 {
+	t_color_3d color_3d;
+	t_color_3i color_3i;
+
 	int current_row;
 	int current_column;
 
@@ -61,14 +52,14 @@ static void set_pixels(t_bitmap_image *image, t_example *c)
 		current_column = 0;
 		while (current_column < c->width)
 		{
-			c->red_float = (double)current_column / (c->width - 1);
-			c->green_float = (double)current_row / (c->height - 1);
+			color_3d.x = (double)current_column / (c->width - 1);
+			color_3d.y = (double)current_row / (c->height - 1);
+			color_3d.z = 0.75;
 
-			c->red_int = (int)(255.999 * c->red_float);
-			c->green_int = (int)(255.999 * c->green_float);
+			color_3i = color_3d_to_i3(color_3d);
 
 			ft_set_pixel(&image->pixels[current_row][current_column],
-						 c->red_int, c->green_int, c->blue_int);
+						 color_3i.red, color_3i.green, color_3i.blue);
 
 			current_column++;
 		}
