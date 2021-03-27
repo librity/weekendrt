@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:35 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 03:03:01 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 17:55:17 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef enum	e_bitmap_error
 	FILE_NOT_OPENED = 1,
 	HEADER_NOT_INITIALIZED,
 	BAD_MALLOC,
-	GENERIC_ERROR
+	GENERIC_BITMAP_ERROR
 }				t_bitmap_error;
 
 typedef struct	s_bitmap_header

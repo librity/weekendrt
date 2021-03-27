@@ -1,13 +1,65 @@
-# Ray Tracing in One Weekend
+<h3 align="center">Ray Tracing in One Weekend</h3>
 
-A simple ray tracer made in a weekend.
+<div align="center">
 
-## Online Book
+![License](https://img.shields.io/github/license/librity/weekendrt?color=yellow)
+![Code size in bytes](https://img.shields.io/github/languages/code-size/librity/weekendrt?color=blue)
+![Lines of code](https://img.shields.io/tokei/lines/github/librity/weekendrt?color=blueviolet)
+![Top language](https://img.shields.io/github/languages/top/librity/weekendrt?color=ff69b4)
+![Last commit](https://img.shields.io/github/last-commit/librity/weekendrt?color=orange)
+
+</div>
+
+<p align="center"> A simple ray tracer made in a weekend.
+  <br>
+</p>
+
+---
+
+## 📝 Table of Contents
+
+- [About](#about)
+- [Installation](#getting_started)
+- [Usage](#usage)
+- [Tests](#tests)
+- [Repos](#repos)
+- [References](#references)
+- [Docs](#docs)
+- [Resources](#resources)
+
+## 🧐 About <a name = "about"></a>
+
+A plain C implementation of the Weekend Raytracer challenge.
+I just followed the instructions layed out on the online book:
 
 - https://github.com/RayTracing/raytracing.github.io
 - https://raytracing.github.io/books/RayTracingInOneWeekend.html
 
-## .bmp
+## 🏁 Getting Started <a name = "getting_started"></a>
+
+### ⚙️ Prerequisites
+
+All you need is a shell and a C compiler like `gcc` or `clang`.
+
+### 🖥️ Installing
+
+Just clone the repo and run `make`:
+
+```bashweekendrt
+$ git clone https://github.com/librity/weekendrt.git
+$ cd weekendrt
+$ make example
+```
+
+A beautiful image should pop out of your terminal like magic.
+
+## 🎈 Usage <a name="usage"></a>
+
+<p align="center">
+  <img src="gallery/candy.bmp" />
+</p>
+
+### 🖼️ Rendering `.bmp`
 
 `ft_libbmp` implementation based on:
 
@@ -39,13 +91,16 @@ typedef struct {             // Total: 54 bytes
   <img src=".github/bitmap_hexdump.png" />
 </p>
 
-## Repos
+## ✅ Tests <a name = "tests"></a>
 
+## ☁️ Repos <a name="repos"></a>
+
+- https://github.com/marc-q/libbmp
 - https://github.com/MetalheadKen/RayTracingInOneWeekend
 - https://github.com/carld/ray-tracer
 - https://github.com/AngusLang/rayt
 
-## References
+## 🏫 References <a name="references"></a>
 
 - https://en.wikipedia.org/wiki/Dot_product
 - https://stats.stackexchange.com/questions/137907/division-of-vectors
@@ -53,13 +108,13 @@ typedef struct {             // Total: 54 bytes
 - https://physics.stackexchange.com/questions/111652/can-we-divide-two-vectors
 - https://mathworld.wolfram.com/VectorDivision.html
 
-## Docs
+## 📚 Docs <a name="docs"></a>
 
 - https://en.wikipedia.org/wiki/Extended_ASCII
 - https://en.cppreference.com/w/cpp/io/manip/flush
 - https://www.cplusplus.com/reference/cstdio/printf/
 
-## Resources
+## 📝 Resources <a name="resources"></a>
 
 - https://stackoverflow.com/questions/4264127/correct-format-specifier-for-double-in-printf
 - https://www.tutorialspoint.com/c_standard_library/c_function_fwrite.htm
@@ -68,3 +123,6 @@ typedef struct {             // Total: 54 bytes
 - https://www.tutorialspoint.com/c_standard_library/c_function_perror.htm
 - https://stackoverflow.com/questions/39002052/how-i-can-print-to-stderr-in-c
 - https://www.geeksforgeeks.org/use-fflushstdin-c/
+- https://www.c-programming-simple-steps.com/typedef-in-c.html
+- https://stackoverflow.com/questions/5248919/undefined-reference-to-sqrt-or-other-mathematical-functions
+- https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
