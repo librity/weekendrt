@@ -6,26 +6,78 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/03/26 18:22:50 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/03/27 01:31:42 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Based on: https://github.com/marc-q/libbmp
-
-NAME = example.out
+NAME = ft_libbmp.a
 
 CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
+CC_DEBUG_FLAGS = -g
 
-SOURCE_FILES = ft_libbmp.c example.c
+SAFE_MAKEDIR = mkdir -p
+ARCHIVE_AND_INDEX = ar -rcs
 
-all: $(SOURCE_FILES)
-	$(CC) $(CC_FLAGS) -o $(NAME) $(SOURCE_FILES)
+REMOVE = /bin/rm -f
+REMOVE_RECURSIVE = /bin/rm -rf
 
-example: all
-	./$(NAME)
-	ffplay hello.bmp
+OBJECTS_PATH = ./objects
+SOURCES_PATH = ./sources
+INCLUDES_PATH = ./includes
+EXAMPLES_PATH = ./examples
+
+HEADER_FILE = ft_libbmp.h
+HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
+
+SOURCE_FILES = ft_initialize_bitmap.c ft_save_bitmap.c ft_free_bitmap.c utils.c
+SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
+
+OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
+
+EXAMPLE_MAIN = $(EXAMPLES_PATH)/example.c
+EXECUTE_EXAMPLE = ./a.out
+OPEN_IMAGE = ffplay
+EXAMPLE_GARBAGE = a.out a.out.dSYM hello.bmp
+
+all: $(NAME)
+
+$(NAME): $(OBJECTS) $(HEADER)
+	$(ARCHIVE_AND_INDEX) $(NAME) $(OBJECTS) 
+
+$(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
+	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
+	$(CC) $(CC_FLAGS) -I $(INCLUDES_PATH) -o $@ -c $<
+
+example: $(NAME)
+	$(CC) $(CC_DEBUG_FLAGS) -I $(INCLUDES_PATH) $(EXAMPLE_MAIN) $(NAME)
+	$(EXECUTE_EXAMPLE)
+	$(OPEN_IMAGE) hello.bmp
 
 clean:
-	rm -f *.bmp
-	rm -f $(NAME)
+	$(REMOVE) $(OBJECTS)
+
+fclean: clean
+	$(REMOVE) $(NAME)
+
+example_clean: fclean
+	$(REMOVE_RECURSIVE) $(EXAMPLE_GARBAGE)
+
+re: fclean all
+
+norm:
+	norminette $(INCLUDES_PATH)
+	@echo ----------------------
+	norminette $(SOURCES_PATH)
+
+git:
+	git add -A
+	git commit -m "update"
+	git push
+
+gitm:
+	git add -A
+	git commit -m $m
+	git push
+
+.PHONY: all example re clean fclean example_clean norme git gitm

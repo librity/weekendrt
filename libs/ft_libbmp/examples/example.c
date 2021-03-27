@@ -6,16 +6,11 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/26 22:22:13 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 01:11:57 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Based on: https://github.com/marc-q/libbmp
-
-// make example
-
-#include <stdio.h>
-#include "ft_libbmp.h"
+#include <ft_libbmp.h>
 
 int main(void)
 {
