@@ -22,6 +22,7 @@
 - [About](#about)
 - [Installation](#getting_started)
 - [Usage](#usage)
+- [Gallery](#gallery)
 - [Math](#math)
 - [Tests](#tests)
 - [Github Actions](#github_actions)
@@ -59,6 +60,8 @@ A beautiful image should pop out of your terminal like magic.
 
 ## 🎈 Usage <a name="usage"></a>
 
+## 🎨 Gallery <a name="gallery"></a>
+
 <p align="center">
   <img src="gallery/candy.bmp" />
 </p>
@@ -69,6 +72,12 @@ A beautiful image should pop out of your terminal like magic.
 
 <p align="center">
   <img src="gallery/big_bang.bmp" />
+</p>
+
+Anti-aliasing, 100 samples per pixel:
+
+<p align="center">
+  <img src="gallery/a_million_little_samples.bmp" />
 </p>
 
 ### 🖼️ Rendering `.bmp`

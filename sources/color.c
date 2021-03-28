@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 15:06:25 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 17:11:07 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 18:08:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_color_3i	color_3d_to_i3(t_color_3d color_3d)
 	return (color_3i);
 }
 
-t_color_3i sample_color_3i(t_color_3d sampled_color, int samples_per_pixel)
+t_color_3i sample_pixel_color(t_color_3d sampled_color, int samples_per_pixel)
 {
 	t_color_3i color_3i;
 	const double scale = 1.0 / samples_per_pixel;

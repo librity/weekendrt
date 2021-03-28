@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 17:12:26 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 18:09:55 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int main(int argc, char **argv)
 
 	ft_putstr("Scaning lines: ");
 	generate_image(&image, rt, rt.camera);
-	ft_putstr("\nDone.\n");
+	ft_putstr(" Done!\n");
 	free_spheres(&(rt.spheres));
 
 	ft_save_bitmap(&image, rt.file_name);

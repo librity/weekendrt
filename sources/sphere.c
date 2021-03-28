@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 01:46:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 06:28:00 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 17:49:17 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ bool			ray_hits_sphere(const t_ray ray,
 	return (true);
 }
 
-t_color_3i		render_sphere_surface(t_vector_3d normal)
+t_color_3d		render_sphere_surface(t_vector_3d normal)
 {
 	t_color_3d shade = {normal.x + 1.0, normal.y + 1.0, normal.z + 1.0};
 	shade = scalar_times(0.5, shade);
-	return (color_3d_to_i3(shade));
+	return (shade);
 }

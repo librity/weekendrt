@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 16:21:01 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 17:32:06 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 17:52:51 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,44 @@ t_vector_3d		point_ray(const t_camera camera,
 	return (direction);
 }
 
+t_ray			set_ray(const t_camera camera,
+						double horizontal,
+						double vertical)
+{
+	t_ray	ray;
+
+	ray.origin = camera.origin;
+	ray.direction = point_ray(camera, horizontal, vertical);
+	return (ray);
+}
+
 t_ray			get_ray(const t_ray_tracer rt,
 						const t_camera camera,
 						int row,
 						int column)
 {
-	t_ray	ray;
 	double	horizontal_direction;
 	double	vertical_direction;
 
 	horizontal_direction = (double)(column) / (rt.width - 1);
 	vertical_direction = (double)(row) / (rt.height - 1);
-	ray.origin = camera.origin;
-	ray.direction = point_ray(camera, horizontal_direction, vertical_direction);
-	return (ray);
+	return (set_ray(camera, horizontal_direction, vertical_direction));
 }
 
-t_color_3i		hit_gradient_background(const t_ray ray,
+t_ray			get_sample_ray(const t_ray_tracer rt,
+						const t_camera camera,
+						int row,
+						int column)
+{
+	double	horizontal_direction;
+	double	vertical_direction;
+
+	horizontal_direction = (double)(column - random_double()) / (rt.width - 1);
+	vertical_direction = (double)(row - random_double()) / (rt.height - 1);
+	return (set_ray(camera, horizontal_direction, vertical_direction));
+}
+
+t_color_3d		hit_gradient_background(const t_ray ray,
 										t_color_3d background_tone)
 {
 	t_color_3d	ambient_light = {1.0, 1.0, 1.0};
@@ -62,7 +83,7 @@ t_color_3i		hit_gradient_background(const t_ray ray,
 	ambient_light = scalar_times(1.0 - gradient, ambient_light);
 	background_tone = scalar_times(gradient, background_tone);
 	cast = add(ambient_light, background_tone);
-	return (color_3d_to_i3(cast));
+	return (cast);
 }
 
 bool			hit_any_spheres(const t_ray ray,
@@ -94,7 +115,7 @@ bool			hit_any_spheres(const t_ray ray,
 	return hit_anything;
 }
 
-t_color_3i		cast_ray(const t_ray ray, t_list *spheres)
+t_color_3d		cast_ray(const t_ray ray, t_list *spheres)
 {
 	t_hit_record	record;
 
