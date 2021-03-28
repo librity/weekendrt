@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/03/28 03:06:36 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/03/28 03:25:38 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ EXAMPLES_PATH = ./examples
 HEADER_FILE = weekendrt.h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
-SOURCE_FILES = vector_3d.c color.c \
+SOURCE_FILES = rtmath.c vector_3d.c color.c \
 	ray.c hittable.c sphere.c camera.c \
 	ray_tracer.c errors.c
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
@@ -87,7 +87,7 @@ build_ft_libbmp:
 clean:
 	$(REMOVE) $(OBJECTS)
 
-fclean: clean ft_libbmp_clean
+fclean: clean libft_clean ft_libbmp_clean
 	$(REMOVE) $(NAME)
 
 example_clean: fclean

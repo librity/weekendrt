@@ -196,6 +196,7 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - https://stackoverflow.com/questions/39002052/how-i-can-print-to-stderr-in-c
 - https://stackoverflow.com/questions/5248919/undefined-reference-to-sqrt-or-other-mathematical-functions
 - https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
+- https://stackoverflow.com/questions/5834635/how-do-i-get-double-max
 
 ## ⬇️ Markdown References <a name="markdown"></a>
 
