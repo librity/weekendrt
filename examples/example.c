@@ -6,32 +6,12 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 14:39:44 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 15:09:22 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
 #include <stdio.h>
-
-#include <stdio.h>
-#include <stdlib.h>
-
-double randfrom(double min, double max)
-{
-	double range = (max - min);
-	double div = RAND_MAX / range;
-	return min + (rand() / div);
-}
-
-double rp(void)
-{
-	return (randfrom(-1.0, 1.0));
-}
-
-double rr(void)
-{
-	return (randfrom(0.0, 0.1));
-}
 
 static void initialize_spheres(t_list **spheres)
 {

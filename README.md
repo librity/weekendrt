@@ -67,6 +67,10 @@ A beautiful image should pop out of your terminal like magic.
   <img src="gallery/chip_off_the_old_ball.bmp" />
 </p>
 
+<p align="center">
+  <img src="gallery/big_bang.bmp" />
+</p>
+
 ### 🖼️ Rendering `.bmp`
 
 `ft_libbmp` implementation based on:

@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weekendrt.h                                        :+:      :+:    :+:   */
+/*   rtrandom.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 15:02:18 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/03/28 14:50:17 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/03/28 15:00:08 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEEKENDRT_H
-# define WEEKENDRT_H
+#include <weekendrt.h>
 
-# include <stdbool.h>
+double	random_from(double min, double max)
+{
+	double range = (max - min);
+	double div = RAND_MAX / range;
+	return min + (rand() / div);
+}
 
-# include <libft.h>
-# include <rtrandom.h>
-# include <rtmath.h>
-# include <ft_libbmp.h>
-# include <vector_3d.h>
-# include <color.h>
-# include <ray.h>
-# include <hittable.h>
-# include <sphere.h>
-# include <camera.h>
-# include <ray_tracer.h>
-# include <errors.h>
+double	rp(void)
+{
+	return (random_from(-1.0, 1.0));
+}
 
-#endif
+double	rr(void)
+{
+	return (random_from(0.0, 0.1));
+}
+
+double	canonical_random(void)
+{
+	static const double limit = LIMIT_OF_ONE;
+	return (random_from(0.0, limit));
+}

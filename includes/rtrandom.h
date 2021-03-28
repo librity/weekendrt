@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weekendrt.h                                        :+:      :+:    :+:   */
+/*   rtrandom.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 15:02:18 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/03/28 14:51:24 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/03/28 15:00:16 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEEKENDRT_H
-# define WEEKENDRT_H
+#ifndef RTRANDOM_H
+# define RTRANDOM_H
 
-# include <stdbool.h>
+# define LIMIT_OF_ONE 0.9999999999999999
 
-# include <libft.h>
-# include <rtrandom.h>
-# include <rtmath.h>
-# include <ft_libbmp.h>
-# include <vector_3d.h>
-# include <color.h>
-# include <ray.h>
-# include <hittable.h>
-# include <sphere.h>
-# include <camera.h>
-# include <ray_tracer.h>
-# include <errors.h>
+double	random_from(double min, double max);
+double	rp(void);
+double	rr(void);
+double	canonical_random(void);
 
 #endif

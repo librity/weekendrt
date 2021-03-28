@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/03/28 06:26:17 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/03/28 15:02:12 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ EXAMPLES_PATH = ./examples
 HEADER_FILE = weekendrt.h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
-SOURCE_FILES = rtmath.c vector_3d.c color.c \
+SOURCE_FILES = rtrandom.c rtmath.c vector_3d.c color.c \
 	ray.c hittable.c sphere.c camera.c \
 	ray_tracer.c errors.c
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))

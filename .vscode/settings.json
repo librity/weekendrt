@@ -40,7 +40,8 @@
 	"weekendrt.h": "c",
 	"vector_3d.h": "c",
 	"rtmath.h": "c",
-	"limits": "c"
+	"limits": "c",
+	"rtrandom.h": "c"
 },
   "editor.detectIndentation": false
 }
