@@ -64,7 +64,7 @@ A beautiful image should pop out of your terminal like magic.
 </p>
 
 <p align="center">
-  <img src="gallery/blue_japan.bmp" />
+  <img src="gallery/normal_as_can_be.bmp" />
 </p>
 
 ### 🖼️ Rendering `.bmp`
