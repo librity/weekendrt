@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 16:21:01 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 04:54:24 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 05:53:59 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ bool			hit_any_spheres(const t_ray ray,
 	int sphere_count = ft_lstsize(spheres);
 	while (sphere_count--)
 	{
-		if (ray_hits_sphere(ray, spheres->content, &current_record, 0, closest_so_far)) {
+		if (ray_hits_sphere(ray, spheres->content, &current_record, 0, closest_so_far))
+		{
 			hit_anything = true;
 			if (current_record.translation < closest_so_far)
 			{
@@ -87,6 +88,6 @@ t_color_3i		cast_ray(const t_ray ray, t_list *spheres)
 	t_hit_record	record;
 
 	if (hit_any_spheres(ray, spheres, &record))
-		return (render_sphere_surface(ray, record.translation));
+		return (render_sphere_surface(record.normal));
 	return (hit_gradient_background(ray, (t_color_3d){0.5, 0.7, 1.0}));
 }

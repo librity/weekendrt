@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 04:52:19 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 06:24:37 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 
 static void initialize_spheres(t_list **spheres)
 {
-	t_list *small_sphere;
-	t_list *big_sphere;
+	t_list *first;
+	t_list *next;
 
-	small_sphere = ft_lstnew(new_sphere((t_point_3d){0.0, 0.0, -1.0}, 0.5));
-	big_sphere = ft_lstnew(new_sphere((t_point_3d){0.0, -100.5, -1.0}, 100));
+	first = ft_lstnew(new_sphere((t_point_3d){0.0, -100.5, -1.0}, 100));
+	next = ft_lstnew(new_sphere((t_point_3d){0.0, 0.0, -1.0}, 0.25));
+	ft_lstadd_back(&first, next);
 
-	ft_lstadd_back(&small_sphere, big_sphere);
-
-	*spheres = small_sphere;
+	*spheres = first;
 }
 
 static void initialize_ray_tracer(t_ray_tracer *rt, char **arguments)
@@ -53,6 +52,6 @@ int main(int argc, char **argv)
 
 	ft_save_bitmap(&image, rt.file_name);
 	ft_free_bitmap(&image);
-	// free_spheres();
+	free_spheres(&(rt.spheres));
 	return 0;
 }

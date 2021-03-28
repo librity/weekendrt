@@ -6,15 +6,15 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/03/28 04:35:58 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/03/28 06:26:17 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_libbmp.a
 
 CC = gcc
-# CC_FLAGS = -Wall -Wextra -Werror
-CC_FLAGS = -g
+CC_FLAGS = -Wall -Wextra -Werror
+# CC_FLAGS = -g
 CC_DEBUG_FLAGS = -g
 
 EXTERNAL_LIBS = -lm
