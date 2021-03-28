@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weekendrt.h                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 02:13:54 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/02/02 22:56:51 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/03/25 20:02:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEEKENDRT_H
-# define WEEKENDRT_H
+#include <libft.h>
 
-# include <stdbool.h>
+/*
+** Compares strings s1 and s2 char-wise, returning the difference.
+*/
 
-# include <ft_libbmp.h>
-# include <vector_3d.h>
-# include <color.h>
-# include <ray.h>
-# include <hittable.h>
-# include <sphere.h>
-# include <camera.h>
-# include <ray_tracer.h>
-# include <errors.h>
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t current;
 
-#endif
+	current = 0;
+	while ((s1[current] || s2[current]) && current < n)
+	{
+		if (s1[current] != s2[current])
+			return ((unsigned char)s1[current] - (unsigned char)s2[current]);
+		current++;
+	}
+	return (0);
+}

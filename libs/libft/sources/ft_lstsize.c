@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weekendrt.h                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 02:13:54 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/02/07 15:29:43 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/03/25 20:02:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEEKENDRT_H
-# define WEEKENDRT_H
+#include <libft.h>
 
-# include <stdbool.h>
+/*
+** Counts how many nodes are in a list.
+*/
 
-# include <ft_libbmp.h>
-# include <vector_3d.h>
-# include <color.h>
-# include <ray.h>
-# include <hittable.h>
-# include <sphere.h>
-# include <camera.h>
-# include <ray_tracer.h>
-# include <errors.h>
+int	ft_lstsize(t_list *lst)
+{
+	int list_size;
 
-#endif
+	if (lst == NULL)
+		return (0);
+	list_size = 1;
+	while (lst->next != NULL)
+	{
+		list_size++;
+		lst = lst->next;
+	}
+	return (list_size);
+}

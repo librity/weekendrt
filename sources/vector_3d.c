@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 04:24:15 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 22:06:36 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 02:51:15 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		inspect(t_vector_3d vector)
 	printf("%f %f %f\n", vector.x, vector.y, vector.z);
 }
 
-double		squares_sum(t_vector_3d vector)
+double		length_squared(t_vector_3d vector)
 {
 	double x;
 	double y;
@@ -31,10 +31,10 @@ double		squares_sum(t_vector_3d vector)
 
 double		length(t_vector_3d vector)
 {
-	double sum;
+	double length_sqrd;
 
-	sum = squares_sum(vector);
-	return (sqrt(sum));
+	length_sqrd = length_squared(vector);
+	return (sqrt(length_sqrd));
 }
 
 t_vector_3d	scalar_add(double number, t_vector_3d vector)
@@ -67,6 +67,11 @@ t_vector_3d	scalar_div(double number, t_vector_3d vector)
 	vector.y /= number;
 	vector.z /= number;
 	return (vector);
+}
+
+t_vector_3d	negative(t_vector_3d vector)
+{
+	return (scalar_times(-1.0, vector));
 }
 
 t_vector_3d	add(t_vector_3d first, t_vector_3d second)

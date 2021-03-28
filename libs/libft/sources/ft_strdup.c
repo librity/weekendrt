@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weekendrt.h                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 02:13:54 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2020/11/30 23:59:17 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/03/25 20:02:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEEKENDRT_H
-# define WEEKENDRT_H
+#include <libft.h>
 
-# include <stdbool.h>
+/*
+** Creates an allocated string with the same chars of s.
+*/
 
-# include <ft_libbmp.h>
-# include <vector_3d.h>
-# include <color.h>
-# include <ray.h>
-# include <hittable.h>
-# include <sphere.h>
-# include <camera.h>
-# include <ray_tracer.h>
-# include <errors.h>
+char	*ft_strdup(const char *s)
+{
+	size_t	original_size;
+	char	*new_string;
 
-#endif
+	original_size = ft_strlen(s) + 1;
+	new_string = malloc((original_size) * sizeof(char));
+	if (new_string == NULL)
+		return (NULL);
+	ft_memcpy(new_string, s, original_size);
+	return (new_string);
+}

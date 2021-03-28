@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   hittable.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 02:48:41 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 02:52:39 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPHERE_H
-# define SPHERE_H
+#ifndef HITTABLE_H
+#define HITTABLE_H
 
-# include <vector_3d.h>
-# include <ray.h>
-# include <color.h>
-# include <hittable.h>
+#include <vector_3d.h>
+#include <ray.h>
 
-typedef struct	s_sphere
+typedef struct	s_hit_record
 {
-	t_point_3d	center;
-	double		radius;
-}				t_sphere;
+	t_point_3d	intersection;
+	t_vector_3d	normal;
+	double		translation;
+	bool		front_face;
+}				t_hit_record;
 
-bool			ray_hits_sphere(const t_ray ray,
-								const t_sphere sphere,
-								t_hit_record *record,
-								double t_min,
-								double t_max);
-t_color_3i		render_sphere_surface(const t_ray ray, double translation);
+void			set_face_normal(const t_ray ray,
+								const t_vector_3d outward_normal,
+								t_hit_record *record);
 
 #endif

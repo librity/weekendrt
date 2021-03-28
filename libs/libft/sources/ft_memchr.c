@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weekendrt.h                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 02:13:54 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/02/05 00:41:06 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/03/25 20:02:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEEKENDRT_H
-# define WEEKENDRT_H
+#include <libft.h>
 
-# include <stdbool.h>
+/*
+** Scans first n bytes after s for c. Returns c's position if it finds it.
+** Returns NULL otherwise.
+*/
 
-# include <ft_libbmp.h>
-# include <vector_3d.h>
-# include <color.h>
-# include <ray.h>
-# include <hittable.h>
-# include <sphere.h>
-# include <camera.h>
-# include <ray_tracer.h>
-# include <errors.h>
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	unsigned char *string_cast;
 
-#endif
+	string_cast = (unsigned char *)s;
+	while (n--)
+	{
+		if (*string_cast == (unsigned char)c)
+			return (string_cast);
+		string_cast++;
+	}
+	return (NULL);
+}

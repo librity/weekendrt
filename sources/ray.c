@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 16:21:01 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 01:46:50 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 01:53:45 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ t_color_3i		cast_ray(const t_ray ray)
 {
 	double translation;
 
-	translation = intersect_sphere(ray, (t_point_3d){0, 0, -1}, 0.5);
+	translation = hit_sphere(ray, (t_point_3d){0, 0, -1}, 0.5);
 	if (translation > 0.0)
-		return (handle_sphere_surface_normal(ray, translation));
+		return (render_sphere_surface(ray, translation));
 	return (hit_gradient_background(ray, (t_color_3d){0.5, 0.7, 1.0}));
 }

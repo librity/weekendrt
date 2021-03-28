@@ -37,7 +37,8 @@
 	"libppm.h": "c",
 	"ft_libbmp.h": "c",
 	"errno.h": "c",
-	"weekendrt.h": "c"
+	"weekendrt.h": "c",
+	"vector_3d.h": "c"
 },
   "editor.detectIndentation": false
 }
