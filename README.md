@@ -29,6 +29,7 @@
 - [References](#references)
 - [Docs](#docs)
 - [Resources](#resources)
+- [Markdown References](#markdown)
 
 ## 🧐 About <a name = "about"></a>
 
@@ -98,12 +99,39 @@ typedef struct {             // Total: 54 bytes
 
 ### ☀️ Rays
 
-The linear interpolation of a line generates a ray
+The linear interpolation of a line with a free variable `t` generates a ray:
 
-$$\int_\Omega \nabla u \cdot \nabla v~dx = \int_\Omega fv~dx$$
+<p align="center">
+  <img src="https://latex.codecogs.com/png.image?\dpi{300}&space;\inline&space;\inline&space;\mathbf{P}(t)&space;=&space;\mathbf{A}&space;&plus;&space;t&space;\mathbf{b}&space;\quad&space;(I)" title="\inline \inline \mathbf{P}(t) = \mathbf{A} + t \mathbf{b} \quad (I)" />
+</p>
+
+`t` can be understood as the `translation` of the ray.
 
 <p align="center">
   <img src=".github/ray_lerp.jpg" />
+</p>
+
+### 🔮 Spheres
+
+An arbitrary point `P` is on the surface of a sphere centered in `C` with radius `r`
+if and only if it satisfies the equation:
+
+<p align="center">
+  <img src="https://latex.codecogs.com/png.image?\dpi{300}&space;\inline&space;(\mathbf{P}&space;-&space;\mathbf{C})&space;\cdot&space;(\mathbf{P}&space;-&space;\mathbf{C})&space;=&space;(x&space;-&space;C_x)^2&space;&plus;&space;(y&space;-&space;C_y)^2&space;&plus;&space;(z&space;-&space;C_z)^2&space;=&space;r^2&space;\quad&space;(II)" title="\inline (\mathbf{P} - \mathbf{C}) \cdot (\mathbf{P} - \mathbf{C}) = (x - C_x)^2 + (y - C_y)^2 + (z - C_z)^2 = r^2 \quad (II)" />
+</p>
+
+An arbitrary ray `P(t)` of origin `A` and direction `b`
+intersects a sphere centered in `C` if and only if
+it has at least one root in:
+
+<p align="center">
+  <img src="https://latex.codecogs.com/png.image?\dpi{300}&space;\inline&space;t^2&space;\mathbf{b}&space;\cdot&space;\mathbf{b}&space;&space;&space;&space;&plus;&space;2t&space;\mathbf{b}&space;\cdot&space;(\mathbf{A}-\mathbf{C})&space;&plus;&space;(\mathbf{A}-\mathbf{C})&space;\cdot&space;(\mathbf{A}-\mathbf{C})&space;-&space;r^2&space;=&space;0&space;\quad&space;(III)&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;" title="\inline t^2 \mathbf{b} \cdot \mathbf{b} + 2t \mathbf{b} \cdot (\mathbf{A}-\mathbf{C}) + (\mathbf{A}-\mathbf{C}) \cdot (\mathbf{A}-\mathbf{C}) - r^2 = 0 \quad (III) " />
+</p>
+
+The above being a combination of equations `(I)` and `(II)`.
+
+<p align="center">
+  <img src=".github/ray_sphere_intersection.jpg" />
 </p>
 
 ## ✅ Tests <a name = "tests"></a>
@@ -127,6 +155,7 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - http://www.r-tutor.com/r-introduction/vector/vector-arithmetics
 - https://physics.stackexchange.com/questions/111652/can-we-divide-two-vectors
 - https://mathworld.wolfram.com/VectorDivision.html
+- https://en.wikipedia.org/wiki/List_of_Unicode_characters
 
 ## 📚 Docs <a name="docs"></a>
 
@@ -136,16 +165,23 @@ by [@AdrianWR](https://github.com/AdrianWR)
 
 ## 📝 Resources <a name="resources"></a>
 
-- https://stackoverflow.com/questions/4264127/correct-format-specifier-for-double-in-printf
-- https://www.tutorialspoint.com/c_standard_library/c_function_fwrite.htm
 - https://overiq.com/c-programming-101/fwrite-function-in-c/
-- https://stackoverflow.com/questions/13252697/writing-bits-to-a-file-in-c
-- https://www.tutorialspoint.com/c_standard_library/c_function_perror.htm
-- https://stackoverflow.com/questions/39002052/how-i-can-print-to-stderr-in-c
-- https://www.geeksforgeeks.org/use-fflushstdin-c/
 - https://www.c-programming-simple-steps.com/typedef-in-c.html
+- https://www.geeksforgeeks.org/use-fflushstdin-c/
+- https://www.tutorialspoint.com/c_standard_library/c_function_fwrite.htm
+- https://www.tutorialspoint.com/c_standard_library/c_function_perror.htm
+- https://stackoverflow.com/questions/4264127/correct-format-specifier-for-double-in-printf
+- https://stackoverflow.com/questions/13252697/writing-bits-to-a-file-in-c
+- https://stackoverflow.com/questions/39002052/how-i-can-print-to-stderr-in-c
 - https://stackoverflow.com/questions/5248919/undefined-reference-to-sqrt-or-other-mathematical-functions
 - https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
-- https://en.wikipedia.org/wiki/List_of_Unicode_characters
+
+## ⬇️ Markdown References <a name="markdown"></a>
+
 - https://emojipedia.org/sun/
 - https://jaantollander.com/post/scientific-writing-with-markdown/
+- https://paperhive.org/help/markdown
+- http://www.sciweavers.org/free-online-latex-equation-editor
+- http://latex.codecogs.com/
+- http://csrgxtu.github.io/2015/03/20/Writing-Mathematic-Fomulars-in-Markdown/
+- https://en.wikibooks.org/wiki/LaTeX/Mathematics#Controlling_horizontal_spacing
