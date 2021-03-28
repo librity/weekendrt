@@ -197,6 +197,8 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - https://stackoverflow.com/questions/5248919/undefined-reference-to-sqrt-or-other-mathematical-functions
 - https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
 - https://stackoverflow.com/questions/5834635/how-do-i-get-double-max
+- https://stackoverflow.com/questions/33058848/generate-a-random-double-between-1-and-1
+- https://linux.die.net/man/3/random
 
 ## ⬇️ Markdown References <a name="markdown"></a>
 
