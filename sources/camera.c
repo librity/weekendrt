@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 17:51:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 06:07:09 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 17:16:03 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	initialize_camera(t_camera *camera, double aspect_ratio)
 {
+	camera->aspect_ratio = aspect_ratio;
 	camera->viewport_height = 2.0;
 	camera->viewport_width = aspect_ratio * camera->viewport_height;
 	camera->focal_length = 1.0;

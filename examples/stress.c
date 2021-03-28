@@ -6,21 +6,20 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 15:09:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 15:23:47 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
-#include <stdio.h>
 
 static void initialize_spheres(t_list **spheres)
 {
 	t_list *first;
 	t_list *next;
 
-	first = ft_lstnew(new_sphere((t_point_3d){0.0, -100.5, -1.0}, 100));
+	first = ft_lstnew(new_sphere((t_point_3d){rp(), rp(), -1.5 + rp()}, rr()));
 
-	int i = 2000;
+	int i = 3000;
 	while (i--)
 	{
 		next = ft_lstnew(new_sphere((t_point_3d){rp(), rp(), -1.5 + rp()}, rr()));
@@ -51,9 +50,9 @@ int main(int argc, char **argv)
 	initialize_ray_tracer(&rt, argv);
 	ft_initialize_bitmap(&image, rt.width, rt.height);
 
-	printf("Scaning lines: ");
+	ft_putstr("Scaning lines: ");
 	generate_image(&image, rt, rt.camera);
-	printf("\nDone.\n");
+	ft_putstr("\nDone.\n");
 	free_spheres(&(rt.spheres));
 
 	ft_save_bitmap(&image, rt.file_name);

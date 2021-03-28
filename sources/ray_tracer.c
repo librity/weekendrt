@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 17:51:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 04:23:48 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 17:22:40 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@ void	generate_image(t_bitmap_image *image,
 	int row;
 	int column;
 
-	ray.origin = camera.origin;
 	row = rt.height - 1;
 	while (row >= 0)
 	{
-		printf("⌛");
+		ft_putstr("⌛");
 		column = 0;
 		while (column < rt.width)
 		{
-			ray.direction = point_ray(rt, camera, row, column);
+			ray = get_ray(rt, camera, row, column);
 			color = cast_ray(ray, rt.spheres);
 			set_image_pixel(image, color, row, column);
 			column++;

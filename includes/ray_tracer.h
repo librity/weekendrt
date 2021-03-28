@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 18:50:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 03:47:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 17:12:07 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_ray_tracer
 	double		aspect_ratio;
 	int			width;
 	int			height;
+	int			samples_per_pixel;
 
 	t_camera	camera;
 	t_list		*spheres;

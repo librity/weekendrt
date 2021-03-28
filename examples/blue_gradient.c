@@ -6,12 +6,11 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 21:47:14 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 16:47:39 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
-#include <stdio.h>
 
 void	generate_blue_gradient(t_bitmap_image *image,
 								const t_ray_tracer rt,
@@ -27,7 +26,7 @@ void	generate_blue_gradient(t_bitmap_image *image,
 	row = rt.height - 1;
 	while (row >= 0)
 	{
-		printf("⌛");
+		ft_putstr("⌛");
 		column = 0;
 		while (column < rt.width)
 		{
@@ -60,9 +59,9 @@ int main(int argc, char **argv)
 	initialize_ray_tracer(&rt, argv);
 	ft_initialize_bitmap(&image, rt.width, rt.height);
 
-	printf("Scaning lines: ");
+	ft_putstr("Scaning lines: ");
 	generate_blue_gradient(&image, rt, rt.camera);
-	printf("\nDone.\n");
+	ft_putstr("\nDone.\n");
 
 	ft_save_bitmap(&image, rt.file_name);
 	ft_free_bitmap(&image);

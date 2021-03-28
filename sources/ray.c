@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 16:21:01 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 05:53:59 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 17:32:06 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,33 @@ t_point_3d		ray_at_t(double translation, t_ray ray)
 	return (add(ray.origin, reach));
 }
 
-t_vector_3d		point_ray(const t_ray_tracer rt,
-							const t_camera camera,
-							int row,
-							int column)
+t_vector_3d		point_ray(const t_camera camera,
+							double horizontal,
+							double vertical)
 {
 	t_vector_3d	direction;
-	double		horizontal_direction;
-	double		vertical_direction;
+
+	direction = camera.lower_left_corner;
+	direction = add(direction, scalar_times(horizontal, camera.horizontal));
+	direction = add(direction, scalar_times(vertical, camera.vertical));
+	direction = sub(direction, camera.origin);
+	return (direction);
+}
+
+t_ray			get_ray(const t_ray_tracer rt,
+						const t_camera camera,
+						int row,
+						int column)
+{
+	t_ray	ray;
+	double	horizontal_direction;
+	double	vertical_direction;
 
 	horizontal_direction = (double)(column) / (rt.width - 1);
 	vertical_direction = (double)(row) / (rt.height - 1);
-	direction = camera.lower_left_corner;
-	direction = add(direction, scalar_times(horizontal_direction, camera.horizontal));
-	direction = add(direction, scalar_times(vertical_direction, camera.vertical));
-	direction = sub(direction, camera.origin);
-	return (direction);
+	ray.origin = camera.origin;
+	ray.direction = point_ray(camera, horizontal_direction, vertical_direction);
+	return (ray);
 }
 
 t_color_3i		hit_gradient_background(const t_ray ray,

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 03:19:59 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 04:20:05 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 17:06:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 # define RTPI 3.1415926535897932385;
 
 double	degrees_to_radians(double degrees);
+double	clamp(double x, double min, double max);
 
 #endif

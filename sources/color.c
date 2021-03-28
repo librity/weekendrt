@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 15:06:25 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 19:00:41 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 17:11:07 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,21 @@ t_color_3i	color_3d_to_i3(t_color_3d color_3d)
 	color_3i.red = (int)(255.999 * color_3d.x);
 	color_3i.green = (int)(255.999 * color_3d.y);
 	color_3i.blue = (int)(255.999 * color_3d.z);
+	return (color_3i);
+}
+
+t_color_3i sample_color_3i(t_color_3d sampled_color, int samples_per_pixel)
+{
+	t_color_3i color_3i;
+	const double scale = 1.0 / samples_per_pixel;
+	
+	sampled_color.x *= scale;
+	sampled_color.y *= scale;
+	sampled_color.z *= scale;
+
+	color_3i.red = (int)(256 * clamp(sampled_color.x, 0.0, 0.999));
+	color_3i.green = (int)(256 * clamp(sampled_color.y, 0.0, 0.999));
+	color_3i.blue = (int)(256 * clamp(sampled_color.z, 0.0, 0.999));
 	return (color_3i);
 }
 

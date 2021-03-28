@@ -41,7 +41,8 @@
 	"vector_3d.h": "c",
 	"rtmath.h": "c",
 	"limits": "c",
-	"rtrandom.h": "c"
+	"rtrandom.h": "c",
+	"time.h": "c"
 },
   "editor.detectIndentation": false
 }
