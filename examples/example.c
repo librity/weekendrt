@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 18:09:55 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 18:17:31 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void initialize_ray_tracer(t_ray_tracer *rt, char **arguments)
 	rt->aspect_ratio = 16.0 / 9.0;
 	rt->width = 1920;
 	rt->height = (int)(rt->width / rt->aspect_ratio);
-	rt->samples_per_pixel = 100;
+	rt->samples_per_pixel = 10;
 
 	initialize_camera(&(rt->camera), rt->aspect_ratio);
 	initialize_spheres(&(rt->spheres));

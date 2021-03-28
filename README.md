@@ -56,28 +56,28 @@ $ cd weekendrt
 $ make example
 ```
 
-A beautiful image should pop out of your terminal like magic.
+A beautiful image should pop out of your terminal like _magic_.
 
 ## 🎈 Usage <a name="usage"></a>
 
 ## 🎨 Gallery <a name="gallery"></a>
 
 <p align="center">
-  <img src="gallery/candy.bmp" />
+  <img src="gallery/candy.png" />
 </p>
 
 <p align="center">
-  <img src="gallery/chip_off_the_old_ball.bmp" />
+  <img src="gallery/chip_off_the_old_ball.png" />
 </p>
 
 <p align="center">
-  <img src="gallery/big_bang.bmp" />
+  <img src="gallery/big_bang.png" />
 </p>
 
 Anti-aliasing, 100 samples per pixel:
 
 <p align="center">
-  <img src="gallery/a_million_little_samples.bmp" />
+  <img src="gallery/a_million_little_samples.png" />
 </p>
 
 ### 🖼️ Rendering `.bmp`
@@ -212,6 +212,7 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - https://stackoverflow.com/questions/5834635/how-do-i-get-double-max
 - https://stackoverflow.com/questions/33058848/generate-a-random-double-between-1-and-1
 - https://linux.die.net/man/3/random
+- https://askubuntu.com/questions/749882/how-to-recursively-and-automatically-convert-all-bmp-images-to-png-files-in-a-gi
 
 ## ⬇️ Markdown References <a name="markdown"></a>
 
