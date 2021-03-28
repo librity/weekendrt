@@ -39,7 +39,8 @@
 	"errno.h": "c",
 	"weekendrt.h": "c",
 	"vector_3d.h": "c",
-	"rtmath.h": "c"
+	"rtmath.h": "c",
+	"limits": "c"
 },
   "editor.detectIndentation": false
 }

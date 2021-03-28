@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 17:51:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 22:18:26 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 04:23:48 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	generate_image(t_bitmap_image *image,
 		while (column < rt.width)
 		{
 			ray.direction = point_ray(rt, camera, row, column);
-			color = cast_ray(ray);
+			color = cast_ray(ray, rt.spheres);
 			set_image_pixel(image, color, row, column);
 			column++;
 		}

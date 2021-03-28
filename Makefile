@@ -6,14 +6,15 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/03/28 03:25:38 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/03/28 04:35:58 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_libbmp.a
 
 CC = gcc
-CC_FLAGS = -Wall -Wextra -Werror
+# CC_FLAGS = -Wall -Wextra -Werror
+CC_FLAGS = -g
 CC_DEBUG_FLAGS = -g
 
 EXTERNAL_LIBS = -lm
@@ -68,7 +69,8 @@ $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
 	$(CC) $(CC_FLAGS) -I $(INCLUDES_PATH) -o $@ -c $< $(EXTERNAL_LIBS)
 
 build_example: $(NAME)
-	$(CC) $(CC_DEBUG_FLAGS) -I $(INCLUDES_PATH) $(EXAMPLE_MAIN) $(NAME) $(FT_LIBBMP_ARCHIVE) $(EXTERNAL_LIBS)
+	$(CC) $(CC_DEBUG_FLAGS) -I $(INCLUDES_PATH) \
+	$(EXAMPLE_MAIN) $(NAME) $(FT_LIBBMP_ARCHIVE) $(LIBFT_ARCHIVE) $(EXTERNAL_LIBS)
 
 example: build_example
 	$(EXECUTE_EXAMPLE)

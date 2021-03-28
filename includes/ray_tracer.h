@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 18:50:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 19:14:31 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 03:47:21 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_ray_tracer
 	int			height;
 
 	t_camera	camera;
+	t_list		*spheres;
 }				t_ray_tracer;
 
 void			generate_image(t_bitmap_image *image,

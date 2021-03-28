@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 03:23:51 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 03:25:04 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 04:21:16 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 double	degrees_to_radians(double degrees)
 {
-	return degrees * g_pi / 180.0;
+	const double pi = RTPI;
+
+	return (degrees * pi) / 180.0;
 }
