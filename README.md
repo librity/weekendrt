@@ -37,8 +37,16 @@
 A plain C implementation of the Weekend Raytracer challenge.
 I just followed the instructions layed out on the online book:
 
-- https://github.com/RayTracing/raytracing.github.io
-- https://raytracing.github.io/books/RayTracingInOneWeekend.html
+```elixir
+    Title (series): “Ray Tracing in One Weekend Series”
+    Title (book): “Ray Tracing in One Weekend”
+    Author: Peter Shirley
+    Editors: Steve Hollasch, Trevor David Black
+    Version/Edition: v3.2.3
+    Date: 2020-12-07
+    URL (series): https://github.com/RayTracing/raytracing.github.io
+    URL (book): https://raytracing.github.io/books/RayTracingInOneWeekend.html
+```
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -150,14 +158,26 @@ intersects a sphere centered in **`C`** if and only if
 `t` is a root of:
 
 <p align="center">
-  <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;t^2&space;\mathbf{b}&space;\cdot&space;\mathbf{b}&space;&space;&space;&space;&plus;&space;2t&space;\mathbf{b}&space;\cdot&space;(\mathbf{A}-\mathbf{C})&space;&plus;&space;(\mathbf{A}-\mathbf{C})&space;\cdot&space;(\mathbf{A}-\mathbf{C})&space;-&space;r^2&space;=&space;0&space;\quad&space;(III)&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;" title="\inline t^2 \mathbf{b} \cdot \mathbf{b} + 2t \mathbf{b} \cdot (\mathbf{A}-\mathbf{C}) + (\mathbf{A}-\mathbf{C}) \cdot (\mathbf{A}-\mathbf{C}) - r^2 = 0 \quad (III) " />
+  <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;t^2&space;\mathbf{b}&space;\cdot&space;\mathbf{b}&space;&space;&space;&space;&plus;&space;2t&space;\mathbf{b}&space;\cdot&space;(\mathbf{A}-\mathbf{C})&space;&plus;&space;(\mathbf{A}-\mathbf{C})&space;\cdot&space;(\mathbf{A}-\mathbf{C})&space;-&space;r^2&space;=&space;0&space;\quad&space;(III);" title="\inline t^2 \mathbf{b} \cdot \mathbf{b} + 2t \mathbf{b} \cdot (\mathbf{A}-\mathbf{C}) + (\mathbf{A}-\mathbf{C}) \cdot (\mathbf{A}-\mathbf{C}) - r^2 = 0 \quad (III)" />
 </p>
 
 The quadratic above is a combination of equations `(I)` and `(II)`,
 and we can solve for `t` with the quadratic formula:
 
 <p align="center">
-  <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\displaystyle&space;x={\frac&space;{-b\pm&space;{\sqrt&space;{b^{2}-4ac}}}{2a}}\&space;\&space;" title="\inline \displaystyle x={\frac {-b\pm {\sqrt {b^{2}-4ac}}}{2a}}\ \ " />
+  <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\displaystyle&space;a&space;=&space;\mathbf{b}&space;\cdot&space;\mathbf{b}" title="\inline \displaystyle a = \mathbf{b} \cdot \mathbf{b}" />
+</p>
+
+<p align="center">
+  <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\displaystyle&space;b&space;=&space;2&space;\mathbf{b}&space;\cdot&space;(\mathbf{A}-\mathbf{C})" title="\inline \displaystyle b = 2 \mathbf{b} \cdot (\mathbf{A}-\mathbf{C})" />
+</p>
+
+<p align="center">
+  <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\displaystyle&space;c&space;=&space;(\mathbf{A}-\mathbf{C})&space;\cdot&space;(\mathbf{A}-\mathbf{C})&space;-&space;r^2" title="\inline \displaystyle c = (\mathbf{A}-\mathbf{C}) \cdot (\mathbf{A}-\mathbf{C}) - r^2" />
+</p>
+
+<p align="center">
+  <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\displaystyle&space;t={\frac&space;{-b\pm&space;{\sqrt&space;{b^{2}-4ac}}}{2a}}\&space;\quad&space;(IV)" title="\inline \displaystyle t={\frac {-b\pm {\sqrt {b^{2}-4ac}}}{2a}}\ \quad (IV)" />
 </p>
 
 <p align="center">
@@ -216,6 +236,7 @@ by [@AdrianWR](https://github.com/AdrianWR)
 
 ## ⬇️ Markdown References <a name="markdown"></a>
 
+- https://github.github.com/gfm/
 - https://emojipedia.org/sun/
 - https://jaantollander.com/post/scientific-writing-with-markdown/
 - https://paperhive.org/help/markdown

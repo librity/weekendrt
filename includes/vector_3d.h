@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 02:51:31 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/28 19:41:03 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ t_vector_3d		sub(t_vector_3d first, t_vector_3d second);
 t_vector_3d		cross(t_vector_3d first, t_vector_3d second);
 t_vector_3d		dot_div(t_vector_3d first, t_vector_3d second);
 t_vector_3d		unit(t_vector_3d vector);
+
+t_vector_3d	random_vector(void);
+t_vector_3d	random_vector_in(double min, double max);
 
 #endif
