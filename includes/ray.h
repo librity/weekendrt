@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 20:06:53 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 21:57:19 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ t_vector_3d		point_ray(const t_ray_tracer rt,
 							const t_camera camera,
 							int row,
 							int column);
-t_color_3i		cast_gradient_ray(t_ray ray, t_color_3d	tone);
+t_color_3i		hit_gradient_background(const t_ray ray,
+										t_color_3d background_tone);
+bool			ray_hits_sphere(const t_ray ray,
+								t_point_3d center,
+								double radius);
+t_color_3i		cast_ray(const t_ray ray);
 
 #endif

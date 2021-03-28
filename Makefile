@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/03/27 19:11:12 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/03/27 21:51:20 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ FT_LIBBMP_PATH = $(LIBS_PATH)/ft_libbmp
 FT_LIBBMP_ARCHIVE = $(ARCHIVES_PATH)/$(FT_LIBBMP)
 
 EXAMPLE_MAIN = $(EXAMPLES_PATH)/example.c
+BLUE_GRADIENT_MAIN = $(EXAMPLES_PATH)/blue_gradient.c
 IMAGE_NAME = hello.bmp
 EXECUTE_EXAMPLE = ./a.out $(IMAGE_NAME)
 OPEN_IMAGE = ffplay
@@ -101,4 +102,4 @@ gitm:
 	git commit -m $m
 	git push
 
-.PHONY: all build_example example build_ft_libbmp re clean fclean example_clean ft_libbmp_clean norme git gitm
+.PHONY: all build_example example build_ft_libbmp clean fclean example_clean ft_libbmp_clean re norm git gitm

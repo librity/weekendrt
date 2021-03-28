@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 04:24:15 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 16:10:14 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/27 22:06:36 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,38 @@ double		length(t_vector_3d vector)
 	return (sqrt(sum));
 }
 
+t_vector_3d	scalar_add(double number, t_vector_3d vector)
+{
+	vector.x += number;
+	vector.y += number;
+	vector.z += number;
+	return (vector);
+}
+
+t_vector_3d	scalar_sub(double number, t_vector_3d vector)
+{
+	vector.x -= number;
+	vector.y -= number;
+	vector.z -= number;
+	return (vector);
+}
+
+t_vector_3d	scalar_times(double number, t_vector_3d vector)
+{
+	vector.x *= number;
+	vector.y *= number;
+	vector.z *= number;
+	return (vector);
+}
+
+t_vector_3d	scalar_div(double number, t_vector_3d vector)
+{
+	vector.x /= number;
+	vector.y /= number;
+	vector.z /= number;
+	return (vector);
+}
+
 t_vector_3d	add(t_vector_3d first, t_vector_3d second)
 {
 	t_vector_3d result;
@@ -55,22 +87,6 @@ t_vector_3d	sub(t_vector_3d first, t_vector_3d second)
 	result.y = first.y - second.y;
 	result.z = first.z - second.z;
 	return (result);
-}
-
-t_vector_3d	scalar(double number, t_vector_3d vector)
-{
-	vector.x *= number;
-	vector.y *= number;
-	vector.z *= number;
-	return (vector);
-}
-
-t_vector_3d	scalar_div(double number, t_vector_3d vector)
-{
-	vector.x /= number;
-	vector.y /= number;
-	vector.z /= number;
-	return (vector);
 }
 
 double		dot(t_vector_3d first, t_vector_3d second)

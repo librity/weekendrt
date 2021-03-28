@@ -63,6 +63,10 @@ A beautiful image should pop out of your terminal like magic.
   <img src="gallery/candy.bmp" />
 </p>
 
+<p align="center">
+  <img src="gallery/blue_japan.bmp" />
+</p>
+
 ### 🖼️ Rendering `.bmp`
 
 `ft_libbmp` implementation based on:
@@ -97,9 +101,10 @@ typedef struct {             // Total: 54 bytes
 
 ## 🧑‍🏫 Math <a name = "math"></a>
 
-Bold variables are (Euclidean) vectors, like **`P`** and **`C`**.
+### 🤝 Conventions
 
-Normal variables are scalars, like `t` and `r`.
+- **Bold** variables are **Euclidean Vectors**, like **`P`** and **`C`**.
+- Normal variables are scalars, like `t` and `r`.
 
 ### ☀️ Rays
 
@@ -146,6 +151,8 @@ and we can solve for `t` with the quadratic formula:
   <img src=".github/ray_sphere_intersection.jpg" />
 </p>
 
+### 🐌 Snell's law
+
 ## ✅ Tests <a name = "tests"></a>
 
 ## 🐙 Github Actions <a name = "github_actions"></a>
@@ -164,6 +171,7 @@ by [@AdrianWR](https://github.com/AdrianWR)
 
 - https://en.wikipedia.org/wiki/Dot_product
 - https://en.wikipedia.org/wiki/Quadratic_formula
+- https://en.wikipedia.org/wiki/Snell's_law
 - https://stats.stackexchange.com/questions/137907/division-of-vectors
 - http://www.r-tutor.com/r-introduction/vector/vector-arithmetics
 - https://physics.stackexchange.com/questions/111652/can-we-divide-two-vectors
