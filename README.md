@@ -97,9 +97,15 @@ typedef struct {             // Total: 54 bytes
 
 ## 🧑‍🏫 Math <a name = "math"></a>
 
+Bold variables are (Euclidean) vectors, like **`P`** and **`C`**.
+
+Normal variables are scalars, like `t` and `r`.
+
 ### ☀️ Rays
 
-The linear interpolation of a line with a free variable `t` generates a ray:
+Given a origin **`A`**, and a direction **`b`**,
+the linear interpolation of a line with a free variable `t`
+generates a ray **`P(t)`**:
 
 <p align="center">
   <img src="https://latex.codecogs.com/png.image?\dpi{300}&space;\inline&space;\inline&space;\mathbf{P}(t)&space;=&space;\mathbf{A}&space;&plus;&space;t&space;\mathbf{b}&space;\quad&space;(I)" title="\inline \inline \mathbf{P}(t) = \mathbf{A} + t \mathbf{b} \quad (I)" />
@@ -113,22 +119,28 @@ The linear interpolation of a line with a free variable `t` generates a ray:
 
 ### 🔮 Spheres
 
-An arbitrary point `P` is on the surface of a sphere centered in `C` with radius `r`
+An arbitrary point **`P`** is on the surface of a sphere
+centered in **`C`** with radius `r`
 if and only if it satisfies the equation:
 
 <p align="center">
   <img src="https://latex.codecogs.com/png.image?\dpi{300}&space;\inline&space;(\mathbf{P}&space;-&space;\mathbf{C})&space;\cdot&space;(\mathbf{P}&space;-&space;\mathbf{C})&space;=&space;(x&space;-&space;C_x)^2&space;&plus;&space;(y&space;-&space;C_y)^2&space;&plus;&space;(z&space;-&space;C_z)^2&space;=&space;r^2&space;\quad&space;(II)" title="\inline (\mathbf{P} - \mathbf{C}) \cdot (\mathbf{P} - \mathbf{C}) = (x - C_x)^2 + (y - C_y)^2 + (z - C_z)^2 = r^2 \quad (II)" />
 </p>
 
-An arbitrary ray `P(t)` of origin `A` and direction `b`
-intersects a sphere centered in `C` if and only if
-it has at least one root in:
+An arbitrary ray **`P(t)`** of origin **`A`** and direction **`b`**
+intersects a sphere centered in **`C`** if and only if
+`t` is a root of:
 
 <p align="center">
   <img src="https://latex.codecogs.com/png.image?\dpi{300}&space;\inline&space;t^2&space;\mathbf{b}&space;\cdot&space;\mathbf{b}&space;&space;&space;&space;&plus;&space;2t&space;\mathbf{b}&space;\cdot&space;(\mathbf{A}-\mathbf{C})&space;&plus;&space;(\mathbf{A}-\mathbf{C})&space;\cdot&space;(\mathbf{A}-\mathbf{C})&space;-&space;r^2&space;=&space;0&space;\quad&space;(III)&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;&space;" title="\inline t^2 \mathbf{b} \cdot \mathbf{b} + 2t \mathbf{b} \cdot (\mathbf{A}-\mathbf{C}) + (\mathbf{A}-\mathbf{C}) \cdot (\mathbf{A}-\mathbf{C}) - r^2 = 0 \quad (III) " />
 </p>
 
-The above being a combination of equations `(I)` and `(II)`.
+The quadratic above is a combination of equations `(I)` and `(II)`,
+and we can solve for `t` with the quadratic formula:
+
+<p align="center">
+  <img src="https://latex.codecogs.com/png.image?\dpi{300}&space;\inline&space;\displaystyle&space;x={\frac&space;{-b\pm&space;{\sqrt&space;{b^{2}-4ac}}}{2a}}\&space;\&space;" title="\inline \displaystyle x={\frac {-b\pm {\sqrt {b^{2}-4ac}}}{2a}}\ \ " />
+</p>
 
 <p align="center">
   <img src=".github/ray_sphere_intersection.jpg" />
