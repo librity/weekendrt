@@ -35,7 +35,7 @@
 ## 🧐 About <a name = "about"></a>
 
 A plain C implementation of the Weekend Raytracer challenge.
-I just followed the instructions layed out on the online book:
+I just followed the instructions laid out on the online book:
 
 ```elixir
     Title (series): “Ray Tracing in One Weekend Series”
@@ -94,6 +94,10 @@ Anti-aliasing, 100 samples per pixel:
 
 - https://engineering.purdue.edu/ece264/17au/hw/HW15
 - https://github.com/marc-q/libbmp
+- https://medium.com/sysf/bits-to-bitmaps-a-simple-walkthrough-of-bmp-image-format-765dc6857393
+
+The best way to write the header is to define a `struct`,
+set all the values and dump it straight to the file.
 
 ```c
 typedef struct {             // Total: 54 bytes
@@ -116,9 +120,22 @@ typedef struct {             // Total: 54 bytes
 } BMPHeader;
 ```
 
+We only values we need to worry about are `width_px`, `height_px`
+and `size`, which we calculate on the fly;
+the rest represent configurations
+and we can treat them as constants for most purposes.
+We then write the actual contents of the file line-by line,
+with some padding information.
+
 <p align="center">
   <img src=".github/bitmap_hexdump.png" />
 </p>
+
+My implementation of it is extremely crummy and doesn't handle compression.
+This makes for 1080p files that are over 5 mb big.
+I transformed all the pictures in the gallery to `.png`
+so this README would load faster,
+but they were all originally generated as `.bmp` with `ft_libbmp`.
 
 ## 🧑‍🏫 Math <a name = "math"></a>
 
@@ -137,7 +154,8 @@ generates a ray **`P(t)`**:
   <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\inline&space;\mathbf{P}(t)&space;=&space;\mathbf{A}&space;&plus;&space;t&space;\mathbf{b}&space;\quad&space;(I)" title="\inline \inline \mathbf{P}(t) = \mathbf{A} + t \mathbf{b} \quad (I)" />
 </p>
 
-`t` can be understood as the `translation` of the ray.
+The scalar `t` represents the `translation` of the ray,
+or how much it need to advance to reach an arbitrary point in its path.
 
 <p align="center">
   <img src=".github/ray_lerp.jpg" />
@@ -161,7 +179,7 @@ intersects a sphere centered in **`C`** if and only if
   <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;t^2&space;\mathbf{b}&space;\cdot&space;\mathbf{b}&space;&space;&space;&space;&plus;&space;2t&space;\mathbf{b}&space;\cdot&space;(\mathbf{A}-\mathbf{C})&space;&plus;&space;(\mathbf{A}-\mathbf{C})&space;\cdot&space;(\mathbf{A}-\mathbf{C})&space;-&space;r^2&space;=&space;0&space;\quad&space;(III);" title="\inline t^2 \mathbf{b} \cdot \mathbf{b} + 2t \mathbf{b} \cdot (\mathbf{A}-\mathbf{C}) + (\mathbf{A}-\mathbf{C}) \cdot (\mathbf{A}-\mathbf{C}) - r^2 = 0 \quad (III)" />
 </p>
 
-The quadratic above is a combination of equations `(I)` and `(II)`,
+The quadratic above combines equations `(I)` and `(II)`,
 and we can solve for `t` with the quadratic formula:
 
 <p align="center">
