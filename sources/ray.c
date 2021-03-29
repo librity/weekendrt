@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 16:21:01 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 17:52:51 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 04:02:37 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,13 @@ bool			hit_any_spheres(const t_ray ray,
 	return hit_anything;
 }
 
-t_color_3d		cast_ray(const t_ray ray, t_list *spheres)
+t_color_3d		cast_ray(const t_ray ray, t_list *spheres, int depth)
 {
 	t_hit_record	record;
 
+	if (depth <= 0)
+		return ((t_color_3d){0.0, 0.0, 0.0});
 	if (hit_any_spheres(ray, spheres, &record))
-		return (render_sphere_surface(record.normal));
+		return (render_matte_sphere(record, spheres, depth));
 	return (hit_gradient_background(ray, (t_color_3d){0.5, 0.7, 1.0}));
 }

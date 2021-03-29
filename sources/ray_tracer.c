@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 17:51:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 19:12:22 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 03:54:15 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_color_3i	trace_sample_rays(const t_ray_tracer rt,
 	while (samples--)
 	{
 		ray = get_sample_ray(rt, camera, row, column);
-		sample_color = cast_ray(ray, rt.spheres);
+		sample_color = cast_ray(ray, rt.spheres, rt.max_depth);
 		sample_result = add(sample_result, sample_color);
 	}
 	pixel_color = sample_pixel_color(sample_result, rt.samples_per_pixel);

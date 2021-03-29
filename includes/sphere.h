@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 17:49:03 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 04:02:47 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ bool			ray_hits_sphere(const t_ray ray,
 								t_hit_record *record,
 								double t_min,
 								double t_max);
-t_color_3d		render_sphere_surface(t_vector_3d normal);
+t_color_3d		render_matte_sphere(t_hit_record record,
+										t_list *spheres,
+										int depth);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 18:50:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 17:12:07 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 03:53:34 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct	s_ray_tracer
 	int			width;
 	int			height;
 	int			samples_per_pixel;
+	int			max_depth;
 
 	t_camera	camera;
 	t_list		*spheres;

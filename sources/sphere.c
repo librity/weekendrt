@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 01:46:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 17:49:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 04:11:32 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,21 @@ bool			ray_hits_sphere(const t_ray ray,
 	record->translation = root;
 	record->intersection = ray_at_t(record->translation, ray);
 	t_vector_3d outward_normal = sub(record->intersection, sphere->center);
+	// outward_normal = scalar_div(sphere->radius, outward_normal);
 	outward_normal = unit(outward_normal);
 	set_face_normal(ray, outward_normal, record);
 
 	return (true);
 }
 
-t_color_3d		render_sphere_surface(t_vector_3d normal)
+t_color_3d		render_matte_sphere(t_hit_record record,
+										t_list *spheres,
+										int depth)
 {
-	t_color_3d shade = {normal.x + 1.0, normal.y + 1.0, normal.z + 1.0};
+	t_point_3d target = add(record.intersection, record.normal);
+	target = add(target, random_point_in_unit_sphere());
+	t_ray diffuse_ray = (t_ray){record.intersection, sub(target, record.intersection)};
+	t_color_3d shade = cast_ray(diffuse_ray, spheres, depth - 1);
 	shade = scalar_times(0.5, shade);
 	return (shade);
 }

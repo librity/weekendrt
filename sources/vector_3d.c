@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 04:24:15 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/28 19:41:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 03:38:21 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,16 +132,4 @@ t_vector_3d	unit(t_vector_3d vector)
 
 	magnitude = length(vector);
 	return (scalar_div(magnitude, vector));
-}
-
-t_vector_3d	random_vector(void)
-{
-	return ((t_vector_3d){random_double(), random_double(), random_double()});
-}
-
-t_vector_3d	random_vector_in(double min, double max)
-{
-	return ((t_vector_3d){random_from(min, max),
-							random_from(min, max),
-							random_from(min, max)});
 }
