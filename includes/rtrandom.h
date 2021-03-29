@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 14:51:24 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/29 03:40:23 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 04:32:26 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ double			canonical_random(void);
 t_vector_3d		random_vector(void);
 t_vector_3d		random_vector_in(double min, double max);
 t_point_3d		random_point_in_unit_sphere(void);
+t_vector_3d		random_unit_vector(void);
 
 #endif

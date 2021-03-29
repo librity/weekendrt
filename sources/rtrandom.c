@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 14:50:17 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/29 04:03:37 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 04:32:13 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,9 @@ t_point_3d		random_point_in_unit_sphere(void)
 			continue ;
 		return (random);
 	}
+}
+
+t_vector_3d		random_unit_vector(void)
+{
+	return (unit(random_point_in_unit_sphere()));
 }

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/29 04:21:16 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 04:34:15 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void initialize_ray_tracer(t_ray_tracer *rt, char **arguments)
 	rt->file_name = arguments[1];
 
 	rt->aspect_ratio = 16.0 / 9.0;
-	rt->width = 400;
+	rt->width = 1920;
 	rt->height = (int)(rt->width / rt->aspect_ratio);
-	rt->samples_per_pixel = 20;
+	rt->samples_per_pixel = 100;
 	rt->max_depth = 50;
 
 	initialize_camera(&(rt->camera), rt->aspect_ratio);
