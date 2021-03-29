@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 01:46:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/29 04:32:57 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 04:48:25 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ t_color_3d		render_matte_sphere(t_hit_record record,
 										t_list *spheres,
 										int depth)
 {
-	t_point_3d target = add(record.intersection, record.normal);
-	target = add(target, random_unit_vector());
+	t_point_3d target = add(record.intersection, random_in_hemisphere(record.normal));
 	t_ray diffuse_ray = (t_ray){record.intersection, sub(target, record.intersection)};
 	t_color_3d shade = cast_ray(diffuse_ray, spheres, depth - 1);
 	shade = scalar_times(0.5, shade);

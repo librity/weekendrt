@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 14:50:17 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/29 04:32:13 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 04:48:35 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_vector_3d	random_vector_in(double min, double max)
 							random_from(min, max)});
 }
 
-t_point_3d		random_point_in_unit_sphere(void)
+t_point_3d		random_in_unit_sphere(void)
 {
 	t_point_3d random;
 	while (true)
@@ -63,5 +63,18 @@ t_point_3d		random_point_in_unit_sphere(void)
 
 t_vector_3d		random_unit_vector(void)
 {
-	return (unit(random_point_in_unit_sphere()));
+	t_vector_3d normalized_in_sphere;
+
+	normalized_in_sphere = unit(random_in_unit_sphere());
+	return (normalized_in_sphere);
+}
+
+t_vector_3d		random_in_hemisphere(const t_vector_3d normal)
+{
+	t_vector_3d in_unit_sphere;
+
+	in_unit_sphere = random_in_unit_sphere();
+	if (dot(in_unit_sphere, normal) > 0.0)
+		return (in_unit_sphere);
+	return (negative(in_unit_sphere));
 }
