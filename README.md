@@ -120,7 +120,7 @@ typedef struct {             // Total: 54 bytes
 } BMPHeader;
 ```
 
-We only values we need to worry about are `width_px`, `height_px`
+The only values we need to worry about are `width_px`, `height_px`
 and `size`, which we calculate on the fly;
 the rest represent configurations
 and we can treat them as constants for most purposes.
