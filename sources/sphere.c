@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 01:46:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/29 04:11:32 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 04:25:24 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ bool			ray_hits_sphere(const t_ray ray,
 	record->translation = root;
 	record->intersection = ray_at_t(record->translation, ray);
 	t_vector_3d outward_normal = sub(record->intersection, sphere->center);
-	// outward_normal = scalar_div(sphere->radius, outward_normal);
-	outward_normal = unit(outward_normal);
+	outward_normal = scalar_div(sphere->radius, outward_normal);
+	// outward_normal = unit(outward_normal);
 	set_face_normal(ray, outward_normal, record);
 
 	return (true);

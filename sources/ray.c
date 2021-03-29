@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 16:21:01 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/29 04:02:37 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 04:20:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ bool			hit_any_spheres(const t_ray ray,
 	int sphere_count = ft_lstsize(spheres);
 	while (sphere_count--)
 	{
-		if (ray_hits_sphere(ray, spheres->content, &current_record, 0, closest_so_far))
+		if (ray_hits_sphere(ray, spheres->content, &current_record, 0.001, closest_so_far))
 		{
 			hit_anything = true;
 			if (current_record.translation < closest_so_far)

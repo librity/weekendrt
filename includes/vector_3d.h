@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/29 03:38:36 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 04:18:47 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ t_vector_3d		add(t_vector_3d first, t_vector_3d second);
 t_vector_3d		sub(t_vector_3d first, t_vector_3d second);
 t_vector_3d		cross(t_vector_3d first, t_vector_3d second);
 t_vector_3d		dot_div(t_vector_3d first, t_vector_3d second);
+
 t_vector_3d		unit(t_vector_3d vector);
+t_vector_3d		vsqrt(t_vector_3d vector);
 
 #endif

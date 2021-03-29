@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 04:24:15 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/29 03:38:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/03/29 04:18:34 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,4 +132,12 @@ t_vector_3d	unit(t_vector_3d vector)
 
 	magnitude = length(vector);
 	return (scalar_div(magnitude, vector));
+}
+
+t_vector_3d	vsqrt(t_vector_3d vector)
+{
+	vector.x = sqrt(vector.x);
+	vector.y = sqrt(vector.y);
+	vector.z = sqrt(vector.z);
+	return (vector);
 }
