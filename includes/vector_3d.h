@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 16:22:39 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 18:36:58 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ t_vector_3d		division(t_vector_3d first, t_vector_3d second);
 
 t_vector_3d		unit(t_vector_3d vector);
 t_vector_3d		vsqrt(t_vector_3d vector);
+
 t_vector_3d		reflect(const t_vector_3d incident, const t_vector_3d normal);
+t_vector_3d		refract(const t_vector_3d incident,
+						const t_vector_3d normal,
+						double refration_ration);
 
 #endif

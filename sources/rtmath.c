@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 03:23:51 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 01:15:25 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 18:09:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,25 @@ float	ft_absolute_value_f(float number)
 	return (number);
 }
 
-double	degrees_to_radians(double degrees)
+double	ft_absolute_value_d(double number)
 {
-	const double pi = RTPI;
+	if (number < 0)
+		return (number * -1);
+	return (number);
+}
 
-	return (degrees * pi) / 180.0;
+double	smallest_d(double x, double y)
+{
+	if (x < y)
+		return (x);
+	return (y);
+}
+
+double	largest_d(double x, double y)
+{
+	if (x > y)
+		return (x);
+	return (y);
 }
 
 double	clamp(double x, double min, double max)
@@ -38,4 +52,11 @@ double	clamp(double x, double min, double max)
 	if (x > max)
 		return (max);
 	return (x);
+}
+
+double	degrees_to_radians(double degrees)
+{
+	const double pi = RTPI;
+
+	return (degrees * pi) / 180.0;
 }

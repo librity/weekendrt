@@ -70,13 +70,19 @@ A beautiful image should pop out of your terminal like _magic_.
 
 ## 🎨 Gallery <a name="gallery"></a>
 
+Rainbow gradient:
+
 <p align="center">
   <img src="gallery/candy.png" />
 </p>
 
+Tame Imapla's next album cover:
+
 <p align="center">
   <img src="gallery/chip_off_the_old_ball.png" />
 </p>
+
+3000+ objects:
 
 <p align="center">
   <img src="gallery/big_bang.png" />
@@ -86,6 +92,12 @@ Anti-aliasing, 100 samples per pixel:
 
 <p align="center">
   <img src="gallery/a_million_little_samples.png" />
+</p>
+
+Multiple materials:
+
+<p align="center">
+  <img src="gallery/mario_galaxy.png" />
 </p>
 
 ### 🖼️ Rendering `.bmp`
@@ -202,7 +214,41 @@ and we can solve for `t` with the quadratic formula:
   <img src=".github/ray_sphere_intersection.jpg" />
 </p>
 
-### 🐌 Snell's law
+### 🕶️ Ray Reflection
+
+The reflection **`r`** of an incident ray **`v`**
+on an arbitrary point with a normal **`n`**
+can be calculated with:
+
+<p align="center">
+  <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\displaystyle&space;\mathbf{r}&space;=&space;\mathbf{v}&space;&plus;&space;2\mathbf{b}&space;=&space;\mathbf{v}&space;&plus;&space;2&space;(\mathbf{r}&space;\cdot&space;\mathbf{n})&space;\mathbf{n}&space;\quad&space;(V)" title="\inline \displaystyle \mathbf{r} = \mathbf{v} + 2\mathbf{b} = \mathbf{v} + 2 (\mathbf{r} \cdot \mathbf{n}) \mathbf{n} \quad (V)" />
+</p>
+
+<p align="center">
+  <img src=".github/ray_reflection.jpg" />
+</p>
+
+### 🐌 Ray Refraction - Snell's law
+
+Given an angle of `θ` of an incident ray **`R`**,
+and the refractive indices of the two surfaces `η` and `η'`,
+the andgle `θ'` of the refracted ray **`R'`** can be calculated with:
+
+<p align="center">
+  <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\displaystyle&space;\sin\theta'&space;=&space;\frac{\eta}{\eta'}&space;\cdot&space;\sin\theta&space;\quad&space;(VI)" title="\inline \displaystyle \sin\theta' = \frac{\eta}{\eta'} \cdot \sin\theta \quad (VI)" />
+</p>
+
+The refracted ray **`R'`** has a perpendicular component **`R′⊥`**
+and a parallel component **`R′∥`**,
+which can be calculated with:
+
+<p align="center">
+  <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\displaystyle&space;\mathbf{R'}&space;=&space;\mathbf{R'}_{\bot}&space;&plus;&space;\mathbf{R'}_{\parallel}&space;=&space;\frac{\eta}{\eta'}&space;(\mathbf{R}&space;&plus;&space;(\mathbf{-R}&space;\cdot&space;\mathbf{n})&space;\mathbf{n})&space;-&space;\sqrt{1&space;-&space;|\mathbf{R'}_{\bot}|^2}&space;\mathbf{n}&space;\quad&space;(VII)" title="\inline \displaystyle \mathbf{R'} = \mathbf{R'}_{\bot} + \mathbf{R'}_{\parallel} = \frac{\eta}{\eta'} (\mathbf{R} + (\mathbf{-R} \cdot \mathbf{n}) \mathbf{n}) - \sqrt{1 - |\mathbf{R'}_{\bot}|^2} \mathbf{n} \quad (VII)" />
+</p>
+
+<p align="center">
+  <img src=".github/snells_law.jpg" />
+</p>
 
 ## ✅ Tests <a name = "tests"></a>
 
@@ -223,6 +269,11 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - https://en.wikipedia.org/wiki/Dot_product
 - https://en.wikipedia.org/wiki/Quadratic_formula
 - https://en.wikipedia.org/wiki/Snell's_law
+- https://en.wikipedia.org/wiki/Refractive_index
+- https://en.wikipedia.org/wiki/Specular_reflection#Direction_of_reflection
+- https://en.wikipedia.org/wiki/Dielectric
+- https://en.wikipedia.org/wiki/Fresnel_equations
+- https://en.wikipedia.org/wiki/Beer%E2%80%93Lambert_law
 - https://stats.stackexchange.com/questions/137907/division-of-vectors
 - http://www.r-tutor.com/r-introduction/vector/vector-arithmetics
 - https://physics.stackexchange.com/questions/111652/can-we-divide-two-vectors
@@ -234,6 +285,8 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - https://en.wikipedia.org/wiki/Extended_ASCII
 - https://en.cppreference.com/w/cpp/io/manip/flush
 - https://www.cplusplus.com/reference/cstdio/printf/
+- https://linux.die.net/man/3/random
+- https://cplusplus.com/reference/cmath/fmin/
 
 ## 📝 Resources <a name="resources"></a>
 
@@ -249,7 +302,6 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
 - https://stackoverflow.com/questions/5834635/how-do-i-get-double-max
 - https://stackoverflow.com/questions/33058848/generate-a-random-double-between-1-and-1
-- https://linux.die.net/man/3/random
 - https://askubuntu.com/questions/749882/how-to-recursively-and-automatically-convert-all-bmp-images-to-png-files-in-a-gi
 - https://www.codeproject.com/tips/800474/function-pointer-in-c-struct
 - https://aticleworld.com/function-pointer-in-c-struct/
