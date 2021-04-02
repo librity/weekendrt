@@ -6,13 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 15:06:25 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 02:57:42 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 14:04:08 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
 
-t_material	*new_material(t_color_3d albedo, scatter_callback scattered)
+t_material	*new_material(t_color_3d albedo, t_scatter_callback scattered)
 {
 	t_material *new;
 
@@ -26,12 +26,12 @@ t_material	*new_material(t_color_3d albedo, scatter_callback scattered)
 
 t_material	*make_lambertian(t_color_3d albedo)
 {
-	return (new_material(albedo, &scattered_lambertian));
+	return (new_material(albedo, scattered_lambertian));
 }
 
 t_material	*make_metallic(t_color_3d albedo)
 {
-	return (new_material(albedo, &scattered_metal));
+	return (new_material(albedo, scattered_metal));
 }
 
 bool		scattered_lambertian(t_ray *incident_ray,
@@ -40,8 +40,8 @@ bool		scattered_lambertian(t_ray *incident_ray,
 									t_ray *scattered_ray,
 									t_color_3d albedo)
 {
-	t_hit_record *record = void_record;
 	(void)incident_ray;
+	t_hit_record *record = void_record;
 	t_vector_3d scatter_direction = add(record->normal, random_unit_vector());
 	if (near_zero(scatter_direction))
 		scatter_direction = record->normal;

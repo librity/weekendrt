@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 02:45:02 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 03:59:35 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_color_3d		render_matte_sphere(t_hit_record record,
 										t_list *spheres,
 										int depth);
 t_color_3d		render_sphere(t_ray ray,
-								t_hit_record record,
+								t_hit_record *record,
 								t_list *spheres,
 								int depth);
 

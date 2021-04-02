@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 02:57:57 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 14:03:50 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "ray.h"
 #include "hittable.h"
 
-typedef bool (*scatter_callback)(t_ray *incident_ray,
+typedef bool (*t_scatter_callback)(t_ray *incident_ray,
 									void *void_record,
 									t_color_3d *attenuation,
 									t_ray *scattered_ray,
@@ -26,10 +26,10 @@ typedef bool (*scatter_callback)(t_ray *incident_ray,
 typedef struct	s_material
 {
 	t_color_3d			albedo;
-	scatter_callback	scattered;
+	t_scatter_callback	scattered;
 }				t_material;
 
-t_material	*new_material(t_color_3d albedo, scatter_callback scattered);
+t_material	*new_material(t_color_3d albedo, t_scatter_callback scattered);
 t_material	*make_lambertian(t_color_3d albedo);
 t_material	*make_metallic(t_color_3d albedo);
 bool		scattered_lambertian(t_ray *incident_ray,
