@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 01:46:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 14:05:20 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 16:21:53 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_color_3d		render_sphere(t_ray ray,
 	if (scattered_ray(&ray, record, &attenuation, &scattered, albedo))
 	{
 		t_color_3d material_color = cast_ray(scattered, spheres, depth - 1);
-		t_color_3d attenuated = cross(attenuation, material_color);
+		t_color_3d attenuated = product(attenuation, material_color);
 		return (attenuated);
 	}
 	return ((t_color_3d){0.0, 0.0, 0.0});
