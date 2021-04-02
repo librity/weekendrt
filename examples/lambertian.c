@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   example.c                                          :+:      :+:    :+:   */
+/*   lambertian.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 02:28:41 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 03:02:09 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,8 @@ static void initialize_spheres(t_list **spheres)
 	t_list *first;
 	t_list *next;
 
-	t_material *material_ground = make_lambertian((t_color_3d){0.8, 0.8, 0.0});
-	t_material *material_center = make_lambertian((t_color_3d){0.7, 0.3, 0.3});
-	t_material *material_left   = make_metallic((t_color_3d){0.8, 0.8, 0.8});
-	t_material *material_right  = make_metallic((t_color_3d){0.8, 0.6, 0.2});
-
-	first = ft_lstnew(new_sphere((t_point_3d){ 0.0, -100.5, -1.0}, 100.0, material_ground));
-	next = ft_lstnew(new_sphere((t_point_3d){ 0.0,    0.0, -1.0},   0.5, material_center));
-	ft_lstadd_back(&first, next);
-	next = ft_lstnew(new_sphere((t_point_3d){-1.0,    0.0, -1.0},   0.5, material_left));
-	ft_lstadd_back(&first, next);
-	next = ft_lstnew(new_sphere((t_point_3d){ 1.0,    0.0, -1.0},   0.5, material_right));
+	first = ft_lstnew(new_sphere((t_point_3d){0.0, -100.5, -1.0}, 100.0));
+	next = ft_lstnew(new_sphere((t_point_3d){0.0, 0.0, -1.0}, 0.5));
 	ft_lstadd_back(&first, next);
 
 	*spheres = first;

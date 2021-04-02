@@ -6,13 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 01:46:52 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/29 04:48:25 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 03:01:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
 
-t_sphere	*new_sphere(t_point_3d center, double radius)
+t_sphere	*new_sphere(t_point_3d center, double radius, t_material *material)
 {
 	t_sphere *new;
 
@@ -21,6 +21,7 @@ t_sphere	*new_sphere(t_point_3d center, double radius)
 		return (NULL);
 	new->center = center;
 	new->radius = radius;
+	new->material = material;
 	return (new);
 }
 
@@ -60,6 +61,7 @@ bool			ray_hits_sphere(const t_ray ray,
 	outward_normal = scalar_div(sphere->radius, outward_normal);
 	// outward_normal = unit(outward_normal);
 	set_face_normal(ray, outward_normal, record);
+	record->material = sphere->material;
 
 	return (true);
 }
@@ -73,4 +75,22 @@ t_color_3d		render_matte_sphere(t_hit_record record,
 	t_color_3d shade = cast_ray(diffuse_ray, spheres, depth - 1);
 	shade = scalar_times(0.5, shade);
 	return (shade);
+}
+
+t_color_3d		render_sphere(t_ray ray,
+								t_hit_record record,
+								t_list *spheres,
+								int depth)
+{
+	t_ray		scattered;
+	t_color_3d	attenuation;
+	t_material	*material = record.material;
+
+	if (material->scattered(&ray, &record, &attenuation, &scattered, material->albedo))
+	{
+		t_color_3d material_color = cast_ray(scattered, spheres, depth - 1);
+		t_color_3d attenuated = cross(attenuation, material_color);
+		return (attenuated);
+	}
+	return ((t_color_3d){0.0, 0.0, 0.0});
 }

@@ -42,7 +42,11 @@
 	"rtmath.h": "c",
 	"limits": "c",
 	"rtrandom.h": "c",
-	"time.h": "c"
+	"time.h": "c",
+	"ray_tracer.h": "c",
+	"hittable_material.h": "c",
+	"sphere.h": "c",
+	"hittable.h": "c"
 },
   "editor.detectIndentation": false
 }

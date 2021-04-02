@@ -251,6 +251,9 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - https://stackoverflow.com/questions/33058848/generate-a-random-double-between-1-and-1
 - https://linux.die.net/man/3/random
 - https://askubuntu.com/questions/749882/how-to-recursively-and-automatically-convert-all-bmp-images-to-png-files-in-a-gi
+- https://www.codeproject.com/tips/800474/function-pointer-in-c-struct
+- https://aticleworld.com/function-pointer-in-c-struct/
+- https://aticleworld.com/function-pointer-in-c/
 
 ## ⬇️ Markdown References <a name="markdown"></a>
 

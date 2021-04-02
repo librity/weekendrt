@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 04:24:15 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/29 04:18:34 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 01:55:40 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 void		inspect(t_vector_3d vector)
 {
 	printf("%f %f %f\n", vector.x, vector.y, vector.z);
+}
+
+bool		near_zero(t_vector_3d vector)
+{
+	const float cuttoff = 1e-8;
+	bool cuts_off_x = ft_absolute_value_f(vector.x) < cuttoff;
+	bool cuts_off_y = ft_absolute_value_f(vector.y) < cuttoff;
+	bool cuts_off_z = ft_absolute_value_f(vector.z) < cuttoff;
+	return (cuts_off_x && cuts_off_y && cuts_off_z);
 }
 
 double		length_squared(t_vector_3d vector)
@@ -140,4 +149,11 @@ t_vector_3d	vsqrt(t_vector_3d vector)
 	vector.y = sqrt(vector.y);
 	vector.z = sqrt(vector.z);
 	return (vector);
+}
+
+t_vector_3d	reflect(const t_vector_3d incident, const t_vector_3d normal)
+{
+	double factor = 2.0 * dot(incident, normal);
+	t_vector_3d complement = scalar_times(factor, normal);
+	return (sub(incident, complement));
 }
