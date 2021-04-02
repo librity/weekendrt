@@ -100,6 +100,8 @@ Multiple materials:
   <img src="gallery/mario_galaxy.png" />
 </p>
 
+[and much, much more...](https://github.com/librity/weekendrt/tree/main/gallery)
+
 ### 🖼️ Rendering `.bmp`
 
 `ft_libbmp` implementation based on:
@@ -149,7 +151,7 @@ I transformed all the pictures in the gallery to `.png`
 so this README would load faster,
 but they were all originally generated as `.bmp` with `ft_libbmp`.
 
-## 🧑‍🏫 Math <a name = "math"></a>
+## 🤓 Math <a name = "math"></a>
 
 ### 🤝 Conventions
 
@@ -221,7 +223,7 @@ on an arbitrary point with a normal **`n`**
 can be calculated with:
 
 <p align="center">
-  <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\displaystyle&space;\mathbf{r}&space;=&space;\mathbf{v}&space;&plus;&space;2\mathbf{b}&space;=&space;\mathbf{v}&space;&plus;&space;2&space;(\mathbf{r}&space;\cdot&space;\mathbf{n})&space;\mathbf{n}&space;\quad&space;(V)" title="\inline \displaystyle \mathbf{r} = \mathbf{v} + 2\mathbf{b} = \mathbf{v} + 2 (\mathbf{r} \cdot \mathbf{n}) \mathbf{n} \quad (V)" />
+  <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\displaystyle&space;\mathbf{r}&space;=&space;\mathbf{v}&space;&plus;&space;2\mathbf{b}&space;=&space;\mathbf{v}&space;-&space;2&space;(\mathbf{r}&space;\cdot&space;\mathbf{n})&space;\mathbf{n}&space;\quad&space;(V)" title="\inline \displaystyle \mathbf{r} = \mathbf{v} + 2\mathbf{b} = \mathbf{v} - 2 (\mathbf{r} \cdot \mathbf{n}) \mathbf{n} \quad (V)" />
 </p>
 
 <p align="center">
