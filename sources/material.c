@@ -6,38 +6,56 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 15:06:25 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 19:57:29 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 20:35:04 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
 
-t_material	*new_material(t_color_3d albedo, t_scatter_callback scattered)
+t_material	*prototype_material(t_scatter_callback scattered)
 {
 	t_material *new;
 
 	new = (t_material *)malloc(sizeof(t_material));
 	if (new == NULL)
 		return (NULL);
-	new->albedo = albedo;
 	new->scattered = scattered;
 	return (new);
 }
 
+void		free_materials(t_list **materials)
+{
+	ft_lstclear(materials, &free);
+}
+
 t_material	*make_lambertian(t_color_3d albedo)
 {
-	return (new_material(albedo, &scatter_matte));
+	t_material *new;
+
+	new = prototype_material(&scatter_matte);
+	new->albedo = albedo;
+	return (new);
 }
 
 t_material	*make_metallic(t_color_3d albedo, double fuzziness)
 {
 	t_material *new;
 
-	new = new_material(albedo, &scatter_metal);
+	new = prototype_material(&scatter_metal);
+	new->albedo = albedo;
 	if (fuzziness < 1.0)
 		new->fuzziness = fuzziness;
 	else
 		new->fuzziness = 1.0;
+	return (new);
+}
+
+t_material	*make_dielectric(double refraction_index)
+{
+	t_material *new;
+
+	new = prototype_material(&scatter_dielectric);
+	new->refraction_index = refraction_index;
 	return (new);
 }
 
@@ -74,4 +92,27 @@ bool		scatter_metal(t_ray incident_ray,
 	*scattered_ray = (t_ray){record->intersection, fuzzed_reflected};
 	*attenuation = material->albedo;
 	return (dot(scattered_ray->direction, record->normal) > 0);
+}
+
+bool		scatter_dielectric(t_ray incident_ray,
+								void *void_record,
+								t_color_3d *attenuation,
+								t_ray *scattered_ray)
+{
+	t_hit_record *record = void_record;
+	t_material *material = record->material;
+	double refraction_index = material->refraction_index;
+	double refraction_ratio;
+
+	*attenuation = (t_color_3d){1.0, 1.0, 1.0};
+	if (record->front_face)
+		refraction_ratio = 1.0 / refraction_index;
+	else
+		refraction_ratio = refraction_index;
+
+	t_color_3d unit_direction = unit(incident_ray.direction);
+	t_color_3d refracted = refract(unit_direction, record->normal, refraction_ratio);
+
+	*scattered_ray = (t_ray){record->intersection, refracted};
+	return true;
 }

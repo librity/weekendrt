@@ -6,21 +6,33 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 19:41:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 20:29:52 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
 
-static void initialize_spheres(t_list **spheres)
+static void initialize_world(t_list **materials, t_list **spheres)
 {
 	t_list *first;
 	t_list *next;
 
 	t_material *material_ground = make_lambertian((t_color_3d){0.8, 0.8, 0.0});
-	t_material *material_left   = make_metallic((t_color_3d){0.8, 0.8, 0.8}, 0.3);
-	t_material *material_center = make_lambertian((t_color_3d){0.7, 0.3, 0.3});
+	// t_material *material_left   = make_metallic((t_color_3d){0.8, 0.8, 0.8}, 0.3);
+	// t_material *material_center = make_lambertian((t_color_3d){0.7, 0.3, 0.3});
+	t_material *material_left   = make_dielectric(1.5);
+	t_material *material_center = make_dielectric(1.5);
 	t_material *material_right  = make_metallic((t_color_3d){0.8, 0.6, 0.2}, 1.0);
+
+	first = ft_lstnew(material_ground);
+	next = ft_lstnew(material_left);
+	ft_lstadd_back(&first, next);
+	next = ft_lstnew(material_center);
+	ft_lstadd_back(&first, next);
+	next = ft_lstnew(material_right);
+	ft_lstadd_back(&first, next);
+
+	*materials = first;
 
 	first = ft_lstnew(new_sphere((t_point_3d){ 0.0, -100.5, -1.0}, 100.0, material_ground));
 	next = ft_lstnew(new_sphere( (t_point_3d){-1.0,    0.0, -1.0},   0.5, material_left));
@@ -45,7 +57,7 @@ static void initialize_ray_tracer(t_ray_tracer *rt, char **arguments)
 	rt->max_depth = 50;
 
 	initialize_camera(&(rt->camera), rt->aspect_ratio);
-	initialize_spheres(&(rt->spheres));
+	initialize_world(&(rt->materials), &(rt->spheres));
 }
 
 int main(int argc, char **argv)
@@ -60,7 +72,7 @@ int main(int argc, char **argv)
 	ft_putstr("Scaning lines: ");
 	generate_image(&image, rt, rt.camera);
 	ft_putstr(" Done!\n");
-	free_spheres(&(rt.spheres));
+	cleanup_ray_tracer(&rt);
 
 	ft_save_bitmap(&image, rt.file_name);
 	ft_free_bitmap(&image);

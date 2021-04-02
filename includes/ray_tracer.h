@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 18:50:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/29 03:53:34 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 20:25:45 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,18 @@ typedef struct	s_ray_tracer
 	int			max_depth;
 
 	t_camera	camera;
+
+	t_list		*materials;
 	t_list		*spheres;
 }				t_ray_tracer;
 
+t_color_3i		trace_sample_rays(const t_ray_tracer rt,
+									const t_camera camera,
+									int row,
+									int column);
 void			generate_image(t_bitmap_image *image,
 								const t_ray_tracer rt,
 								const t_camera camera);
+void			cleanup_ray_tracer(t_ray_tracer *rt);
 
 #endif

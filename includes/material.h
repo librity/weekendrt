@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 19:57:33 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 20:29:30 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,17 @@ typedef struct	s_material
 {
 	t_color_3d			albedo;
 	double				fuzziness;
+	double				refraction_index;
 	t_scatter_callback	scattered;
 }				t_material;
 
-t_material	*new_material(t_color_3d albedo, t_scatter_callback scattered);
+t_material	*prototype_material(t_scatter_callback scattered);
+void		free_materials(t_list **materials);
+
 t_material	*make_lambertian(t_color_3d albedo);
 t_material	*make_metallic(t_color_3d albedo, double fuzziness);
+t_material	*make_dielectric(double refraction_index);
+
 bool		scatter_matte(t_ray incident_ray,
 									void *void_record,
 									t_color_3d *attenuation,
@@ -40,5 +45,9 @@ bool		scatter_metal(t_ray incident_ray,
 							void *void_record,
 							t_color_3d *attenuation,
 							t_ray *scattered_ray);
+bool		scatter_dielectric(t_ray incident_ray,
+								void *void_record,
+								t_color_3d *attenuation,
+								t_ray *scattered_ray);
 
 #endif
