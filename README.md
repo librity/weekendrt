@@ -38,14 +38,14 @@ A plain C implementation of the Weekend Raytracer challenge.
 I just followed the instructions laid out on the online book:
 
 ```elixir
-    Title (series): “Ray Tracing in One Weekend Series”
-    Title (book): “Ray Tracing in One Weekend”
-    Author: Peter Shirley
-    Editors: Steve Hollasch, Trevor David Black
-    Version/Edition: v3.2.3
-    Date: 2020-12-07
-    URL (series): https://github.com/RayTracing/raytracing.github.io
-    URL (book): https://raytracing.github.io/books/RayTracingInOneWeekend.html
+Title (series): “Ray Tracing in One Weekend Series”
+Title (book): “Ray Tracing in One Weekend”
+Author: Peter Shirley
+Editors: Steve Hollasch, Trevor David Black
+Version/Edition: v3.2.3
+Date: 2020-12-07
+URL (series): https://github.com/RayTracing/raytracing.github.io
+URL (book): https://raytracing.github.io/books/RayTracingInOneWeekend.html
 ```
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
@@ -149,7 +149,7 @@ with some padding information.
   <img src=".github/bitmap_hexdump.png" />
 </p>
 
-My implementation of it is extremely crummy and doesn't handle compression.
+My bitmap implementation is very lousy and doesn't handle compression.
 This makes for 1080p files that are over 5 mb big.
 I transformed all the pictures in the gallery to `.png`
 so this README would load faster,
