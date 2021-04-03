@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 17:51:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 04:15:24 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 17:06:51 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		initialize_camera(t_camera *camera,
 	viewport_height = 2.0 * height;
 	viewport_width = aspect_ratio * viewport_height;
 	set_orthonormal_basis(camera, p);
-	set_position(camera, p,  viewport_width, viewport_height);
+	set_position(camera, p, viewport_width, viewport_height);
 	set_lower_left_corner(camera, p);
 	camera->lens_radius = p.aperture / 2.0;
 }

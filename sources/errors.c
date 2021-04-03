@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 17:19:37 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 12:18:52 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 17:19:36 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,3 @@ void		handle_arguments(int argument_count)
 	if (argument_count != 2)
 		kill_ray_tracer(BAD_ARGUMENTS);
 }
-

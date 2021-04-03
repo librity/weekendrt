@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 01:08:07 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 02:18:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 16:55:10 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	create_matte_sphere(t_list **materials,
 									double radius,
 									t_color_3d albedo)
 {
-	t_material *material;
-	t_sphere *sphere;
+	t_material	*material;
+	t_sphere	*sphere;
 
 	material = make_matte(albedo);
 	*materials = ft_lstnew(material);

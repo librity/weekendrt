@@ -6,13 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 02:44:49 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 04:07:24 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 17:10:57 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
 
-void			set_record(t_hit_record *target, t_hit_record record)
+void	set_record(t_hit_record *target, t_hit_record record)
 {
 	target->intersection = record.intersection;
 	target->normal = record.normal;

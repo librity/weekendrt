@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 14:50:17 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 16:19:20 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 17:06:28 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 double		random_double(void)
 {
-	return rand() / (RAND_MAX + 1.0);
+	return (rand() / (RAND_MAX + 1.0));
 }
 
 double		random_from(double min, double max)
 {
-	return min + (max - min) * random_double();
+	return (min + (max - min) * random_double());
 }
 
 double		canonical_random(void)
@@ -29,12 +29,12 @@ double		canonical_random(void)
 
 t_vector_3d	random_vector(void)
 {
-	return ((t_vector_3d){random_double(), random_double(), random_double()});
+	return (vector(random_double(), random_double(), random_double()));
 }
 
 t_vector_3d	random_vector_in(double min, double max)
 {
-	return ((t_vector_3d){random_from(min, max),
+	return (vector(random_from(min, max),
 							random_from(min, max),
-							random_from(min, max)});
+							random_from(min, max)));
 }

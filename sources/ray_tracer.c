@@ -6,13 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 17:51:38 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 13:21:29 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 17:26:30 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
 
-clock_t 	log_start(t_ray_tracer rt)
+clock_t		log_start(t_ray_tracer rt)
 {
 	clock_t timer;
 

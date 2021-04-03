@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 16:42:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 17:00:32 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 bool			near_zero(t_vector_3d vector);
 
-t_vector_3d		reflect(const t_vector_3d incident, const t_vector_3d normal);
-t_vector_3d		refract(const t_vector_3d incident,
-						const t_vector_3d normal,
+t_vector_3d		reflect(t_vector_3d incident, t_vector_3d normal);
+t_vector_3d		refract(t_vector_3d incident,
+						t_vector_3d normal,
 						double refration_ration);
 
 #endif

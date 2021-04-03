@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 15:54:08 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 17:29:09 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ static void initialize_world(t_list **materials, t_list **spheres)
 
 	*materials = first;
 
-	const double pi = RTPI;
-	double radius = cos(pi / 4);
+	double radius = cos(pi() / 4);
 
 	first = ft_lstnew(new_sphere((t_point_3d){-radius, 0.0, -1.0}, radius, material_left));
 	next = ft_lstnew(new_sphere( (t_point_3d){ radius, 0.0, -1.0}, radius, material_right));

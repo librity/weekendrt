@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:35:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 14:23:03 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 17:24:24 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static bool	vectorial_quadratic(const t_ray ray,
 								double max_translation,
 								double *root)
 {
-	const t_vector_3d center_to_origin = sub(ray.origin, sphere->center);
-	t_quadratic_result r;
+	const t_vector_3d	center_to_origin = sub(ray.origin, sphere->center);
+	t_quadratic_result	r;
 
 	r.a = length_squared(ray.direction);
 	r.half_b = dot(center_to_origin, ray.direction);

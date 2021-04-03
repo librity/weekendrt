@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 03:19:59 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 16:18:59 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 17:28:28 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define ALGEBRA_H
 
 # include <float.h>
-
-# define RTINFINITY DBL_MAX;
-# define RTPI 3.1415926535897932385;
 
 typedef struct	s_quadratic_result
 {
@@ -27,6 +24,9 @@ typedef struct	s_quadratic_result
 	double	d_sqrt;
 	double	root;
 }				t_quadratic_result;
+
+double			infinity(void);
+double			pi(void);
 
 double			degrees_to_radians(double degrees);
 bool			quadratic(t_quadratic_result r,
