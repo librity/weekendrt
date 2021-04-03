@@ -76,7 +76,7 @@ Rainbow gradient:
   <img src="gallery/candy.png" />
 </p>
 
-Tame Imapla's next album cover:
+Tame Impala's next album cover:
 
 <p align="center">
   <img src="gallery/chip_off_the_old_ball.png" />
@@ -95,6 +95,10 @@ Anti-aliasing, 100 samples per pixel:
 </p>
 
 Multiple materials:
+
+<p align="center">
+  <img src="gallery/omni_glass.png" />
+</p>
 
 <p align="center">
   <img src="gallery/mario_galaxy.png" />
@@ -234,7 +238,7 @@ can be calculated with:
 
 Given an angle of `θ` of an incident ray **`R`**,
 and the refractive indices of the two surfaces `η` and `η'`,
-the andgle `θ'` of the refracted ray **`R'`** can be calculated with:
+we calculate the angle `θ'` of the refracted ray **`R'`** with:
 
 <p align="center">
   <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\displaystyle&space;\sin\theta'&space;=&space;\frac{\eta}{\eta'}&space;\cdot&space;\sin\theta&space;\quad&space;(VI)" title="\inline \displaystyle \sin\theta' = \frac{\eta}{\eta'} \cdot \sin\theta \quad (VI)" />
@@ -242,7 +246,7 @@ the andgle `θ'` of the refracted ray **`R'`** can be calculated with:
 
 The refracted ray **`R'`** has a perpendicular component **`R′⊥`**
 and a parallel component **`R′∥`**,
-which can be calculated with:
+which we can calculate with:
 
 <p align="center">
   <img src="https://latex.codecogs.com/png.image?\dpi{150}&space;\inline&space;\displaystyle&space;\mathbf{R'}&space;=&space;\mathbf{R'}_{\bot}&space;&plus;&space;\mathbf{R'}_{\parallel}&space;=&space;\frac{\eta}{\eta'}&space;(\mathbf{R}&space;&plus;&space;(\mathbf{-R}&space;\cdot&space;\mathbf{n})&space;\mathbf{n})&space;-&space;\sqrt{1&space;-&space;|\mathbf{R'}_{\bot}|^2}&space;\mathbf{n}&space;\quad&space;(VII)" title="\inline \displaystyle \mathbf{R'} = \mathbf{R'}_{\bot} + \mathbf{R'}_{\parallel} = \frac{\eta}{\eta'} (\mathbf{R} + (\mathbf{-R} \cdot \mathbf{n}) \mathbf{n}) - \sqrt{1 - |\mathbf{R'}_{\bot}|^2} \mathbf{n} \quad (VII)" />
@@ -275,6 +279,9 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - https://en.wikipedia.org/wiki/Specular_reflection#Direction_of_reflection
 - https://en.wikipedia.org/wiki/Dielectric
 - https://en.wikipedia.org/wiki/Fresnel_equations
+- https://en.wikipedia.org/wiki/Schlick%27s_approximation
+- https://graphicscompendium.com/raytracing/11-fresnel-beer
+- https://gaim.umbc.edu/2010/09/07/approximation/
 - https://en.wikipedia.org/wiki/Beer%E2%80%93Lambert_law
 - https://stats.stackexchange.com/questions/137907/division-of-vectors
 - http://www.r-tutor.com/r-introduction/vector/vector-arithmetics

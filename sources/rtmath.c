@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 03:23:51 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 18:09:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 21:05:22 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,12 @@ double	degrees_to_radians(double degrees)
 	const double pi = RTPI;
 
 	return (degrees * pi) / 180.0;
+}
+
+double	schlicks_approximation(double cosine, double refraction_ratio)
+{
+	double coefficient = (1 - refraction_ratio) / (1 + refraction_ratio);
+	coefficient = coefficient * coefficient;
+	coefficient = coefficient + (1 - coefficient) * pow((1 - cosine), 5);
+	return (coefficient);
 }

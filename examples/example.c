@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 20:29:52 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 21:27:48 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,35 @@ static void initialize_world(t_list **materials, t_list **spheres)
 	t_list *first;
 	t_list *next;
 
-	t_material *material_ground = make_lambertian((t_color_3d){0.8, 0.8, 0.0});
-	// t_material *material_left   = make_metallic((t_color_3d){0.8, 0.8, 0.8}, 0.3);
-	// t_material *material_center = make_lambertian((t_color_3d){0.7, 0.3, 0.3});
-	t_material *material_left   = make_dielectric(1.5);
-	t_material *material_center = make_dielectric(1.5);
-	t_material *material_right  = make_metallic((t_color_3d){0.8, 0.6, 0.2}, 1.0);
+	t_material *lime_green_matte = make_lambertian((t_color_3d){0.8, 0.8, 0.0});
+	t_material *glass   = make_dielectric(1.5);
+	t_material *blue_matte = make_lambertian((t_color_3d){0.1, 0.2, 0.5});
+	t_material *gold  = make_metallic((t_color_3d){0.8, 0.6, 0.2}, 0.0);
 
-	first = ft_lstnew(material_ground);
-	next = ft_lstnew(material_left);
+	first = ft_lstnew(lime_green_matte);
+	next = ft_lstnew(glass);
 	ft_lstadd_back(&first, next);
-	next = ft_lstnew(material_center);
+	next = ft_lstnew(blue_matte);
 	ft_lstadd_back(&first, next);
-	next = ft_lstnew(material_right);
+	next = ft_lstnew(gold);
 	ft_lstadd_back(&first, next);
 
 	*materials = first;
 
-	first = ft_lstnew(new_sphere((t_point_3d){ 0.0, -100.5, -1.0}, 100.0, material_ground));
-	next = ft_lstnew(new_sphere( (t_point_3d){-1.0,    0.0, -1.0},   0.5, material_left));
+	first = ft_lstnew(new_sphere((t_point_3d){ 0.0, -100.5, -1.0}, 100.0, lime_green_matte));
+	next = ft_lstnew(new_sphere( (t_point_3d){-1.0,    0.0, -1.0},   0.5, blue_matte));
 	ft_lstadd_back(&first, next);
-	next = ft_lstnew(new_sphere( (t_point_3d){ 0.0,    0.0, -1.0},   0.5, material_center));
+	next = ft_lstnew(new_sphere( (t_point_3d){ 0.0,    0.0, -1.0},   0.5, glass));
 	ft_lstadd_back(&first, next);
-	next = ft_lstnew(new_sphere( (t_point_3d){ 1.0,    0.0, -1.0},   0.5, material_right));
+	next = ft_lstnew(new_sphere( (t_point_3d){ 0.0,    0.0, -1.0},   -0.4, glass));
+	ft_lstadd_back(&first, next);
+	next = ft_lstnew(new_sphere( (t_point_3d){ 0.0,    0.0, -1.0},   0.3, glass));
+	ft_lstadd_back(&first, next);
+	next = ft_lstnew(new_sphere( (t_point_3d){ 0.0,    0.0, -1.0},   -0.2, glass));
+	ft_lstadd_back(&first, next);
+	next = ft_lstnew(new_sphere( (t_point_3d){ 0.0,    0.0, -1.0},   0.1, glass));
+	ft_lstadd_back(&first, next);
+	next = ft_lstnew(new_sphere( (t_point_3d){ 1.0,    0.0, -1.0},   0.5, gold));
 	ft_lstadd_back(&first, next);
 
 	*spheres = first;
@@ -53,7 +59,7 @@ static void initialize_ray_tracer(t_ray_tracer *rt, char **arguments)
 	rt->width = 1920;
 	// rt->width = 400;
 	rt->height = (int)(rt->width / rt->aspect_ratio);
-	rt->samples_per_pixel = 10;
+	rt->samples_per_pixel = 100;
 	rt->max_depth = 50;
 
 	initialize_camera(&(rt->camera), rt->aspect_ratio);

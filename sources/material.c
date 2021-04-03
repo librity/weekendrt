@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 15:06:25 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 20:35:04 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 21:34:57 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,18 +101,29 @@ bool		scatter_dielectric(t_ray incident_ray,
 {
 	t_hit_record *record = void_record;
 	t_material *material = record->material;
+	t_vector_3d direction;
 	double refraction_index = material->refraction_index;
 	double refraction_ratio;
 
-	*attenuation = (t_color_3d){1.0, 1.0, 1.0};
+	*attenuation = (t_color_3d){0.99, 0.99, 0.99};
 	if (record->front_face)
 		refraction_ratio = 1.0 / refraction_index;
 	else
 		refraction_ratio = refraction_index;
 
-	t_color_3d unit_direction = unit(incident_ray.direction);
-	t_color_3d refracted = refract(unit_direction, record->normal, refraction_ratio);
+	t_vector_3d unit_direction = unit(incident_ray.direction);
+	double cos_theta = dot(negative(unit_direction), record->normal);
+	cos_theta = smallest_d(cos_theta, 1.0);
+	double sin_theta = sqrt(1.0 - cos_theta * cos_theta);
+	double reflectance = schlicks_approximation(cos_theta, refraction_ratio);
 
-	*scattered_ray = (t_ray){record->intersection, refracted};
+	bool cannot_refract = refraction_ratio * sin_theta > 1.0;
+	bool random_reflection = reflectance > random_double();
+	if (cannot_refract || random_reflection)
+		direction = reflect(unit_direction, record->normal);
+	else
+		direction = refract(unit_direction, record->normal, refraction_ratio);
+
+	*scattered_ray = (t_ray){record->intersection, direction};
 	return true;
 }
