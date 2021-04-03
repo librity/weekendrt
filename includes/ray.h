@@ -6,14 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 04:23:59 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 13:22:03 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAY_H
 # define RAY_H
 
-# include <vector_3d.h>
 # include <ray_tracer.h>
 
 typedef struct	s_ray

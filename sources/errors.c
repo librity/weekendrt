@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 17:19:37 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 17:55:54 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 12:18:52 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	print_error(char *message)
 
 static char	*fetch_error_message(t_rt_error code)
 {
-	static char	*error_messages[GENERIC_RAY_TRACER_ERROR] = {
+	static char *error_messages[GENERIC_RAY_TRACER_ERROR] = {
 		"Expected one argument as a filename.",
 		"Generic ray tracer error.",
 	};

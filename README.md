@@ -90,6 +90,18 @@ Anti-aliasing, 100 samples per pixel:
   <img src="gallery/a_million_little_samples.png" />
 </p>
 
+Dynamic camera:
+
+<p align="center">
+  <img src="gallery/zoomers.png" />
+</p>
+
+Defocus blur (a.k.a. Depth of field):
+
+<p align="center">
+  <img src="gallery/dude_deep.png" />
+</p>
+
 Multiple materials:
 
 <p align="center">
@@ -102,18 +114,6 @@ Multiple materials:
 
 <p align="center">
   <img src="gallery/grand_finale.png" />
-</p>
-
-Dynamic camera:
-
-<p align="center">
-  <img src="gallery/zoomers.png" />
-</p>
-
-Defocus blur (a.k.a. Depth of field):
-
-<p align="center">
-  <img src="gallery/dude_deep.png" />
 </p>
 
 [and much, much more...](https://github.com/librity/weekendrt/tree/main/gallery)
@@ -313,6 +313,7 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - https://overiq.com/c-programming-101/fwrite-function-in-c/
 - https://www.c-programming-simple-steps.com/typedef-in-c.html
 - https://www.geeksforgeeks.org/use-fflushstdin-c/
+- https://www.geeksforgeeks.org/how-to-measure-time-taken-by-a-program-in-c/
 - https://www.tutorialspoint.com/c_standard_library/c_function_fwrite.htm
 - https://www.tutorialspoint.com/c_standard_library/c_function_perror.htm
 - https://stackoverflow.com/questions/4264127/correct-format-specifier-for-double-in-printf

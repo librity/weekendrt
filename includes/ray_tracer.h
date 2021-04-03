@@ -6,14 +6,15 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 18:50:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 23:43:47 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 13:16:55 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAY_TRACER_H
 # define RAY_TRACER_H
 
-# include <vector_3d.h>
+# include <time.h>
+
 # include <camera.h>
 
 typedef struct	s_ray_tracer
@@ -31,6 +32,9 @@ typedef struct	s_ray_tracer
 	t_list		*materials;
 	t_list		*spheres;
 }				t_ray_tracer;
+
+clock_t 		log_start(t_ray_tracer rt);
+clock_t			log_end(clock_t timer);
 
 t_color_3i		trace_sample_rays(const t_ray_tracer rt,
 									const t_camera camera,

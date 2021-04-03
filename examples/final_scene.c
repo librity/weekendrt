@@ -6,13 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 03:32:25 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 13:19:43 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
 
-static void create_random(t_list **materials, t_list **spheres)
+static void randomize_world(t_list **materials, t_list **spheres)
 {
 	t_color_3d albedo;
 	double fuzz;
@@ -73,7 +73,7 @@ static void initialize_world(t_list **materials, t_list **spheres)
 	add_dielectric_sphere(materials, spheres, point(0, 1, 0), 1.0,
 						  1.5);
 
-	create_random(materials, spheres);
+	randomize_world(materials, spheres);
 }
 
 static void configure_camera(t_ray_tracer *rt)
@@ -109,27 +109,19 @@ static void initialize_ray_tracer(t_ray_tracer *rt, char **arguments)
 	initialize_world(&(rt->materials), &(rt->spheres));
 }
 
-static void log_start(t_ray_tracer rt)
-{
-	ft_putstr("\nMaterials: ");
-	ft_putnbr(ft_lstsize(rt.materials));
-	ft_putstr("\nSpheres: ");
-	ft_putnbr(ft_lstsize(rt.spheres));
-	ft_putstr("\nScaning lines: ");
-}
-
 int main(int argc, char **argv)
 {
 	t_ray_tracer rt;
 	t_bitmap_image image;
+	clock_t timer;
 
 	handle_arguments(argc);
 	initialize_ray_tracer(&rt, argv);
 	ft_initialize_bitmap(&image, rt.width, rt.height);
 
-	log_start(rt);
+	timer = log_start(rt);
 	generate_image(&image, rt, rt.camera);
-	ft_putstr(" Done!\n");
+	log_end(timer);
 	cleanup_ray_tracer(&rt);
 
 	ft_save_bitmap(&image, rt.file_name);

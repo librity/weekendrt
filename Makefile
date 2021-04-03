@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/04/03 04:29:31 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/04/03 13:08:29 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,11 @@ SOURCE_FILES = rtmath.c vector_3d.c \
 	\
 	color.c pixel.c \
 	\
-	ray.c ray_caster.c ray_effects.c hittable.c material.c sphere.c \
+	ray.c ray_caster.c ray_effects.c hittable.c \
+	\
+	sphere.c hittable_sphere.c \
+	\
+	material.c matte.c metallic.c dielectric.c \
 	\
 	world.c camera.c ray_tracer.c errors.c
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))

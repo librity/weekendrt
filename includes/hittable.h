@@ -6,16 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 04:16:02 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 13:22:29 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HITTABLE_H
 # define HITTABLE_H
 
-# include <vector_3d.h>
-# include <ray.h>
-# include <color.h>
 # include <material.h>
 
 typedef struct	s_hit_record
