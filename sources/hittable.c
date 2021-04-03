@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 02:44:49 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 13:50:08 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 04:07:24 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@ void	set_face_normal(const t_ray ray,
 						t_hit_record *record)
 {
 	record->front_face = dot(ray.direction, outward_normal) < 0;
-	record->normal = record->front_face ? outward_normal : negative(outward_normal);
+	if (record->front_face)
+		record->normal = outward_normal;
+	else
+		record->normal = negative(outward_normal);
 }

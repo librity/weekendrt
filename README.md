@@ -21,10 +21,8 @@
 
 - [About](#about)
 - [Installation](#getting_started)
-- [Usage](#usage)
 - [Gallery](#gallery)
 - [Math](#math)
-- [Tests](#tests)
 - [Github Actions](#github_actions)
 - [Repos](#repos)
 - [References](#references)
@@ -66,8 +64,6 @@ $ make example
 
 A beautiful image should pop out of your terminal like _magic_.
 
-## 🎈 Usage <a name="usage"></a>
-
 ## 🎨 Gallery <a name="gallery"></a>
 
 Rainbow gradient:
@@ -104,13 +100,17 @@ Multiple materials:
   <img src="gallery/mario_galaxy.png" />
 </p>
 
+<p align="center">
+  <img src="gallery/grand_finale.png" />
+</p>
+
 Dynamic camera:
 
 <p align="center">
   <img src="gallery/zoomers.png" />
 </p>
 
-Defocus Blur (a.k.a. Depth of Field):
+Defocus blur (a.k.a. Depth of field):
 
 <p align="center">
   <img src="gallery/dude_deep.png" />
@@ -267,8 +267,6 @@ which we can calculate with:
 <p align="center">
   <img src=".github/snells_law.jpg" />
 </p>
-
-## ✅ Tests <a name = "tests"></a>
 
 ## 🐙 Github Actions <a name = "github_actions"></a>
 

@@ -50,7 +50,9 @@
 	"algorithm": "c",
 	"chrono": "c",
 	"ray_effects.h": "c",
-	"string_view": "c"
+	"string_view": "c",
+	"errors.h": "c",
+	"pixel.h": "c"
 },
   "editor.detectIndentation": false
 }
