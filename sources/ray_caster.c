@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 16:21:01 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 17:23:08 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 18:56:07 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,19 @@ t_color_3d		hit_gradient_background(const t_ray ray,
 	return (cast);
 }
 
+static void		handle_hit(t_hit_record *record,
+							t_hit_record current_record,
+							double *closest_so_far,
+							bool *hit_anything)
+{
+	*hit_anything = true;
+	if (current_record.translation < *closest_so_far)
+	{
+		*closest_so_far = current_record.translation;
+		set_record(record, current_record);
+	}
+}
+
 bool			hit_any_spheres(const t_ray ray,
 									t_list *spheres,
 									t_hit_record *record)
@@ -45,16 +58,9 @@ bool			hit_any_spheres(const t_ray ray,
 	sphere_count = ft_lstsize(spheres);
 	while (sphere_count--)
 	{
-		if (ray_hits_sphere(ray, spheres->content, &current_record,
-							0.001, closest_so_far))
-		{
-			hit_anything = true;
-			if (current_record.translation < closest_so_far)
-			{
-				closest_so_far = current_record.translation;
-				set_record(record, current_record);
-			}
-		}
+		if (ray_hits_sphere((t_ray_hits_sphere_params){
+			ray, spheres->content, &current_record, 0.001, closest_so_far}))
+			handle_hit(record, current_record, &closest_so_far, &hit_anything);
 		spheres = spheres->next;
 	}
 	return (hit_anything);
