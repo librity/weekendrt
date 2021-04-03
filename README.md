@@ -104,6 +104,12 @@ Multiple materials:
   <img src="gallery/mario_galaxy.png" />
 </p>
 
+Camera effects:
+
+<p align="center">
+  <img src="gallery/zoomers.png" />
+</p>
+
 [and much, much more...](https://github.com/librity/weekendrt/tree/main/gallery)
 
 ### 🖼️ Rendering `.bmp`
@@ -280,6 +286,7 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - https://en.wikipedia.org/wiki/Dielectric
 - https://en.wikipedia.org/wiki/Fresnel_equations
 - https://en.wikipedia.org/wiki/Schlick%27s_approximation
+- https://en.wikipedia.org/wiki/Thin_lens
 - https://graphicscompendium.com/raytracing/11-fresnel-beer
 - https://gaim.umbc.edu/2010/09/07/approximation/
 - https://en.wikipedia.org/wiki/Beer%E2%80%93Lambert_law

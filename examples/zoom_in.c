@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   example.c                                          :+:      :+:    :+:   */
+/*   zoom_in.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 22:37:03 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 22:35:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void initialize_ray_tracer(t_ray_tracer *rt, char **arguments)
 	rt->width = 1920;
 	// rt->width = 400;
 	rt->height = (int)(rt->width / rt->aspect_ratio);
-	rt->samples_per_pixel = 100;
+	rt->samples_per_pixel = 10;
 	rt->max_depth = 50;
 
 	initialize_camera(&(rt->camera),
