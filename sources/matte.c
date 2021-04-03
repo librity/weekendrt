@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:23:59 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 12:25:32 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 16:24:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool		scatter_matte(t_ray incident_ray,
 	scatter_direction = add(record->normal, random_unit_vector());
 	if (near_zero(scatter_direction))
 		scatter_direction = record->normal;
-	*scattered_ray = (t_ray){record->intersection, scatter_direction};
+	*scattered_ray = ray(record->intersection, scatter_direction);
 	*attenuation = material->albedo;
 	return true;
 }

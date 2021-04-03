@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_1.c                                            :+:      :+:    :+:   */
+/*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 16:21:01 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 04:18:23 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 16:24:00 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
 
-t_point_3d		ray_at_t(double translation, t_ray ray)
+t_ray		ray(t_point_3d	origin, t_vector_3d	direction)
+{
+	t_ray new_ray;
+
+	new_ray.origin = origin;
+	new_ray.direction = direction;
+	return (new_ray);
+}
+
+t_point_3d	ray_at_t(double translation, t_ray ray)
 {
 	t_vector_3d reach;
 
@@ -20,10 +29,10 @@ t_point_3d		ray_at_t(double translation, t_ray ray)
 	return (add(ray.origin, reach));
 }
 
-t_ray			get_ray(const t_ray_tracer rt,
-						const t_camera camera,
-						int row,
-						int column)
+t_ray		get_ray(const t_ray_tracer rt,
+					const t_camera camera,
+					int row,
+					int column)
 {
 	double	horizontal_direction;
 	double	vertical_direction;
@@ -33,10 +42,10 @@ t_ray			get_ray(const t_ray_tracer rt,
 	return (set_ray_dof(camera, horizontal_direction, vertical_direction));
 }
 
-t_ray			get_sample_ray(const t_ray_tracer rt,
-						const t_camera camera,
-						int row,
-						int column)
+t_ray		get_sample_ray(const t_ray_tracer rt,
+							const t_camera camera,
+							int row,
+							int column)
 {
 	double	horizontal_direction;
 	double	vertical_direction;

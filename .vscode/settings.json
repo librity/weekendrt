@@ -54,7 +54,14 @@
 	"errors.h": "c",
 	"pixel.h": "c",
 	"material.h": "c",
-	"color.h": "c"
+	"color.h": "c",
+	"random_geometry.h": "c",
+	"random_utils.h": "c",
+	"random.h": "c",
+	"vector.h": "c",
+	"ray.h": "c",
+	"camera.h": "c",
+	"ray_caster.h": "c"
 },
   "editor.detectIndentation": false
 }

@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/04/03 13:08:29 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/04/03 16:18:45 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,9 +37,9 @@ EXAMPLES_PATH = ./examples
 HEADER_FILE = weekendrt.h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
-SOURCE_FILES = rtmath.c vector_3d.c \
+SOURCE_FILES = algebra.c vector.c \
 	\
-	rtrandom.c random_utils.c \
+	random.c random_utils.c random_geometry.c \
 	\
 	color.c pixel.c \
 	\

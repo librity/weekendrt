@@ -6,14 +6,14 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 18:50:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 23:45:19 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 16:17:46 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAMERA_H
 # define CAMERA_H
 
-# include <vector_3d.h>
+# include <vector.h>
 
 typedef struct	s_camera_params
 {

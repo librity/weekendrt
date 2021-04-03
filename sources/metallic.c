@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:23:59 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 12:26:03 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 16:25:05 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ bool		scatter_metallic(t_ray incident_ray,
 	t_vector_3d fuzz = scalar_times(material->fuzziness, random_in_unit_sphere());
 	t_vector_3d fuzzed_reflected = add(reflected, fuzz);
 
-	*scattered_ray = (t_ray){record->intersection, fuzzed_reflected};
+	*scattered_ray = ray(record->intersection, fuzzed_reflected);
 	*attenuation = material->albedo;
 	return (dot(scattered_ray->direction, record->normal) > 0);
 }

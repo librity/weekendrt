@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:23:59 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 15:56:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 16:24:36 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ bool		scatter_dielectric(t_ray incident_ray,
 	else
 		direction = refract(unit_direction, record->normal, refraction_ratio);
 
-	*scattered_ray = (t_ray){record->intersection, direction};
+	*scattered_ray = ray(record->intersection, direction);
 	return true;
 }

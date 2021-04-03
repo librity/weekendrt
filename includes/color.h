@@ -6,17 +6,16 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 04:27:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 16:17:08 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H
 
-# include <vector_3d.h>
+# include <vector.h>
 
-typedef			t_vector_3d
-				t_color_3d;
+typedef t_vector_3d	t_color_3d;
 
 typedef struct	s_color_3i
 {

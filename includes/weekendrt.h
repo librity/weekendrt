@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 13:11:54 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 16:19:36 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 # include <libft.h>
 # include <ft_libbmp.h>
 
-# include <rtrandom.h>
+# include <random.h>
 # include <random_utils.h>
-# include <rtmath.h>
-# include <vector_3d.h>
+# include <random_geometry.h>
+# include <algebra.h>
+# include <vector.h>
 # include <color.h>
 # include <pixel.h>
 
