@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 19:43:33 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 01:20:40 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static void initialize_spheres(t_list **spheres)
 	t_material *silver   = make_metallic((t_color_3d){0.8, 0.7, 0.7}, 0.0);
 	t_material *gold  = make_metallic((t_color_3d){0.8, 0.6, 0.2}, 0.0);
 
-	t_material *matte_red = make_lambertian((t_color_3d){0.7, 0.3, 0.3});
-	t_material *matte_green = make_lambertian((t_color_3d){0.3, 0.7, 0.3});
-	t_material *matte_blue = make_lambertian((t_color_3d){0.3, 0.3, 0.7});
+	t_material *matte_red = make_matte((t_color_3d){0.7, 0.3, 0.3});
+	t_material *matte_green = make_matte((t_color_3d){0.3, 0.7, 0.3});
+	t_material *matte_blue = make_matte((t_color_3d){0.3, 0.3, 0.7});
 
 	first = ft_lstnew(new_sphere((t_point_3d){rp(), rp(), -1.5 + rp()}, rr(), silver));
 	int i = 100;

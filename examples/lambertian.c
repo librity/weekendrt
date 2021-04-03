@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 17:00:40 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 01:20:32 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void initialize_spheres(t_list **spheres)
 	t_list *first;
 	t_list *next;
 
-	t_material *white = make_lambertian((t_color_3d){0.9, 0.9, 0.9});
+	t_material *white = make_matte((t_color_3d){0.9, 0.9, 0.9});
 
 	first = ft_lstnew(new_sphere((t_point_3d){0.0, -100.5, -1.0}, 100.0, white));
 	next = ft_lstnew(new_sphere((t_point_3d){0.0, 0.0, -1.0}, 0.5, white));

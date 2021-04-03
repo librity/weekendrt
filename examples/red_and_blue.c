@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 22:07:23 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 01:20:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void initialize_world(t_list **materials, t_list **spheres)
 	t_list *first;
 	t_list *next;
 
-	t_material *material_left = make_lambertian((t_color_3d){0.0, 0.0, 1.0});
-	t_material *material_right = make_lambertian((t_color_3d){1.0, 0.0, 0.0});
+	t_material *material_left = make_matte((t_color_3d){0.0, 0.0, 1.0});
+	t_material *material_right = make_matte((t_color_3d){1.0, 0.0, 0.0});
 
 	first = ft_lstnew(material_left);
 	next = ft_lstnew(material_right);

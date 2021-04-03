@@ -49,7 +49,8 @@
 	"hittable.h": "c",
 	"algorithm": "c",
 	"chrono": "c",
-	"ray_effects.h": "c"
+	"ray_effects.h": "c",
+	"string_view": "c"
 },
   "editor.detectIndentation": false
 }

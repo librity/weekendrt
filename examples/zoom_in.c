@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 22:35:38 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 01:20:24 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void initialize_world(t_list **materials, t_list **spheres)
 	t_list *first;
 	t_list *next;
 
-	t_material *lime_green_matte = make_lambertian((t_color_3d){0.8, 0.8, 0.0});
+	t_material *lime_green_matte = make_matte((t_color_3d){0.8, 0.8, 0.0});
 	t_material *glass   = make_dielectric(1.5);
-	t_material *blue_matte = make_lambertian((t_color_3d){0.1, 0.2, 0.5});
+	t_material *blue_matte = make_matte((t_color_3d){0.1, 0.2, 0.5});
 	t_material *gold  = make_metallic((t_color_3d){0.8, 0.6, 0.2}, 0.0);
 
 	first = ft_lstnew(lime_green_matte);

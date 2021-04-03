@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 14:50:17 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 23:12:35 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 00:51:06 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,6 @@ double		random_from(double min, double max)
 double		canonical_random(void)
 {
 	return (random_from(0.0, 1.0));
-}
-
-double		rp(void)
-{
-	return (random_from(-1.0, 1.0));
-}
-
-double		rr(void)
-{
-	return (random_from(0.0, 0.1));
-}
-
-t_vector_3d	rc(void)
-{
-	return ((t_color_3d){random_from(0.0, 1.0),
-							random_from(0.0, 1.0),
-							random_from(0.0, 1.0)});
 }
 
 t_vector_3d	random_vector(void)

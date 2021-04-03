@@ -104,11 +104,13 @@ Multiple materials:
   <img src="gallery/mario_galaxy.png" />
 </p>
 
-Dynamic camera and Defocus Blur (a.k.a. Depth of Field):
+Dynamic camera:
 
 <p align="center">
   <img src="gallery/zoomers.png" />
 </p>
+
+Defocus Blur (a.k.a. Depth of Field):
 
 <p align="center">
   <img src="gallery/dude_deep.png" />

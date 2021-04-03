@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 15:06:25 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 21:34:57 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 01:21:13 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		free_materials(t_list **materials)
 	ft_lstclear(materials, &free);
 }
 
-t_material	*make_lambertian(t_color_3d albedo)
+t_material	*make_matte(t_color_3d albedo)
 {
 	t_material *new;
 
@@ -41,7 +41,7 @@ t_material	*make_metallic(t_color_3d albedo, double fuzziness)
 {
 	t_material *new;
 
-	new = prototype_material(&scatter_metal);
+	new = prototype_material(&scatter_metallic);
 	new->albedo = albedo;
 	if (fuzziness < 1.0)
 		new->fuzziness = fuzziness;
@@ -76,7 +76,7 @@ bool		scatter_matte(t_ray incident_ray,
 	return true;
 }
 
-bool		scatter_metal(t_ray incident_ray,
+bool		scatter_metallic(t_ray incident_ray,
 							void *void_record,
 							t_color_3d *attenuation,
 							t_ray *scattered_ray)
