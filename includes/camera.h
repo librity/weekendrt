@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 18:50:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 22:34:13 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/02 23:45:19 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,33 @@
 
 # include <vector_3d.h>
 
+typedef struct	s_camera_params
+{
+	t_point_3d	look_from;
+	t_point_3d	look_at;
+	t_vector_3d	view_up;
+
+	double		vertical_fov_degrees;
+	double		aperture;
+	double		focus_distance;
+}				t_camera_params;
+
 typedef struct	s_camera
 {
+	t_vector_3d	basis_u;
+	t_vector_3d	basis_v;
+	t_vector_3d	basis_w;
+
 	t_point_3d	origin;
 	t_vector_3d	horizontal;
 	t_vector_3d	vertical;
 	t_point_3d	lower_left_corner;
+
+	double		lens_radius;
 }				t_camera;
 
 void			initialize_camera(t_camera *camera,
 									double aspect_ratio,
-									t_point_3d look_from,
-									t_point_3d look_at,
-									t_vector_3d view_up,
-									double vertical_fov_degrees);
+									t_camera_params p);
 
 #endif

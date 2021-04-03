@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weekendrt.h                                        :+:      :+:    :+:   */
+/*   ray_effects.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 23:48:34 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/04/02 23:47:46 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEEKENDRT_H
-# define WEEKENDRT_H
-
-# include <stdbool.h>
-
-# include <libft.h>
-# include <ft_libbmp.h>
-
-# include <rtrandom.h>
-# include <rtmath.h>
-# include <vector_3d.h>
-# include <color.h>
+#ifndef RAY_EFFECTS_H
+# define RAY_EFFECTS_H
 
 # include <ray.h>
-# include <ray_effects.h>
-# include <hittable.h>
-# include <material.h>
-# include <sphere.h>
 
-# include <camera.h>
-# include <ray_tracer.h>
-# include <errors.h>
+t_vector_3d		point_ray(t_camera camera,
+							double horizontal,
+							double vertical);
+t_ray			set_ray(t_camera camera,
+						double horizontal,
+						double vertical);
+
+t_vector_3d		point_ray_dof(t_camera camera,
+								t_vector_3d offset,
+								double horizontal,
+								double vertical);
+t_ray			set_ray_dof(t_camera camera,
+							double horizontal,
+							double vertical);
 
 #endif

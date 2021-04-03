@@ -104,10 +104,14 @@ Multiple materials:
   <img src="gallery/mario_galaxy.png" />
 </p>
 
-Camera effects:
+Dynamic camera and Defocus Blur (a.k.a. Depth of Field):
 
 <p align="center">
   <img src="gallery/zoomers.png" />
+</p>
+
+<p align="center">
+  <img src="gallery/dude_deep.png" />
 </p>
 
 [and much, much more...](https://github.com/librity/weekendrt/tree/main/gallery)
@@ -324,6 +328,7 @@ by [@AdrianWR](https://github.com/AdrianWR)
 
 ## ⬇️ Markdown References <a name="markdown"></a>
 
+- https://casual-effects.com/markdeep/
 - https://github.github.com/gfm/
 - https://emojipedia.org/sun/
 - https://jaantollander.com/post/scientific-writing-with-markdown/

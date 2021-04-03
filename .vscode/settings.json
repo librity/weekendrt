@@ -46,7 +46,10 @@
 	"ray_tracer.h": "c",
 	"hittable_material.h": "c",
 	"sphere.h": "c",
-	"hittable.h": "c"
+	"hittable.h": "c",
+	"algorithm": "c",
+	"chrono": "c",
+	"ray_effects.h": "c"
 },
   "editor.detectIndentation": false
 }
