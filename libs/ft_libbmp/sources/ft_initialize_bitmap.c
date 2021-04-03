@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 01:12:49 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 03:01:14 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:54:02 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ static void	allocate_pixels(t_bitmap_image *image)
 	size_t current_row;
 	size_t row_size;
 
-	height = ft_absolute_value(image->header.height);
+	height = bm_abs(image->header.height);
 	image->pixels = malloc(sizeof(t_bitmap_pixel *) * height);
 	if (image->pixels == NULL)
-		ft_die_bitmap(BAD_MALLOC);
+		bm_die_bitmap(BAD_MALLOC);
 	row_size = sizeof(t_bitmap_pixel) * image->header.width;
 	current_row = 0;
 	while (current_row < height)
 	{
 		image->pixels[current_row] = malloc(row_size);
 		if (image->pixels == NULL)
-			ft_die_bitmap(BAD_MALLOC);
+			bm_die_bitmap(BAD_MALLOC);
 		current_row++;
 	}
 }
@@ -41,9 +41,9 @@ static void	initialize_header(t_bitmap_header *header,
 	size_t positive_height;
 	size_t padding;
 
-	padding = ft_calculate_padding(width);
+	padding = bm_calculate_padding(width);
 	adjusted_width = padding + sizeof(t_bitmap_pixel) * width;
-	positive_height = ft_absolute_value(height);
+	positive_height = bm_abs(height);
 	header->buffer_size = adjusted_width * positive_height;
 	header->buffer_reserved = 0;
 	header->buffer_offset = 54;
@@ -60,7 +60,7 @@ static void	initialize_header(t_bitmap_header *header,
 	header->important_colors = 0;
 }
 
-void		ft_initialize_bitmap(t_bitmap_image *image, int width, int height)
+void		bm_initialize_bitmap(t_bitmap_image *image, int width, int height)
 {
 	initialize_header(&image->header, width, height);
 	allocate_pixels(image);

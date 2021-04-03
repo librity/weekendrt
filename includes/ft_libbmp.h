@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:35 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 03:03:01 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:53:53 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef enum	e_bitmap_error
 	FILE_NOT_OPENED = 1,
 	HEADER_NOT_INITIALIZED,
 	BAD_MALLOC,
-	GENERIC_ERROR
+	GENERIC_BITMAP_ERROR
 }				t_bitmap_error;
 
 typedef struct	s_bitmap_header
@@ -70,18 +70,18 @@ typedef struct	s_write_pixels
 	unsigned char	padding[3];
 }				t_write_pixels;
 
-void			ft_initialize_bitmap(t_bitmap_image *image,
+void			bm_initialize_bitmap(t_bitmap_image *image,
 										int width,
 										int height);
-void			ft_set_pixel(t_bitmap_pixel *pxl,
+void			bm_set_pixel(t_bitmap_pixel *pxl,
 							unsigned char red,
 							unsigned char green,
 							unsigned char blue);
-void			ft_free_bitmap(t_bitmap_image *img);
-void			ft_save_bitmap(t_bitmap_image *image, char *filename);
+void			bm_free_bitmap(t_bitmap_image *img);
+void			bm_save_bitmap(t_bitmap_image *image, char *filename);
 
-int				ft_calculate_padding(int number);
-int				ft_absolute_value(int number);
-void			ft_die_bitmap(t_bitmap_error code);
+int				bm_calculate_padding(int number);
+int				bm_abs(int number);
+void			bm_die_bitmap(t_bitmap_error code);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 03:19:59 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 21:03:18 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 14:46:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,21 @@
 # define RTINFINITY DBL_MAX;
 # define RTPI 3.1415926535897932385;
 
-int		ft_absolute_value_i(int number);
-float	ft_absolute_value_f(float number);
-double	ft_absolute_value_d(double number);
+typedef struct	s_quadratic_result
+{
+	double	a;
+	double	half_b;
+	double	c;
+	double	discriminant;
+	double	d_sqrt;
+	double	root;
+}				t_quadratic_result;
 
-double	smallest_d(double x, double y);
-double	largest_d(double x, double y);
-double	clamp(double x, double min, double max);
-
-double	degrees_to_radians(double degrees);
-double	schlicks_approximation(double cosine, double refraction_ratio);
+double			degrees_to_radians(double degrees);
+bool			quadratic(t_quadratic_result r,
+							double min_translation,
+							double max_translation,
+							double *root);
+double			schlicks_approximation(double cosine, double refraction_ratio);
 
 #endif

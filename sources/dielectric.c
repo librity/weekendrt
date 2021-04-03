@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 12:23:59 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 12:26:31 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:56:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool		scatter_dielectric(t_ray incident_ray,
 
 	t_vector_3d unit_direction = unit(incident_ray.direction);
 	double cos_theta = dot(negative(unit_direction), record->normal);
-	cos_theta = smallest_d(cos_theta, 1.0);
+	cos_theta = ft_min_d(cos_theta, 1.0);
 	double sin_theta = sqrt(1.0 - cos_theta * cos_theta);
 	double reflectance = schlicks_approximation(cos_theta, refraction_ratio);
 

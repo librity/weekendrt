@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 01:10:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 18:36:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:53:59 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void	initialize_write_pixels(t_bitmap_image *image,
 									t_write_pixels *control)
 {
-	control->height = ft_absolute_value(image->header.height);
+	control->height = bm_abs(image->header.height);
 	control->offset = (image->header.height > 0 ? 0 : control->height - 1);
 	control->row_width = sizeof(t_bitmap_pixel) * image->header.width;
 	control->padding_width = sizeof(unsigned char) *
-								ft_calculate_padding(image->header.width);
+								bm_calculate_padding(image->header.width);
 	control->padding[0] = '\0';
 	control->padding[1] = '\0';
 	control->padding[2] = '\0';
@@ -36,7 +36,7 @@ static void	write_pixels(t_bitmap_image *image, int file_descriptor)
 	current_row = 0;
 	while (current_row < control.height)
 	{
-		row_index = ft_absolute_value(control.offset - current_row);
+		row_index = bm_abs(control.offset - current_row);
 		row_pixels = image->pixels[row_index];
 		write(file_descriptor, row_pixels, control.row_width);
 		write(file_descriptor, control.padding, control.padding_width);
@@ -50,19 +50,19 @@ static void	write_header(t_bitmap_header *header,
 	if (header == NULL)
 	{
 		close(file_descriptor);
-		ft_die_bitmap(HEADER_NOT_INITIALIZED);
+		bm_die_bitmap(HEADER_NOT_INITIALIZED);
 	}
 	write(file_descriptor, BITMAP_MAGIC_BITS, 2);
 	write(file_descriptor, header, sizeof(*header));
 }
 
-void		ft_save_bitmap(t_bitmap_image *image, char *filename)
+void		bm_save_bitmap(t_bitmap_image *image, char *filename)
 {
 	int				file_descriptor;
 
 	file_descriptor = open(filename, O_CREAT | O_RDWR, 0664);
 	if (file_descriptor < 0)
-		ft_die_bitmap(FILE_NOT_OPENED);
+		bm_die_bitmap(FILE_NOT_OPENED);
 	write_header(&image->header, file_descriptor);
 	write_pixels(image, file_descriptor);
 	close(file_descriptor);

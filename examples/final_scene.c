@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 13:19:43 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:54:06 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,14 +117,14 @@ int main(int argc, char **argv)
 
 	handle_arguments(argc);
 	initialize_ray_tracer(&rt, argv);
-	ft_initialize_bitmap(&image, rt.width, rt.height);
+	bm_initialize_bitmap(&image, rt.width, rt.height);
 
 	timer = log_start(rt);
 	generate_image(&image, rt, rt.camera);
 	log_end(timer);
 	cleanup_ray_tracer(&rt);
 
-	ft_save_bitmap(&image, rt.file_name);
-	ft_free_bitmap(&image);
+	bm_save_bitmap(&image, rt.file_name);
+	bm_free_bitmap(&image);
 	return 0;
 }

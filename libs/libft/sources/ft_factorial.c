@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hittable_sphere.h                                  :+:      :+:    :+:   */
+/*   ft_factorial.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 14:24:37 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2020/12/02 03:25:54 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/04/03 15:51:05 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HITTABLE_SPHERE_H
-# define HITTABLE_SPHERE_H
+#include <libft.h>
 
-# include <sphere.h>
+int	ft_factorial(int number)
+{
+	int factorial;
 
-bool			ray_hits_sphere(const t_ray ray,
-								const t_sphere *sphere,
-								t_hit_record *record,
-								double t_min,
-								double t_max);
-
-#endif
+	if (number < 0)
+		return (0);
+	if (number == 0 || number == 1)
+		return (1);
+	factorial = number * ft_factorial(number - 1);
+	return (factorial);
+}

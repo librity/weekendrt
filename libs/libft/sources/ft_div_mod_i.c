@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hittable_sphere.h                                  :+:      :+:    :+:   */
+/*   ft_div_mod_i.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 14:24:37 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/04/03 15:36:15 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/04/03 15:36:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HITTABLE_SPHERE_H
-# define HITTABLE_SPHERE_H
+#include <libft.h>
 
-# include <sphere.h>
-
-bool			ray_hits_sphere(const t_ray ray,
-								const t_sphere *sphere,
-								t_hit_record *record,
-								double t_min,
-								double t_max);
-
-#endif
+void	ft_div_mod_i(int a, int b, int *div, int *mod)
+{
+	if (b == 0)
+		return ;
+	*div = a / b;
+	*mod = a % b;
+}

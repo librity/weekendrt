@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/03/27 03:32:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:54:05 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void set_pixels(t_bitmap_image *image, t_example *c)
 			c->red_int = (int)(255.999 * c->red_float);
 			c->green_int = (int)(255.999 * c->green_float);
 
-			ft_set_pixel(&image->pixels[current_row][current_column],
+			bm_set_pixel(&image->pixels[current_row][current_column],
 						 c->red_int, c->green_int, c->blue_int);
 
 			current_column++;
@@ -89,9 +89,9 @@ int main(int argc, char **argv)
 
 	handle_arguments(argc);
 	initialize_control(&c, argv);
-	ft_initialize_bitmap(&image, c.width, c.height);
+	bm_initialize_bitmap(&image, c.width, c.height);
 	set_pixels(&image, &c);
-	ft_save_bitmap(&image, c.file_name);
-	ft_free_bitmap(&image);
+	bm_save_bitmap(&image, c.file_name);
+	bm_free_bitmap(&image);
 	return 0;
 }

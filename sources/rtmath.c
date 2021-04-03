@@ -6,59 +6,37 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 03:23:51 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/02 21:05:22 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 14:25:01 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <weekendrt.h>
-
-int		ft_absolute_value_i(int number)
-{
-	return (ft_absolute_value(number));
-}
-
-float	ft_absolute_value_f(float number)
-{
-	if (number < 0)
-		return (number * -1);
-	return (number);
-}
-
-double	ft_absolute_value_d(double number)
-{
-	if (number < 0)
-		return (number * -1);
-	return (number);
-}
-
-double	smallest_d(double x, double y)
-{
-	if (x < y)
-		return (x);
-	return (y);
-}
-
-double	largest_d(double x, double y)
-{
-	if (x > y)
-		return (x);
-	return (y);
-}
-
-double	clamp(double x, double min, double max)
-{
-	if (x < min)
-		return (min);
-	if (x > max)
-		return (max);
-	return (x);
-}
 
 double	degrees_to_radians(double degrees)
 {
 	const double pi = RTPI;
 
 	return (degrees * pi) / 180.0;
+}
+
+bool	quadratic(t_quadratic_result r,
+					double min_translation,
+					double max_translation,
+					double *root)
+{
+	r.discriminant = r.half_b * r.half_b - r.a * r.c;
+	if (r.discriminant < 0)
+		return (false);
+	r.d_sqrt = sqrt(r.discriminant);
+	r.root = (-r.half_b - r.d_sqrt) / r.a;
+	if (r.root < min_translation || max_translation < r.root)
+	{
+		r.root = (-r.half_b + r.d_sqrt) / r.a;
+		if (r.root < min_translation || max_translation < r.root)
+			return (false);
+	}
+	*root = r.root;
+	return (true);
 }
 
 double	schlicks_approximation(double cosine, double refraction_ratio)

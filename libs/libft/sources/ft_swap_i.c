@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hittable_sphere.h                                  :+:      :+:    :+:   */
+/*   ft_swap_i.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 14:24:37 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/04/03 15:30:55 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/04/03 15:33:30 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HITTABLE_SPHERE_H
-# define HITTABLE_SPHERE_H
+#include <libft.h>
 
-# include <sphere.h>
+void	ft_swap_i(int *a, int *b)
+{
+	int auxiliary;
 
-bool			ray_hits_sphere(const t_ray ray,
-								const t_sphere *sphere,
-								t_hit_record *record,
-								double t_min,
-								double t_max);
-
-#endif
+	auxiliary = *a;
+	*a = *b;
+	*b = auxiliary;
+}

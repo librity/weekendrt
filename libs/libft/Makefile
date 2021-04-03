@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/02 21:58:14 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/03/26 02:45:30 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/04/03 15:49:19 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,15 @@ NAME = libft.a
 
 OBJECTS_PATH = ./objects
 SOURCES_PATH = ./sources
-INCLUDES_PATH = ../../includes
+INCLUDES_PATH = ./includes
+LIBS_PATH = ./libs
+TESTS_PATH = ./tests
 
 CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
 CC_DEBUG_FLAGS = -g
 
+MAKE_EXTERNAL = make -C
 SAFE_MAKEDIR = mkdir -p
 ARCHIVE_AND_INDEX = ar -rcs
 
@@ -30,6 +33,15 @@ HEADER_FILE = ft_printf.h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
 SOURCE_FILES = unless.c \
+	ft_abs.c ft_abs_i.c ft_abs_f.c ft_abs_d.c \
+	\
+	ft_min_d.c ft_max_d.c ft_clamp_d.c \
+	\
+	ft_swap.c ft_swap_i.c \
+	\
+	ft_div_mod.c ft_div_mod_i.c \
+	\
+	ft_sqrt.c ft_sqrt_i.c ft_pow.c ft_pow_i.c ft_fibonacci.c ft_factorial.c \
 	\
 	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c \
 	ft_memmove.c ft_memchr.c ft_memcmp.c \
@@ -86,6 +98,10 @@ SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 
 OBJECTS = $(addprefix $(OBJECTS_PATH)/,$(subst .c,.o,$(SOURCE_FILES)))
 
+EXAMPLE_MAIN = example.c
+EXECUTE_EXAMPLE = ./a.out
+EXAMPLE_GARBAGE = a.out a.out.dSYM
+
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
@@ -95,12 +111,40 @@ $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c
 	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
 	$(CC) $(CC_FLAGS) -I $(INCLUDES_PATH) -o $@ -c $<
 
+example: $(NAME)
+	$(CC) $(CC_DEBUG_FLAGS) -I $(INCLUDES_PATH) $(EXAMPLE_MAIN) $(NAME)
+	$(EXECUTE_EXAMPLE)
+
+test:
+	$(MAKE_EXTERNAL) $(TESTS_PATH)
+
 clean:
 	$(REMOVE) $(OBJECTS)
 
 fclean: clean
 	$(REMOVE) $(NAME)
 
+example_clean: fclean
+	$(REMOVE_RECURSIVE) $(EXAMPLE_GARBAGE)
+
+test_clean:
+	$(MAKE_EXTERNAL) $(TESTS_PATH) fclean
+
 re: fclean all
 
-.PHONY: all re clean fclean norme git gitm
+norm:
+	norminette $(INCLUDES_PATH)
+	@echo ----------------------
+	norminette $(SOURCES_PATH)
+
+git:
+	git add -A
+	git commit -m "update"
+	git push
+
+gitm:
+	git add -A
+	git commit -m $m
+	git push
+
+.PHONY: all example test re clean fclean example_clean test_clean norme git gitm

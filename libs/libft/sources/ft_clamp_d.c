@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hittable_sphere.h                                  :+:      :+:    :+:   */
+/*   ft_clamp_d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 14:55:21 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 14:24:37 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/04/03 13:46:42 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/04/03 13:47:10 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HITTABLE_SPHERE_H
-# define HITTABLE_SPHERE_H
+#include <libft.h>
 
-# include <sphere.h>
-
-bool			ray_hits_sphere(const t_ray ray,
-								const t_sphere *sphere,
-								t_hit_record *record,
-								double t_min,
-								double t_max);
-
-#endif
+double	ft_clamp_d(double x, double min, double max)
+{
+	if (x < min)
+		return (min);
+	if (x > max)
+		return (max);
+	return (x);
+}
