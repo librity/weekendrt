@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/04/03 16:18:45 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/04/03 16:50:23 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,11 @@ EXAMPLES_PATH = ./examples
 HEADER_FILE = weekendrt.h
 HEADER = $(addprefix $(INCLUDES_PATH)/,$(HEADER_FILE))
 
-SOURCE_FILES = algebra.c vector.c \
+SOURCE_FILES = algebra.c \
+	\
+	vector.c vector_meta.c vector_scalar.c \
+	vector_operations.c vector_geometry.c \
+	point.c \
 	\
 	random.c random_utils.c random_geometry.c \
 	\

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 16:19:36 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 16:51:02 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,14 @@
 # include <random_utils.h>
 # include <random_geometry.h>
 # include <algebra.h>
+
 # include <vector.h>
+# include <vector_meta.h>
+# include <vector_scalar.h>
+# include <vector_operations.h>
+# include <vector_geometry.h>
+# include <point.h>
+
 # include <color.h>
 # include <pixel.h>
 

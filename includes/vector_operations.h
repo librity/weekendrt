@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
+/*   vector_operations.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 16:49:48 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 16:44:35 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
+#ifndef VECTOR_OPERATIONS_H
+# define VECTOR_OPERATIONS_H
 
-# include <stdio.h>
-# include <math.h>
+# include <vector.h>
 
-typedef struct	s_vector_3d
-{
-	double	x;
-	double	y;
-	double	z;
-}				t_vector_3d;
-
-typedef t_vector_3d	t_point_3d;
-
-t_vector_3d		vector(double x, double y, double z);
-t_vector_3d		vector_3d(double x, double y, double z);
-
-void			inspect(t_vector_3d vector);
+t_vector_3d		add(t_vector_3d first, t_vector_3d second);
+t_vector_3d		sub(t_vector_3d first, t_vector_3d second);
+t_vector_3d		cross(t_vector_3d first, t_vector_3d second);
+t_vector_3d		product(t_vector_3d first, t_vector_3d second);
+t_vector_3d		division(t_vector_3d first, t_vector_3d second);
 
 #endif

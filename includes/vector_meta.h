@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
+/*   vector_meta.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 16:49:48 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/03 16:49:30 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
+#ifndef VECTOR_META_H
+# define VECTOR_META_H
 
-# include <stdio.h>
-# include <math.h>
+# include <vector.h>
 
-typedef struct	s_vector_3d
-{
-	double	x;
-	double	y;
-	double	z;
-}				t_vector_3d;
+double			length_squared(t_vector_3d vector);
+double			length(t_vector_3d vector);
 
-typedef t_vector_3d	t_point_3d;
-
-t_vector_3d		vector(double x, double y, double z);
-t_vector_3d		vector_3d(double x, double y, double z);
-
-void			inspect(t_vector_3d vector);
+t_vector_3d		negative(t_vector_3d vector);
+t_vector_3d		unit(t_vector_3d vector);
+t_vector_3d		vsqrt(t_vector_3d vector);
 
 #endif

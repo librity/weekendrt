@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
+/*   point.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 03:39:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 16:49:48 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/04/03 16:30:28 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2021/04/03 16:30:35 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
+#include <weekendrt.h>
 
-# include <stdio.h>
-# include <math.h>
-
-typedef struct	s_vector_3d
+t_point_3d	point(double x, double y, double z)
 {
-	double	x;
-	double	y;
-	double	z;
-}				t_vector_3d;
+	return (point_3d(x, y, z));
+}
 
-typedef t_vector_3d	t_point_3d;
-
-t_vector_3d		vector(double x, double y, double z);
-t_vector_3d		vector_3d(double x, double y, double z);
-
-void			inspect(t_vector_3d vector);
-
-#endif
+t_point_3d	point_3d(double x, double y, double z)
+{
+	return ((t_point_3d){x, y, z});
+}
