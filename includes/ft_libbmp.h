@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:23:35 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 15:53:53 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/04 13:14:50 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,6 @@
 # include <stdio.h>
 
 # define BITMAP_MAGIC_BITS "BM"
-
-typedef enum	e_bitmap_error
-{
-	FILE_NOT_OPENED = 1,
-	HEADER_NOT_INITIALIZED,
-	BAD_MALLOC,
-	GENERIC_BITMAP_ERROR
-}				t_bitmap_error;
 
 typedef struct	s_bitmap_header
 {
@@ -70,6 +62,14 @@ typedef struct	s_write_pixels
 	unsigned char	padding[3];
 }				t_write_pixels;
 
+typedef enum	e_bitmap_error
+{
+	FILE_NOT_OPENED = 1,
+	HEADER_NOT_INITIALIZED,
+	BAD_MALLOC,
+	GENERIC_BITMAP_ERROR
+}				t_bitmap_error;
+
 void			bm_initialize_bitmap(t_bitmap_image *image,
 										int width,
 										int height);
@@ -82,6 +82,6 @@ void			bm_save_bitmap(t_bitmap_image *image, char *filename);
 
 int				bm_calculate_padding(int number);
 int				bm_abs(int number);
-void			bm_die_bitmap(t_bitmap_error code);
+void			bm_kill(t_bitmap_error code);
 
 #endif

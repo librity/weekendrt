@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 01:10:04 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 15:53:59 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/04 13:14:34 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	write_header(t_bitmap_header *header,
 	if (header == NULL)
 	{
 		close(file_descriptor);
-		bm_die_bitmap(HEADER_NOT_INITIALIZED);
+		bm_kill(HEADER_NOT_INITIALIZED);
 	}
 	write(file_descriptor, BITMAP_MAGIC_BITS, 2);
 	write(file_descriptor, header, sizeof(*header));
@@ -62,7 +62,7 @@ void		bm_save_bitmap(t_bitmap_image *image, char *filename)
 
 	file_descriptor = open(filename, O_CREAT | O_RDWR, 0664);
 	if (file_descriptor < 0)
-		bm_die_bitmap(FILE_NOT_OPENED);
+		bm_kill(FILE_NOT_OPENED);
 	write_header(&image->header, file_descriptor);
 	write_pixels(image, file_descriptor);
 	close(file_descriptor);

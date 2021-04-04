@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 01:17:24 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 15:53:54 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/04 13:14:37 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*fetch_error_message(t_bitmap_error code)
 	return (error_messages[code]);
 }
 
-void		bm_die_bitmap(t_bitmap_error code)
+void		bm_kill(t_bitmap_error code)
 {
 	print_error(fetch_error_message(code));
 	exit(EXIT_FAILURE);

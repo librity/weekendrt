@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 01:12:49 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 15:54:02 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/04 13:13:52 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static void	allocate_pixels(t_bitmap_image *image)
 	height = bm_abs(image->header.height);
 	image->pixels = malloc(sizeof(t_bitmap_pixel *) * height);
 	if (image->pixels == NULL)
-		bm_die_bitmap(BAD_MALLOC);
+		bm_kill(BAD_MALLOC);
 	row_size = sizeof(t_bitmap_pixel) * image->header.width;
 	current_row = 0;
 	while (current_row < height)
 	{
 		image->pixels[current_row] = malloc(row_size);
 		if (image->pixels == NULL)
-			bm_die_bitmap(BAD_MALLOC);
+			bm_kill(BAD_MALLOC);
 		current_row++;
 	}
 }
