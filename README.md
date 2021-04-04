@@ -109,7 +109,7 @@ Multiple materials:
 </p>
 
 <p align="center">
-  <img src="gallery/mario_galaxy.png" />
+  <img src="gallery/rainbow_soda.png" />
 </p>
 
 <p align="center">

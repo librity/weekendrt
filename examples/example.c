@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/04 01:48:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/04 03:47:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,45 @@
 
 static void initialize_world(t_list **materials, t_list **spheres)
 {
-	double radius = cos(pi() / 4);
-
 	create_matte_sphere(
 		(t_sphere_params){
 			materials, spheres,
-			point(-radius, 0.0, -1.0), radius,
-			color(0.0, 0.0, 1.0), 0.0, 0.0});
+			point(rp(), rp(), -1.5 + rp()), rr(),
+			rc(), 0.0, 0.0});
 
-	add_matte_sphere(
-		(t_sphere_params){
-			materials, spheres,
-			point(radius, 0.0, -1.0), radius,
-			color(1.0, 0.0, 0.0), 0.0, 0.0});
+	int i = 200;
+	while (i--)
+	{
+		add_matte_sphere(
+			(t_sphere_params){
+				materials, spheres,
+				point(rp(), rp(), -1.5 + rp()), rr(),
+				rc(), 0.0, 0.0});
+
+		add_metallic_sphere(
+			(t_sphere_params){
+				materials, spheres,
+				point(rp(), rp(), -1.5 + rp()), rr(),
+				rc(), random_from(0.0, 1.0), 0.0});
+
+		add_matte_sphere(
+			(t_sphere_params){
+				materials, spheres,
+				point(rp(), rp(), -1.5 + rp()), rr(),
+				rc(), 0.0, 0.0});
+
+		add_metallic_sphere(
+			(t_sphere_params){
+				materials, spheres,
+				point(rp(), rp(), -1.5 + rp()), rr(),
+				rc(), random_from(0.0, 1.0), 0.0});
+
+		add_dielectric_sphere(
+			(t_sphere_params){
+				materials, spheres,
+				point(rp(), rp(), -1.5 + rp()), rr(),
+				color(0, 0, 0), 0.0, random_from(1.4, 1.6)});
+	}
 }
 
 static void configure_camera(t_ray_tracer *rt)

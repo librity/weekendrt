@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/04/03 23:47:49 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/04/04 12:13:30 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,6 +120,8 @@ ft_libbmp_clean:
 re: fclean all
 
 norm:
+	norminette $(LIBS_PATH)
+	@echo ----------------------
 	norminette $(INCLUDES_PATH)
 	@echo ----------------------
 	norminette $(SOURCES_PATH)
