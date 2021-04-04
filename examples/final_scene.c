@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 18:57:05 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/04 00:53:35 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,28 @@ static void randomize_world(t_list **materials, t_list **spheres)
 						(t_sphere_params){
 							materials, spheres,
 							random_center, 0.2,
-							albedo, 0, 0});
+							albedo, 0.0, 0.0});
 					continue;
 				}
 
 				if (randomizer < 0.95)
 				{
 					albedo = rcr(0.5, 1);
-					fuzz = random_from(0, 0.5);
+					fuzz = random_from(0.0, 0.5);
 
 					add_metallic_sphere(
 						(t_sphere_params){
 							materials, spheres,
 							random_center, 0.2,
-							albedo, fuzz, 0});
+							albedo, fuzz, 0.0});
 					continue;
 				}
 
-				add_metallic_sphere(
+				add_dielectric_sphere(
 					(t_sphere_params){
 						materials, spheres,
 						random_center, 0.2,
-						0, 0, 1.5});
+						color(0.0, 0.0, 0.0), 0.0, 1.5});
 			}
 		}
 	}
@@ -74,25 +74,25 @@ static void initialize_world(t_list **materials, t_list **spheres)
 		(t_sphere_params){
 			materials, spheres,
 			point(0, -1000, 0), 1000,
-			color(0.5, 0.5, 0.5), 0, 0});
+			color(0.5, 0.5, 0.5), 0.0, 0.0});
 
 	add_matte_sphere(
 		(t_sphere_params){
 			materials, spheres,
 			point(-4, 1, 0), 1.0,
-			color(0.4, 0.2, 0.1), 0, 0});
+			color(0.4, 0.2, 0.1), 0.0, 0.0});
 
 	add_metallic_sphere(
 		(t_sphere_params){
 			materials, spheres,
 			point(4, 1, 0), 1.0,
-			color(0.7, 0.6, 0.5), 0.0, 0});
+			color(0.7, 0.6, 0.5), 0.0, 0.0});
 
-	add_metallic_sphere(
+	add_dielectric_sphere(
 		(t_sphere_params){
 			materials, spheres,
 			point(0, 1, 0), 1.0,
-			0, 0, 1.5});
+			color(0.0, 0.0, 0.0), 0.0, 1.5});
 
 	randomize_world(materials, spheres);
 }

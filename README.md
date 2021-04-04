@@ -113,7 +113,7 @@ Multiple materials:
 </p>
 
 <p align="center">
-  <img src="gallery/grand_finale.png" />
+  <img src="gallery/vast.png" />
 </p>
 
 [and much, much more...](https://github.com/librity/weekendrt/tree/main/gallery)
