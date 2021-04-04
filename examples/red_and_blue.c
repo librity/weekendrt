@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 16:21:36 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2021/04/03 17:29:09 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2021/04/04 01:49:04 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,34 @@
 
 static void initialize_world(t_list **materials, t_list **spheres)
 {
-	t_list *first;
-	t_list *next;
-
-	t_material *material_left = make_matte((t_color_3d){0.0, 0.0, 1.0});
-	t_material *material_right = make_matte((t_color_3d){1.0, 0.0, 0.0});
-
-	first = ft_lstnew(material_left);
-	next = ft_lstnew(material_right);
-	ft_lstadd_back(&first, next);
-
-	*materials = first;
-
 	double radius = cos(pi() / 4);
 
-	first = ft_lstnew(new_sphere((t_point_3d){-radius, 0.0, -1.0}, radius, material_left));
-	next = ft_lstnew(new_sphere( (t_point_3d){ radius, 0.0, -1.0}, radius, material_right));
-	ft_lstadd_back(&first, next);
+	create_matte_sphere(
+		(t_sphere_params){
+			materials, spheres,
+			point(-radius, 0.0, -1.0), radius,
+			color(0.0, 0.0, 1.0), 0.0, 0.0});
 
-	*spheres = first;
+	add_matte_sphere(
+		(t_sphere_params){
+			materials, spheres,
+			point(radius, 0.0, -1.0), radius,
+			color(1.0, 0.0, 0.0), 0.0, 0.0});
+}
+
+static void configure_camera(t_ray_tracer *rt)
+{
+	t_camera_params camera_params;
+
+	camera_params.look_from = (t_point_3d){0.0, 0.0, 0.0};
+	camera_params.look_at = (t_point_3d){0.0, 0.0, -1.0};
+	camera_params.view_up = (t_vector_3d){0.0, 1.0, 0.0};
+
+	camera_params.vertical_fov_degrees = 90.0;
+	camera_params.aperture = 0.0;
+	camera_params.focus_distance = 2.0;
+
+	initialize_camera(&(rt->camera), rt->aspect_ratio, camera_params);
 }
 
 static void initialize_ray_tracer(t_ray_tracer *rt, char **arguments)
@@ -46,7 +55,7 @@ static void initialize_ray_tracer(t_ray_tracer *rt, char **arguments)
 	rt->samples_per_pixel = 100;
 	rt->max_depth = 50;
 
-	initialize_camera(&(rt->camera), rt->aspect_ratio, 90.0);
+	configure_camera(rt);
 	initialize_world(&(rt->materials), &(rt->spheres));
 }
 
@@ -54,14 +63,15 @@ int main(int argc, char **argv)
 {
 	t_ray_tracer rt;
 	t_bitmap_image image;
+	clock_t timer;
 
 	handle_arguments(argc);
 	initialize_ray_tracer(&rt, argv);
 	bm_initialize_bitmap(&image, rt.width, rt.height);
 
-	ft_putstr("Scaning lines: ");
+	timer = log_start(rt);
 	generate_image(&image, rt, rt.camera);
-	ft_putstr(" Done!\n");
+	log_end(timer);
 	cleanup_ray_tracer(&rt);
 
 	bm_save_bitmap(&image, rt.file_name);
