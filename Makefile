@@ -6,11 +6,11 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2021/04/04 12:13:30 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2021/04/04 21:51:17 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_libbmp.a
+NAME = weekendrt.a
 
 CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
