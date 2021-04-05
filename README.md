@@ -56,7 +56,7 @@ All you need is a shell and a C compiler like `gcc` or `clang`.
 
 Just clone the repo and run `make`:
 
-```bashweekendrt
+```bash
 $ git clone https://github.com/librity/weekendrt.git
 $ cd weekendrt
 $ make example
