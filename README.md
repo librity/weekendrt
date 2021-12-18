@@ -17,10 +17,10 @@
 
 ---
 
-## 📝 Table of Contents
+## 📜 Table of Contents
 
 - [About](#about)
-- [Installation](#getting_started)
+- [Getting Started](#getting_started)
 - [Gallery](#gallery)
 - [Math](#math)
 - [Github Actions](#github_actions)
@@ -28,7 +28,7 @@
 - [References](#references)
 - [Docs](#docs)
 - [Resources](#resources)
-- [Markdown References](#markdown)
+- [Markdown Resources](#markdown)
 
 ## 🧐 About <a name = "about"></a>
 
@@ -328,7 +328,7 @@ by [@AdrianWR](https://github.com/AdrianWR)
 - https://www.codeproject.com/tips/800474/function-pointer-in-c-struct
 - https://aticleworld.com/function-pointer-in-c-struct/
 
-## ⬇️ Markdown References <a name="markdown"></a>
+## ⬇️ Markdown Resources <a name="markdown"></a>
 
 - https://casual-effects.com/markdeep/
 - https://github.github.com/gfm/
